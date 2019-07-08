@@ -70,6 +70,16 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 _________________________
 
-### Installed Packages
+### Packages
 
-- 
+- axios
+    - A lightweigth http client for interfacing with the express API.
+
+- react-router
+    - Used for keeping your UI in sync with your url.
+
+- react-router-dom
+    - <>
+
+- antD
+    - Libray of pre-build react components.
