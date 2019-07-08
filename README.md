@@ -79,7 +79,19 @@ _________________________
     - Used for keeping your UI in sync with your url.
 
 - react-router-dom
-    - <>
+    - Binds the DOM to the router, further enabling react-router package.
+
+- redux
+    - State management for a single page application.
+
+- react-redux
+    - Lets react and redux communicate giving thr react app access to state.
+
+- redux-thunk
+    - Allows for async redux by returning functions instead of actions.
+
+- redux-form
+    - 
 
 - antD
     - Libray of pre-build react components.
