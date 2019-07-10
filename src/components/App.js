@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-
-import ReduxTest from "./ReduxTest";
+import './../styles/App.css';
 
 class App extends Component {
 
@@ -8,7 +7,6 @@ class App extends Component {
     return(
       <>
       <h1>Food Ladder Base App</h1>
-      <ReduxTest/>
       </>
     );
   }
