@@ -4,7 +4,7 @@ class App extends Component {
 
   render(){
     return(
-      <h1>Base App</h1>
+      <h1>Food Ladder Base App</h1>
     );
   }
 }
