@@ -7,6 +7,7 @@ import Posts from './forum/Posts';
 import Project from './projects/Project';
 import Dashboard from './dashboard/Dashboard';
 import Post from './post/Post';
+import './../styles/App.css';
 
 class App extends Component {
   render() {
