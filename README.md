@@ -67,31 +67,39 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
 
-
-_________________________
+---
 
 ### Packages
 
 - axios
-    - A lightweigth http client for interfacing with the express API.
+
+  - A lightweigth http client for interfacing with the express API.
 
 - react-router
-    - Used for keeping your UI in sync with your url.
+
+  - Used for keeping your UI in sync with your url.
 
 - react-router-dom
-    - Binds the DOM to the router, further enabling react-router package.
+
+  - Binds the DOM to the router, further enabling react-router package.
 
 - redux
-    - State management for a single page application.
+
+  - State management for a single page application.
 
 - react-redux
-    - Lets react and redux communicate giving thr react app access to state.
+
+  - Lets react and redux communicate giving thr react app access to state.
 
 - redux-thunk
-    - Allows for async redux by returning functions instead of actions.
+
+  - Allows for async redux by returning functions instead of actions.
 
 - redux-form
-    - 
+
+  -
 
 - antD
-    - Libray of pre-build react components.
+  - Libray of pre-build react components.
+
+This is my change
