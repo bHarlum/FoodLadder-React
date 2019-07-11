@@ -2,6 +2,8 @@
 
 @import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
 
-h1, h2, h3, h4, h5, p, a {
+h1, h2, h3, h4, h5, p, a, span, button, input, 
+.ant-typography,
+.ant-tag {
   font-family: 'Libre Franklin', sans-serif;
 }
