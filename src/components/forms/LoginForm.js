@@ -1,7 +1,12 @@
 import React, { Component } from "react";
-import { Form, Icon, Input, Button, Checkbox, Typography } from 'antd';
+import { Form, Icon as AntIcon, Input, Button, Checkbox, Typography } from 'antd';
+import antStyled from "../antStyled";
+
 const { Title } = Typography;
 
+const Icon = antStyled(AntIcon)`
+  color: rgba(0,0,0,.25)
+`;
 
 class LoginForm extends Component {
 
@@ -16,7 +21,7 @@ class LoginForm extends Component {
             rules: [{ required: true, message: 'Username is required' }],
           })(
             <Input
-              prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="user" />}
               placeholder="Username"
             />,
           )}
@@ -26,7 +31,7 @@ class LoginForm extends Component {
             rules: [{ required: true, message: 'Password is required' }],
           })(
             <Input
-              prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />}
+              prefix={<Icon type="lock" />}
               type="password"
               placeholder="Password"
             />,

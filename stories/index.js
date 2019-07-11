@@ -7,5 +7,4 @@ import LoginForm from "./../src/components/forms/LoginForm";
 storiesOf('Forms', module)
   .add('Login', () => (
     <LoginForm/>
-    // <div><h1>Test</h1></div>
   ));
