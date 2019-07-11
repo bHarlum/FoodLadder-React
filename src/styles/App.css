@@ -1,1 +1,7 @@
 @import '~antd/dist/antd.css';
+
+@import url('https://fonts.googleapis.com/css?family=Libre+Franklin&display=swap');
+
+h1, h2, h3, h4, h5, p, a {
+  font-family: 'Libre Franklin', sans-serif;
+}

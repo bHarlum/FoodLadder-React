@@ -1,11 +1,11 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@storybook/react/demo';
+import './../src/styles/App.css';
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button>Hello Button</Button>
-  ))
-  .add('with emoji', () => (
-    <Button><span role="img" aria-label="so cool">😀 😎 👍 💯</span></Button>
-  ));   
+import LoginForm from "./../src/components/forms/LoginForm";
+
+storiesOf('Forms', module)
+  .add('Login', () => (
+    <LoginForm/>
+    // <div><h1>Test</h1></div>
+  ));
