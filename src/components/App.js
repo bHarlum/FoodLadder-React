@@ -21,7 +21,10 @@ import antStyled from "./antStyled";
 const { Header: AntHeader, Footer: AntFooter, Content } = Layout;
 
 const AppHeader = antStyled(AntHeader)`
-  background-color: rgb(244, 244, 244);
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  align-items: center;
 `;
 
 class App extends Component {
