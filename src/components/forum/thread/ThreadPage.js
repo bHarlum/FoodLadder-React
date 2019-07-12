@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class ThreadPage extends Component {
+class ThreadPage extends Component {
   render() {
     return (
       <div>
