@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Form, Input } from "antd";
+import { Link } from "react-router-dom";
+import { Form, Input, Button } from "antd";
 
 import { Icon } from "./FormLayout";
 
@@ -9,7 +10,7 @@ class InviteCodeForm extends Component {
     const { getFieldDecorator } = this.props.form;
 
     return(
-      <Form>
+      <Form layout="horizontal">
         <Form.Item>
           {getFieldDecorator('Invitation Code', {
               rules: [{ required: true, message: 'Code is required' }],
@@ -20,6 +21,11 @@ class InviteCodeForm extends Component {
               />,
             )}
         </Form.Item>
+        <Link to="/register">
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+        </Link>
       </Form>
     );
   }

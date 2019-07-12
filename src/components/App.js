@@ -14,6 +14,8 @@ import { Layout } from "antd";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 
+import LoginForm from "./forms/LoginForm";
+
 import antStyled from "./antStyled";
 
 const { Header: AntHeader, Footer: AntFooter, Content } = Layout;
@@ -38,6 +40,7 @@ class App extends Component {
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/forum' component={Forum} />
               <Route exact path='/projects' component={Project} />
+              <Route exact path='/loginform' component={LoginForm} />
             </Content>
             <AntFooter>
               <Footer/>
