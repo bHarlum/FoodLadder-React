@@ -1,11 +1,33 @@
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { Button } from '@storybook/react/demo';
+import './../src/styles/App.css';
 
-storiesOf('Button', module)
-  .add('with text', () => (
-    <Button>Hello Button</Button>
-  ))
-  .add('with emoji', () => (
-    <Button><span role="img" aria-label="so cool">😀 😎 👍 💯</span></Button>
-  ));   
+import styled from "styled-components";
+
+import LoginForm from "./../src/components/forms/LoginForm";
+import ThreadCard from "./../src/components/forum/thread/ThreadCard";
+
+const Story = styled.div`
+  margin: 20px;
+`;
+
+const exampleTags = ["soils", "tomatoes", "test"];
+
+storiesOf('Forms', module)
+  .add('Login', () => (
+    <Story>
+      <LoginForm/>
+    </Story>
+  ));
+
+storiesOf('Forum', module)
+  .add('Thread Preview', () => (
+    <Story>
+      <ThreadCard 
+        tags={exampleTags} 
+        title="Thread Card Test?" 
+        excerpt="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor..."
+        latestReply="John Smith"
+      />
+    </Story>
+  ));
