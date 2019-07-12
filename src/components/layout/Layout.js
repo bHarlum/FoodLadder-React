@@ -9,5 +9,5 @@ export const Centered = styled.div`
 `;
 
 export const FullPage = styled.div`
-  min-height: 78vh;
+  min-height: 71vh;
 `;
