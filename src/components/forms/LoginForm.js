@@ -1,17 +1,9 @@
 import React, { Component } from "react";
-import { Form, Icon as AntIcon, Input, Button, Checkbox, Typography } from 'antd';
-import styled from "styled-components";
-import antStyled from "../antStyled";
+import { Form, Input, Button, Checkbox, Typography } from 'antd';
+
+import { Icon, FormContainer } from "./FormLayout";
 
 const { Title } = Typography;
-
-const Icon = antStyled(AntIcon)`
-  color: rgba(0,0,0,.25);
-`;
-
-const FormContainer = styled.div`
-  width: 300px;
-`;
 
 class LoginForm extends Component {
 

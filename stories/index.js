@@ -6,6 +6,7 @@ import styled from "styled-components";
 
 import LoginForm from "./../src/components/forms/LoginForm";
 import ThreadCard from "./../src/components/forum/thread/ThreadCard";
+import InviteCodeForm from '../src/components/forms/InviteCodeForm';
 
 const Story = styled.div`
   margin: 20px;
@@ -17,6 +18,11 @@ storiesOf('Forms', module)
   .add('Login', () => (
     <Story>
       <LoginForm/>
+    </Story>
+  ))
+  .add('Invite Code', () => (
+    <Story>
+      <InviteCodeForm/>
     </Story>
   ));
 
