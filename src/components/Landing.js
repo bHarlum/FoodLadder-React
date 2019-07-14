@@ -1,15 +1,27 @@
 import React, { Component } from 'react';
 
 import { Centered, FullPage } from "./layout/Layout";
-import InviteCodeForm from "./forms/InviteCodeForm";
+import InvitationCodeForm from "./forms/InvitationCodeForm";
+
+import styled from "styled-components";
+
+import bannerImage from "./../assets/images/marketing_image_3.jpeg";
+
+const Banner = styled.div`
+  background-image: url(${bannerImage});
+  background-size: cover;
+  background-position: center;
+`;
 
 export class Landing extends Component {
   render() {
     return (
       <FullPage>
-        <Centered>
-          <InviteCodeForm/>
-        </Centered>
+        <Banner>
+          <Centered>
+            <InvitationCodeForm history={this.props.history} />
+          </Centered>
+        </Banner>
       </FullPage>
     );
   }

@@ -17,6 +17,8 @@ import Footer from "./layout/Footer";
 import LoginForm from "./forms/LoginForm";
 
 import antStyled from "./antStyled";
+import ReduxTest from './ReduxTest';
+import ReduxFormTest from './ReduxFormTest';
 
 const { Header: AntHeader, Footer: AntFooter, Content } = Layout;
 
@@ -33,9 +35,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Layout>
-            <AppHeader>
-              <Header/>
-            </AppHeader>
+            <Header/>
             <Content>
               <Route exact path='/' component={Landing} />
               <Route exact path='/register' component={Register} />
@@ -44,6 +44,8 @@ class App extends Component {
               <Route exact path='/forum' component={Forum} />
               <Route exact path='/projects' component={Project} />
               <Route exact path='/loginform' component={LoginForm} />
+              <Route exact path="/redux" component={ReduxTest} />
+              <Route exact path="/reduxform" component={ReduxFormTest} />
             </Content>
             <AntFooter>
               <Footer/>

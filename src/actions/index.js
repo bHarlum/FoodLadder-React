@@ -6,3 +6,10 @@ export const testAction = () => {
     payload: "Redux test payload"
   };
 }
+
+export const validateInvitationCode = () => {
+  return {
+    type: types.VALIDATE_INVITATION_CODE,
+    payload: "Validating invitation code."
+  };
+}
