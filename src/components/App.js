@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { Layout } from "antd";
 import './../styles/App.css';
 
 import Landing from './Landing';
@@ -8,8 +9,7 @@ import Login from './auth/Login';
 import Forum from './forum/Forum';
 import Project from './projects/Project';
 import Dashboard from './dashboard/Dashboard';
-
-import { Layout } from "antd";
+import ThreadPage from "./forum/thread/ThreadPage";
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
@@ -34,6 +34,7 @@ class App extends Component {
               <Route exact path='/login' component={Login} />
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/forum' component={Forum} />
+              <Route exact path="/forum/threads/:id" component={ThreadPage} />
               <Route exact path='/projects' component={Project} />
               <Route exact path='/loginform' component={LoginForm} />
               <Route exact path="/redux" component={ReduxTest} />
