@@ -7,7 +7,6 @@ const Input = (props) => {
   let status = props.meta.touched ? props.meta.error : "";
   return(
     <Form.Item 
-// Hacky method? TODO: refactor if necessary. This results in a messy warning in the console but works.
       validateStatus={status}
       help={props.meta.touched && props.meta.error && props.message}
     >
