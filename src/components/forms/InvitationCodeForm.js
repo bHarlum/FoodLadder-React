@@ -46,4 +46,3 @@ export default reduxForm({
   form: "invitationCode",
   validate 
 })(InvitationCodeForm)
- 

@@ -3,13 +3,13 @@ import { reduxForm, Field } from "redux-form";
 import { Button, Typography } from "antd";
 import axios from "axios";
 
-// import LocalAPI from "./../../apis/local";
+import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./FormLayout";
 
 const { Title } = Typography;
 
 class NewThreadForm extends Component {
-  onFormSubmit = (values) => {
+  onFormSubmit = async (values) => {
     console.log(values);
     const { title, body } = values;
     const data = { newThread: { title, posts: [] }};
@@ -23,12 +23,14 @@ class NewThreadForm extends Component {
         admin: true
       }
     })
-    // const response = await LocalAPI.post(`/threads`, { values });
-    axios.post("http://localhost:3005/threads", data)
-      .then(response => {
-        console.log(response);
-        this.props.history.push(`/forum/threads/${response}`);
-      }).catch(err => console.log(err));
+    const response = await LocalAPI.post(`/threads`, data);
+
+    console.log(response);
+    // axios.post("http://localhost:3005/threads", data)
+    //   .then(response => {
+    //     console.log(response);
+    //     this.props.history.push(`/forum/threads/${response.data._id}`);
+    //   }).catch(err => console.log(err));
   }
 
   render() {
