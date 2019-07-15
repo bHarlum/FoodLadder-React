@@ -3,10 +3,12 @@ import { reduxForm, Field } from "redux-form";
 import { Form, Input as AntInput, Button, Card } from "antd";
 
 const Input = (props) => {
+
+  let status = props.meta.touched ? props.meta.error : "";
   return(
     <Form.Item 
 // Hacky method? TODO: refactor if necessary. This results in a messy warning in the console but works.
-      validateStatus={props.meta.touched && props.meta.error}
+      validateStatus={status}
       help={props.meta.touched && props.meta.error && props.message}
     >
       <AntInput {...props.input} type={props.type} placeholder={props.placeholder}/>
