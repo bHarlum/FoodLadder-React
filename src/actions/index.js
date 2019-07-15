@@ -13,3 +13,14 @@ export const validateInvitationCode = () => {
     payload: "Validating invitation code."
   };
 }
+
+export const setHeader = (styles) => {
+  console.log(styles);
+  return {
+    type: types.HEADER_STYLES,
+    payload: {
+      position: styles.position,
+      logoFill: styles.logoFill,
+    }
+  }
+}

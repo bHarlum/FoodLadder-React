@@ -1,23 +1,13 @@
 import React, { Component } from "react";
 import styled from "styled-components";
+import { connect } from "react-redux";
 
-import { ReactComponent as Logo } from "./../../assets/images/food_ladder_logo_white.svg";
+// import { ReactComponent as Logo } from "./../../assets/images/food_ladder_logo_white.svg";
 
-// const Logo = styled.div`
-//   width: 302px;
-//   height: 58px;
-//   background-image: url(${logo});
-//   background-size: cover;
-// `
-
-const logoStyle = {
-  fill: "#fff",
-  width: "370px",
-  height: "130px",
-}
+import Logo from "./Logo";
 
 const HeaderContainer = styled.div`
-  position: fixed;
+  position: ${ props => props.position || "static" };
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -27,11 +17,19 @@ class Header extends Component {
 
   render(){
     return(
-      <HeaderContainer>
-        <Logo style={logoStyle} />
+      <HeaderContainer position={this.props.position}>
+        <Logo width="370px" height="130px" fill={this.props.logoFill} />
       </HeaderContainer>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  console.log(state);
+  return {
+    position: state.header_styles.position,
+    logoFill: state.header_styles.logoFill,
+  }
+}
+
+export default connect(mapStateToProps)(Header);

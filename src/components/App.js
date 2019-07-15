@@ -16,18 +16,10 @@ import Footer from "./layout/Footer";
 
 import LoginForm from "./forms/LoginForm";
 
-import antStyled from "./antStyled";
 import ReduxTest from './ReduxTest';
 import ReduxFormTest from './ReduxFormTest';
 
-const { Header: AntHeader, Footer: AntFooter, Content } = Layout;
-
-const AppHeader = antStyled(AntHeader)`
-  height: 100px;
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  align-items: center;
-`;
+const { Footer: AntFooter, Content } = Layout;
 
 class App extends Component {
   render() {
@@ -35,7 +27,7 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Layout>
-            <Header/>
+            <Header />
             <Content>
               <Route exact path='/' component={Landing} />
               <Route exact path='/register' component={Register} />
