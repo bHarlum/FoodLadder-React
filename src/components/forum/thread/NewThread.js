@@ -6,7 +6,7 @@ class NewThread extends Component {
 
   render(){
     return(
-      <NewThreadForm />
+      <NewThreadForm history={this.props.history} />
     );
   }
 }
