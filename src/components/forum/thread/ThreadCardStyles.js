@@ -6,6 +6,7 @@ const { Paragraph: AntParagraph, Text, Title: AntTitle } = Typography;
 
 export const Card = antStyled(AntCard)`
   width: 90%;
+  margin: auto;
 `;
 
 export const Note = antStyled(Text)`
