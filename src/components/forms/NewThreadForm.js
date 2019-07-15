@@ -19,7 +19,7 @@ class NewThreadForm extends Component {
       author: {
         id: 1,
         firstName: "Testy",
-        lasName: "McTest",
+        lastName: "McTest",
         admin: true
       }
     })

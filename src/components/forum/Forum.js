@@ -30,7 +30,7 @@ export class Forum extends Component {
             const { posts } = thread;
             return(
               <Link key={thread._id} to={`/forum/threads/${thread._id}`}>
-                <ThreadCard latestReply={posts[posts.length-1].author.firstName} />
+                <ThreadCard title={thread.title} latestReply={posts[posts.length-1].author.firstName} />
               </Link>
             )
           })}
