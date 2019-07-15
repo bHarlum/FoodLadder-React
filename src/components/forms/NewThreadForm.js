@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Button, Typography } from "antd";
-import axios from "axios";
 
 import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./FormLayout";
@@ -9,6 +8,7 @@ import { Input, FormContainer } from "./FormLayout";
 const { Title } = Typography;
 
 class NewThreadForm extends Component {
+
   onFormSubmit = async (values) => {
     console.log(values);
     const { title, body } = values;
@@ -19,18 +19,17 @@ class NewThreadForm extends Component {
       author: {
         id: 1,
         firstName: "Testy",
-        lastName: "McTest",
+        lasName: "McTest",
         admin: true
       }
     })
-    const response = await LocalAPI.post(`/threads`, data);
 
-    console.log(response);
-    // axios.post("http://localhost:3005/threads", data)
-    //   .then(response => {
-    //     console.log(response);
-    //     this.props.history.push(`/forum/threads/${response.data._id}`);
-    //   }).catch(err => console.log(err));
+    try {
+      const response = await LocalAPI.post(`/threads`, data);
+      console.log(response);  
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   render() {
