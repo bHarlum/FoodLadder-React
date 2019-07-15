@@ -5,7 +5,8 @@ import { Card as AntCard, Typography } from "antd";
 const { Paragraph: AntParagraph, Text, Title: AntTitle } = Typography;
 
 export const Card = antStyled(AntCard)`
-  width: 90%;
+  width: 98%;
+  margin: auto;
 `;
 
 export const Note = antStyled(Text)`
