@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Input, Button, Checkbox, Typography } from 'antd';
-import { reduxForm, Field } from 'redux-form';
+import { Input, Button, Checkbox, Typography } from 'antd';
+import { reduxForm } from 'redux-form';
 
 import { Icon, FormContainer } from "./FormLayout";
 
@@ -26,9 +26,9 @@ class LoginForm extends Component {
               placeholder="Password"
             />
             <Checkbox>Remember me</Checkbox>
-            <a className="login-form-forgot" href="">
+            {/* <a className="login-form-forgot" href="#">
               Forgot password
-            </a>
+            </a> */}
             <Button type="primary" htmlType="submit" className="login-form-button">
               Log in
             </Button>

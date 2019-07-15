@@ -5,8 +5,6 @@ const defaultState = {
 }
 
 export default (state = defaultState, action) => {
-  // console.log(`payload = ${action.payload}`);
-  // console.log(action.type);
   switch(action.type) {
     case types.REDUX_TEST: 
       console.log("running");

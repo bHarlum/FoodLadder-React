@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout } from "antd";
 import './../styles/App.css';
 
@@ -30,17 +30,19 @@ class App extends Component {
           <Layout>
             <Header />
             <Content>
-              <Route exact path='/' component={Landing} />
-              <Route exact path='/register' component={Register} />
-              <Route exact path='/login' component={Login} />
-              <Route exact path='/dashboard' component={Dashboard} />
-              <Route exact path='/forum' component={Forum} />
-              <Route exact path="/forum/threads/:id" component={ThreadPage} />
-              <Route exact path="/forum/threads/new" component={NewThread} />
-              <Route exact path='/projects' component={Project} />
-              <Route exact path='/loginform' component={LoginForm} />
-              <Route exact path="/redux" component={ReduxTest} />
-              <Route exact path="/reduxform" component={ReduxFormTest} />
+              <Switch>
+                <Route exact path='/' component={Landing} />
+                <Route exact path='/register' component={Register} />
+                <Route exact path='/login' component={Login} />
+                <Route exact path='/dashboard' component={Dashboard} />
+                <Route exact path='/forum' component={Forum} />
+                <Route exact path="/forum/threads/new" component={NewThread} />
+                <Route exact path="/forum/threads/:id" component={ThreadPage} />
+                <Route exact path='/projects' component={Project} />
+                <Route exact path='/loginform' component={LoginForm} />
+                <Route exact path="/redux" component={ReduxTest} />
+                <Route exact path="/reduxform" component={ReduxFormTest} />
+              </Switch>
             </Content>
             <AntFooter>
               <Footer/>

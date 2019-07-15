@@ -25,7 +25,6 @@ class Header extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     position: state.header_styles.position,
     logoFill: state.header_styles.logoFill,
