@@ -10,6 +10,7 @@ import Forum from './forum/Forum';
 import Project from './projects/Project';
 import Dashboard from './dashboard/Dashboard';
 import ThreadPage from "./forum/thread/ThreadPage";
+import NewThread from "./forum/thread/NewThread";
 
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
@@ -35,6 +36,7 @@ class App extends Component {
               <Route exact path='/dashboard' component={Dashboard} />
               <Route exact path='/forum' component={Forum} />
               <Route exact path="/forum/threads/:id" component={ThreadPage} />
+              <Route exact path="/forum/threads/new" component={NewThread} />
               <Route exact path='/projects' component={Project} />
               <Route exact path='/loginform' component={LoginForm} />
               <Route exact path="/redux" component={ReduxTest} />

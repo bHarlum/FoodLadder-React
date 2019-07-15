@@ -1,19 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Form, Input as AntInput, Button, Card } from "antd";
-
-const Input = (props) => {
-
-  let status = props.meta.touched ? props.meta.error : "";
-  return(
-    <Form.Item 
-      validateStatus={status}
-      help={props.meta.touched && props.meta.error && props.message}
-    >
-      <AntInput {...props.input} type={props.type} placeholder={props.placeholder}/>
-    </Form.Item>
-  );
-}
+import { Button, Card } from "antd";
+import { Input } from "./FormLayout";
 
 class InvitationCodeForm extends Component {
 
@@ -33,7 +21,7 @@ class InvitationCodeForm extends Component {
             name="code"
             type="text"
             placeholder="Invitation Code"
-            message="Please enter your unique code."
+            errorMessage="Please enter your unique code."
           />
           <Button type="primary" htmlType="submit">
             Submit

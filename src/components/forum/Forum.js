@@ -41,10 +41,12 @@ export class Forum extends Component {
             placeholder="Search posts"
             enterButton
           />
-          <Button type="primary">
-            <Icon type="plus" />
-            Create a New Post
-          </Button>
+          <Link to="forum/threads/new">
+            <Button type="primary">
+              <Icon type="plus" />
+              Create a New Post
+            </Button>
+          </Link>
         </Col>
       </Row>
     );
