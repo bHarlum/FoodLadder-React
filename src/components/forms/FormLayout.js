@@ -14,9 +14,11 @@ export const FormContainer = styled.div`
   width: 300px;
 `;
 
+// -----------------------------------------------
 // Custom Input component to use with Redux Field.
 // The following props are required for use: 
-//    name, type, placeholder, errorMessage (if field is required)
+//    name, type (text or textarea), placeholder, errorMessage (if field is required)
+// -----------------------------------------------
 
 export const Input = (props) => {
 
@@ -24,7 +26,7 @@ export const Input = (props) => {
   return(
     <Form.Item 
       validateStatus={status}
-      help={props.meta.touched && props.meta.error && props.errorMessage}
+      help={status && props.errorMessage}
     > { props.type === "text" && 
         <AntInput {...props.input} type={props.type} placeholder={props.placeholder}/>
       } { props.type === "textarea" &&

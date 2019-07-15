@@ -1,13 +1,31 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Button, Typography } from "antd";
+import axios from "axios";
+
+// import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./FormLayout";
 
 const { Title } = Typography;
 
 class NewThreadForm extends Component {
-  onFormSubmit = (values) => {
+  onFormSubmit = async (values) => {
     console.log(values);
+    const { title, body } = values;
+    const data = { newThread: { title, posts: [] }};
+    data.newThread.posts.push({
+      body,
+      author: {
+        id: 1,
+        firstName: "Testy",
+        lastName: "McTest",
+        admin: true
+      }
+    })
+    // const response = await LocalAPI.post(`/threads`, { values });
+    axios.post("http://localhost:3005/threads", data)
+      .then(response => console.log(response))
+      .catch(err => console.log(err));
   }
 
   render() {

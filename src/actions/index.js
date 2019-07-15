@@ -24,3 +24,13 @@ export const setHeader = (styles) => {
     }
   }
 }
+
+// export const createThread = (formValues) => {
+//   console.log(formValues);
+//   return {
+//     type: types.CREATE_THREAD,
+//     payload: {
+//       formValues
+//     }
+//   }
+// }
