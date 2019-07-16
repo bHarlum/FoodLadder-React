@@ -8,6 +8,7 @@ import Register from './auth/Register';
 import Login from './auth/Login';
 import Forum from './forum/Forum';
 import Project from './projects/Project';
+import NewProject from './projects/NewProject';
 import Dashboard from './dashboard/Dashboard';
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
@@ -39,6 +40,7 @@ class App extends Component {
                 <Route exact path="/forum/threads/new" component={NewThread} />
                 <Route exact path="/forum/threads/:id" component={ThreadPage} />
                 <Route exact path='/projects' component={Project} />
+                <Route exact path='/projects/new' component={NewProject} />
                 <Route exact path='/loginform' component={LoginForm} />
                 <Route exact path="/redux" component={ReduxTest} />
                 <Route exact path="/reduxform" component={ReduxFormTest} />
