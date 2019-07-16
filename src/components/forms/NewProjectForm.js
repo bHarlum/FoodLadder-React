@@ -15,10 +15,11 @@ class NewProjectForm extends Component {
 
     const {name, email, line1, line2, state, city, postcode, country, reportDate} = values;
     const data = {
-      newThread: {
+      newProject: {
           name,
-          user: {
-            email
+          users: {
+            email,
+            name
           }, 
           address: {
             line1,
@@ -106,6 +107,13 @@ class NewProjectForm extends Component {
             name="email"
             type="text"
             placeholder="*Project admin email"
+            errorMessage="This field is required."
+          />
+          <Field 
+            component={Input}
+            name="name"
+            type="text"
+            placeholder="*Project admin name"
             errorMessage="This field is required."
           />
           
