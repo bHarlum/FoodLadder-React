@@ -7,7 +7,7 @@ import history from "./../../history";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../apis/local";
-import { setAuthToken } from "./../../actions/index";
+import { setAuthToken, clearAuthToken } from "./../../actions/index";
 
 const HeaderContainer = styled.div`
   position: ${ props => props.position || "static" };
@@ -31,8 +31,7 @@ class Header extends Component {
   logout = (event) => {
     LocalAPI.get("/users/logout")
       .then(response => {
-        sessionStorage.removeItem("token");
-        history.push("/");
+        this.props.clearAuthToken();
       }).catch(err => {
         console.log(err);
       });
@@ -58,4 +57,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, { setAuthToken })(Header);
+export default connect(mapStateToProps, { setAuthToken, clearAuthToken })(Header);

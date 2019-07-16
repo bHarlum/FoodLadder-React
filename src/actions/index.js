@@ -31,3 +31,11 @@ export const setAuthToken = (token) => {
     payload: token
   }
 }
+
+export const clearAuthToken = () => {
+  sessionStorage.clear();
+  return {
+    type: types.AUTH_TOKEN,
+    payload: null
+  }
+}

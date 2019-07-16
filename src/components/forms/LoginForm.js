@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
-import { Button, Typography } from 'antd';
+import { Button } from 'antd';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from "react-redux";
 
 import { FormContainer, Input } from "./FormLayout";
 import { setAuthToken } from "./../../actions/index";
 import LocalAPI from "./../../apis/local";
-
-const { Title } = Typography;
 
 class LoginForm extends Component {
 
@@ -29,7 +27,6 @@ class LoginForm extends Component {
     const { handleSubmit } = this.props;
     return (
       <FormContainer>
-        <Title>Login</Title>
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
           <Field 
             component={Input}
@@ -60,6 +57,14 @@ const WrappedForm = reduxForm({
   form: "login",
   validate: (formValues) => {
     const errors = {};
+
+    if(!formValues.email) {
+      errors.email = "error";
+    }
+
+    if(!formValues.password) {
+      errors.password = "error";
+    }
 
     return errors;
   }
