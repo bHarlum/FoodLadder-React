@@ -1,38 +1,55 @@
 import React, { Component } from 'react';
-import { Input, Button, Checkbox, Typography } from 'antd';
-import { reduxForm } from 'redux-form';
+import { Button, Typography } from 'antd';
+import { reduxForm, Field } from 'redux-form';
+import { connect } from "react-redux";
 
-import { Icon, FormContainer } from "./FormLayout";
+import { FormContainer, Input } from "./FormLayout";
+import { setAuthToken } from "./../../actions/index";
+import LocalAPI from "./../../apis/local";
 
 const { Title } = Typography;
 
 class LoginForm extends Component {
 
+  onFormSubmit = (formValues) => {
+    const { email, password } = formValues;
+    LocalAPI.post(`/users/login`, {email, password})
+      .then( (response) => {
+        this.props.setAuthToken(response.data);
+      })
+      .then( response => {
+        this.props.history.push("/dashboard");
+      }) 
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
   render() {
+    const { handleSubmit } = this.props;
     return (
       <FormContainer>
         <Title>Login</Title>
-        <form>
-          <div>
-            <Input
-              prefix={<Icon type="user" />}
-              placeholder="Username"
-            />
-          </div>
-          <div>
-            <Input
-              prefix={<Icon type="lock" />}
-              type="password"
-              placeholder="Password"
-            />
-            <Checkbox>Remember me</Checkbox>
-            {/* <a className="login-form-forgot" href="#">
-              Forgot password
-            </a> */}
-            <Button type="primary" htmlType="submit" className="login-form-button">
-              Log in
-            </Button>
-          </div>
+        <form onSubmit={handleSubmit(this.onFormSubmit)}>
+          <Field 
+            component={Input}
+            name="email"
+            type="text"
+            placeholder="Email"
+            icon="mail"
+            errorMessage="Please enter your email."
+          />
+          <Field 
+            component={Input}
+            name="password"
+            type="password"
+            placeholder="Password"
+            icon="lock"
+            errorMessage="Please enter your password."
+          />
+          <Button type="primary" htmlType="submit" className="login-form-button">
+            Log in
+          </Button>
         </form>
       </FormContainer>
     );
@@ -48,4 +65,4 @@ const WrappedForm = reduxForm({
   }
 })(LoginForm);
 
-export default WrappedForm;
+export default connect(null, { setAuthToken })(WrappedForm);

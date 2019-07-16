@@ -7,7 +7,7 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch(action.type) {
     case types.AUTH_TOKEN:
-      return {...state, token: action.payload.token};
+      return {...state, token: action.payload};
     default:
       return state;
   }

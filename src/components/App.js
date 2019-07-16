@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout } from "antd";
 import './../styles/App.css';
 
+import PrivateRoute from "./PrivateRoute";
+
 import Landing from './Landing';
 import Register from './auth/Register';
 import Login from './auth/Login';
@@ -35,7 +37,7 @@ class App extends Component {
                 <Route exact path='/' component={Landing} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
-                <Route exact path='/dashboard' component={Dashboard} />
+                <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <Route exact path='/forum' component={Forum} />
                 <Route exact path="/forum/threads/new" component={NewThread} />
                 <Route exact path="/forum/threads/:id" component={ThreadPage} />
