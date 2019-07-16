@@ -25,6 +25,15 @@ export const setHeader = (styles) => {
   }
 }
 
+export const setAuthToken = (token) => {
+  console.log(token);
+  sessionStorage.setItem("token", token);
+  return {
+    type: types.AUTH_TOKEN,
+    payload: token
+  }
+}
+
 // export const createThread = (formValues) => {
 //   console.log(formValues);
 //   return {

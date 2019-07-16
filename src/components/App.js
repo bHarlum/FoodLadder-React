@@ -19,6 +19,7 @@ import LoginForm from "./forms/LoginForm";
 
 import ReduxTest from './ReduxTest';
 import ReduxFormTest from './ReduxFormTest';
+import TestRegisterForm from './forms/TestRegisterForm';
 
 const { Footer: AntFooter, Content } = Layout;
 
@@ -42,6 +43,7 @@ class App extends Component {
                 <Route exact path='/loginform' component={LoginForm} />
                 <Route exact path="/redux" component={ReduxTest} />
                 <Route exact path="/reduxform" component={ReduxFormTest} />
+                <Route exact path="/testregister" component={TestRegisterForm} />
               </Switch>
             </Content>
             <AntFooter>

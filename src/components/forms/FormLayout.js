@@ -34,6 +34,8 @@ export const Input = (props) => {
           type={props.type} 
           placeholder={props.placeholder} 
           autosize={{ minRows: 3 }} />
+      } { props.type === "password" &&
+        <AntInput {...props.input} type={props.type} placeholder={props.placeholder}/>
       }
     </Form.Item>
   );
