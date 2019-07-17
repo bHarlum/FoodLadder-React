@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import { Button } from "antd";
 
 import history from "./../../history";
@@ -43,6 +44,11 @@ class Header extends Component {
         <Logo width="370px" height="130px" fill={this.props.logoFill} />
         <Float>
           {this.props.token && <Button type="dashed" onClick={this.logout}>Logout</Button>}
+          {!this.props.token &&
+            <Link to="/login">
+              <Button type="dashed">Login</Button>
+            </Link>
+          }
         </Float>
       </HeaderContainer>
     );
@@ -58,3 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, { setAuthToken, clearAuthToken })(Header);
+ 
