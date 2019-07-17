@@ -15,14 +15,13 @@ class NewThreadForm extends Component {
     const data = { newThread: { title, posts: [] }};
     data.newThread.posts.push({
       body,
-      author: {
-        ...this.props.currentUser
-      }
+      author: this.props.currentUser
     })
 
     try {
       const response = await LocalAPI.post(`/threads`, data);
       console.log(response);  
+      this.props.history.push("/forum");
     } catch(error) {
       console.log(error);
     }
