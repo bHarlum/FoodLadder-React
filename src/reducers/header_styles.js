@@ -3,6 +3,7 @@ import types from "../actions/types";
 const defaultState = {
   position: "static",
   logoFill: "#000",
+  logoWidth: "300px"
 }
 
 export default (state = defaultState, action) => {

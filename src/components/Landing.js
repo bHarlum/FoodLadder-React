@@ -21,7 +21,8 @@ export class Landing extends Component {
     console.log("Landing page rendering");
     this.props.setHeader({
       position: "fixed",
-      logoFill: "#fff"
+      logoFill: "#fff",
+      logoWidth: "370px"
     });
   }
 

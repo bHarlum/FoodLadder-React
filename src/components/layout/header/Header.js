@@ -13,6 +13,7 @@ const HeaderContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 `;
 
 const Float = styled.div`
@@ -45,37 +46,46 @@ class Header extends Component {
 
   render(){
     return(
-      <HeaderContainer position={this.props.position}>
-        <Logo width="370px" height="130px" fill={this.props.logoFill} />
-
+      <HeaderContainer position={this.props.headerStyles.position}>
         {this.props.token && 
-          <Float>
-            <Dropdown overlay={
-                <Menu>
-                  <Menu.Item key="0">
-                    <a href="#">Settings</a>
-                  </Menu.Item>
-                  <Menu.Divider />
-                  <Menu.Item key="2">
-                    <Button type="dashed" onClick={this.logout}>Logout</Button>
-                  </Menu.Item>
-                </Menu>
-            } trigger={['click']}>
-              <UserBadge>
-                <Avatar icon="user" size={35} />
-                <Name>{this.props.current_user.firstName}</Name>
-              </UserBadge>
-            </Dropdown>
-          </Float>
+        <>
+          <Link to="/dashboard">
+            <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
+          </Link>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/forum">Forum</Link>
+              </li>
+            </ul>
+          </nav>
+          <Dropdown overlay={
+              <Menu>
+                <Menu.Item key="0">
+                  <a href="#">Settings</a>
+                </Menu.Item>
+                <Menu.Divider />
+                <Menu.Item key="2">
+                  <Button type="dashed" onClick={this.logout}>Logout</Button>
+                </Menu.Item>
+              </Menu>
+          } trigger={['click']}>
+            <UserBadge>
+              <Avatar icon="user" size={35} />
+              <Name>{this.props.currentUser.firstName}</Name>
+            </UserBadge>
+          </Dropdown>
+        </>
         }
         {!this.props.token &&
+        <>
+          <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
           <Float>
-            {!this.props.token &&
-              <Link to="/login">
-                <Button type="dashed">Login</Button>
-              </Link>
-            }
+            <Link to="/login">
+              <Button type="dashed">Login</Button>
+            </Link>
           </Float>
+        </>
         }
       </HeaderContainer>
     );
@@ -84,10 +94,9 @@ class Header extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    current_user: state.user.current,
+    currentUser: state.user.current,
     token: state.auth.token,
-    position: state.header_styles.position,
-    logoFill: state.header_styles.logoFill,
+    headerStyles: state.header_styles,
   }
 }
 

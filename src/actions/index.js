@@ -1,4 +1,5 @@
 import types from "./types";
+import styled from "styled-components";
 
 export const validateInvitationCode = () => {
   return {
@@ -11,8 +12,7 @@ export const setHeader = (styles) => {
   return {
     type: types.HEADER_STYLES,
     payload: {
-      position: styles.position,
-      logoFill: styles.logoFill,
+      ...styles
     }
   }
 }
