@@ -13,13 +13,13 @@ class NewProjectForm extends Component {
 
   onFormSubmit = async (values) => {
 
-    const {name, email, line1, line2, state, city, postcode, country, reportDate} = values;
+    const {projectName, userName, email, line1, line2, state, city, postcode, country, reportDate} = values;
     const data = {
       newProject: {
-          name,
+          name: projectName,
           users: {
             email,
-            name
+            name: userName
           }, 
           address: {
             line1,
@@ -50,24 +50,23 @@ class NewProjectForm extends Component {
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
           <Field 
             component={Input}
-            name="project-name"
+            name="projectName"
             type="text"
             placeholder="*Project Name"
-            errorMessage="This field is required."
+            errorMessage="Please provide unique project name."
           />
           <Field 
             component={Input}
             name="line1"
             type="text"
             placeholder="*Address"
-            errorMessage="This field is required."
+            errorMessage="please provide an address."
           />
           <Field 
             component={Input}
             name="line2"
             type="text"
             placeholder="Address"
-            errorMessage="This field is required."
           />
           <Field 
             component={Input}
@@ -79,26 +78,25 @@ class NewProjectForm extends Component {
             component={Input}
             name="city"
             type="text"
-            placeholder="*City"
-            errorMessage="This field is required."
+            placeholder="*City/Suburb"
+            errorMessage="Please provide a City/Suburb."
           />
           <Field 
             component={Input}
             name="state"
             type="text"
             placeholder="State"
-            errorMessage="This field is required."
           />
           <Field 
             component={Input}
             name="country"
             type="text"
             placeholder="*Country"
-            errorMessage="This field is required."
+            errorMessage="Please provide a Country."
           />
           <Field 
             component={DatePicker}
-            name="report-date"
+            name="reportDate"
             type="date"
             defaultValue={moment()}
           />
@@ -107,14 +105,14 @@ class NewProjectForm extends Component {
             name="email"
             type="text"
             placeholder="*Project admin email"
-            errorMessage="This field is required."
+            errorMessage="Email is required, please provide a valid email."
           />
           <Field 
             component={Input}
-            name="name"
+            name="userName"
             type="text"
             placeholder="*Project admin name"
-            errorMessage="This field is required."
+            errorMessage="Name is required, please provide a valid name."
           />
           
           <Button type="primary" htmlType="submit">
@@ -126,6 +124,41 @@ class NewProjectForm extends Component {
   }
 }
 
+
+
+// VALUES TO VALIDATE:
+// projectName
+// userName
+// line1
+// city
+// country
+// email
+const validate = (formValues) => {
+  const errors = {};
+  
+  if(!formValues.projectName) {
+    errors.projectName = "error";
+  }
+  if(!formValues.userName) {
+    errors.userName = "error";
+  }
+  if(!formValues.line1) {
+    errors.line1 = "error";
+  }
+  if(!formValues.city) {
+    errors.city = "error";
+  }
+  if(!formValues.country) {
+    errors.country = "error";
+  }
+  if(!formValues.email) {
+    errors.email = "error";
+  }
+
+  return errors;
+}
+
 export default reduxForm({
-  form: "newProject"
+  form: "newProject", 
+  validate
 })(NewProjectForm)
