@@ -10,7 +10,6 @@ const { Title } = Typography;
 class NewThreadForm extends Component {
 
   onFormSubmit = async (values) => {
-    console.log(values);
     const { title, body } = values;
     const data = { newThread: { title, posts: [] }};
     data.newThread.posts.push({

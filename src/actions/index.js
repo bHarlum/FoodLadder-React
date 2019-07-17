@@ -15,7 +15,6 @@ export const validateInvitationCode = () => {
 }
 
 export const setHeader = (styles) => {
-  console.log(styles);
   return {
     type: types.HEADER_STYLES,
     payload: {
@@ -25,12 +24,18 @@ export const setHeader = (styles) => {
   }
 }
 
-// export const createThread = (formValues) => {
-//   console.log(formValues);
-//   return {
-//     type: types.CREATE_THREAD,
-//     payload: {
-//       formValues
-//     }
-//   }
-// }
+export const setAuthToken = (token) => {
+  sessionStorage.setItem("token", token);
+  return {
+    type: types.AUTH_TOKEN,
+    payload: token
+  }
+}
+
+export const clearAuthToken = () => {
+  sessionStorage.clear();
+  return {
+    type: types.AUTH_TOKEN,
+    payload: null
+  }
+}
