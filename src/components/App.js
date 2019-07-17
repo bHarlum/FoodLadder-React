@@ -16,7 +16,7 @@ import Dashboard from './dashboard/Dashboard';
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
 
-import Header from "./layout/Header";
+import Header from "./layout/header/Header";
 import Footer from "./layout/Footer";
 
 import LoginForm from "./forms/LoginForm";

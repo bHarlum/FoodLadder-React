@@ -5,8 +5,8 @@ import { Link } from "react-router-dom";
 import { Button } from "antd";
 
 import Logo from "./Logo";
-import LocalAPI from "./../../apis/local";
-import { setAuthToken, clearAuthToken } from "./../../actions/index";
+import LocalAPI from "./../../../apis/local";
+import { setAuthToken, clearAuthToken } from "./../../../actions/index";
 
 const HeaderContainer = styled.div`
   position: ${ props => props.position || "static" };

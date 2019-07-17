@@ -142,6 +142,7 @@ class RegisterForm extends Component {
         .then(response => {
           this.props.setAuthToken(response.data.token);
           this.props.history.push("/dashboard");
+          message.success('Account Created!')
         })
         .catch(error => console.log(error));
     } catch(err) {
