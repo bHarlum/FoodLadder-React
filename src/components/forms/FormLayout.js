@@ -28,7 +28,10 @@ export const Input = (props) => {
       validateStatus={status}
       help={status && props.errorMessage}
     > { props.type === "text" && 
-        <AntInput {...props.input} type={props.type} placeholder={props.placeholder}/>
+        <AntInput {...props.input} 
+          type={props.type} 
+          placeholder={props.placeholder} 
+          value={props.defaultValue}/>
       } { props.type === "textarea" &&
         <TextArea {...props.input} 
           type={props.type} 
