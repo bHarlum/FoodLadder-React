@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, Avatar, Dropdown, Menu } from "antd";
+import { Button, Avatar, Dropdown as AntDropdown, Menu } from "antd";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
 import { setAuthToken, clearAuthToken, setCurrentUser, clearCurrentUser } from "./../../../actions/index";
+import antStyled from "./../../antStyled";
 
 const HeaderContainer = styled.div`
   position: ${ props => props.position || "static" };
@@ -30,6 +31,10 @@ const UserBadge = styled.div`
 const Name = styled.h3`
   display: inline;
   margin: 0 0 0 15px;
+`;
+
+const Dropdown = antStyled(AntDropdown)`
+  cursor: pointer;
 `;
 
 class Header extends Component {
