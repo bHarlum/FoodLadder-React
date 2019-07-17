@@ -53,21 +53,20 @@ class NewProjectForm extends Component {
             name="project-name"
             type="text"
             placeholder="*Project Name"
-            errorMessage="This field is required."
+            errorMessage="Please provide unique project name."
           />
           <Field 
             component={Input}
             name="line1"
             type="text"
             placeholder="*Address"
-            errorMessage="This field is required."
+            errorMessage="please provide an address."
           />
           <Field 
             component={Input}
             name="line2"
             type="text"
             placeholder="Address"
-            errorMessage="This field is required."
           />
           <Field 
             component={Input}
@@ -79,22 +78,21 @@ class NewProjectForm extends Component {
             component={Input}
             name="city"
             type="text"
-            placeholder="*City"
-            errorMessage="This field is required."
+            placeholder="*City/Suburb"
+            errorMessage="Please provide a City/Suburb."
           />
           <Field 
             component={Input}
             name="state"
             type="text"
             placeholder="State"
-            errorMessage="This field is required."
           />
           <Field 
             component={Input}
             name="country"
             type="text"
             placeholder="*Country"
-            errorMessage="This field is required."
+            errorMessage="Please provide a Country."
           />
           <Field 
             component={DatePicker}
@@ -107,14 +105,14 @@ class NewProjectForm extends Component {
             name="email"
             type="text"
             placeholder="*Project admin email"
-            errorMessage="This field is required."
+            errorMessage="Email is required, please provide a valid email."
           />
           <Field 
             component={Input}
             name="name"
             type="text"
             placeholder="*Project admin name"
-            errorMessage="This field is required."
+            errorMessage="Name is required, please provide a valid name."
           />
           
           <Button type="primary" htmlType="submit">
