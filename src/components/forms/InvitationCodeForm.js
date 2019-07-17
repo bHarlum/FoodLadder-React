@@ -6,13 +6,11 @@ import { Input } from "./FormLayout";
 class InvitationCodeForm extends Component {
 
   onFormSubmit = (values) => {
-    console.log(values);
     this.props.history.push("/dashboard");
   }
 
   render(){
     const { handleSubmit } = this.props;
-
     return(
       <Card>
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
@@ -20,6 +18,7 @@ class InvitationCodeForm extends Component {
             component={Input}
             name="code"
             type="text"
+            defaultValue={this.props.value}
             placeholder="Invitation Code"
             errorMessage="Please enter your unique code."
           />

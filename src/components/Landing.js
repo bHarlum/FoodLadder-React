@@ -39,7 +39,7 @@ export class Landing extends Component {
       <FullPage>
         <Banner>
           <Centered>
-            <InvitationCodeForm history={this.props.history} />
+            <InvitationCodeForm history={this.props.history} value={this.props.location.search.match('\\unique=(.*)')[1]}/>
           </Centered>
         </Banner>
       </FullPage>
