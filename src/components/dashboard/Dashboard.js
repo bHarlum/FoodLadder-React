@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Row, Col, Typography, Card } from "antd";
 import { connect } from "react-redux";
 
-import LocalAPI from "./../../apis/local";
 import { setCurrentUser } from "./../../actions";
 import { FullPage } from "./../layout/Layout";
 

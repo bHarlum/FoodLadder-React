@@ -36,10 +36,8 @@ class Header extends Component {
 
   setUser = () => {
     if(this.props.token && this.props.currentUser.id === undefined){
-      console.log("setting current user");
       LocalAPI.get("/users/current")
       .then(response => {
-        console.log(response);
         this.props.setCurrentUser(response.data);
       }).catch(err => {
         console.log(err);

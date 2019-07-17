@@ -1,44 +1,31 @@
 import React, { Component } from 'react';
 
+import LocalAPI from "./../../../apis/local";
 import Post from "./post/Post";
 import { FullPage } from "./../../layout/Layout";
 
-const posts = [
-  {
-    body: "test",
-    author: {
-      firstName: "Ari",
-      lastName: "Friedgut",
-      admin: false,
-    },
-    key: 1
-  },
-  {
-    body: "test 2",
-    author: {
-      firstName: "Bruce",
-      lastName: "McClure",
-      admin: false,
-    },
-    key: 2
-  },
-  {
-    body: "test 3",
-    author: {
-      firstName: "Bryce",
-      lastName: "Harlum",
-      admin: true,
-    },
-    key: 3,
-  }
-]
-
 class ThreadPage extends Component {
+
+  state = {
+    thread: null
+  }
+
+  componentDidMount = () => {
+    const { id } = this.props.match.params;
+    LocalAPI.get(`/threads/${id}`)
+      .then(res => {
+        this.setState({thread: res.data});
+      }).catch( err => {
+        console.log(err);
+      });
+  }
+
   render() {
+    const { thread } = this.state;
     return (
       <FullPage>
-        {posts.map(post => {
-          return <Post key={post.key}>{post.body}</Post>
+        { thread && thread.posts.map(post => {
+          return <Post key={post._id}>{post.body}</Post>
         })}
       </FullPage>
     );
