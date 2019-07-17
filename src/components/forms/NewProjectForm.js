@@ -13,13 +13,13 @@ class NewProjectForm extends Component {
 
   onFormSubmit = async (values) => {
 
-    const {name, email, line1, line2, state, city, postcode, country, reportDate} = values;
+    const {projectName, userName, email, line1, line2, state, city, postcode, country, reportDate} = values;
     const data = {
       newProject: {
-          name,
+          name: projectName,
           users: {
             email,
-            name
+            name: userName
           }, 
           address: {
             line1,
@@ -50,7 +50,7 @@ class NewProjectForm extends Component {
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
           <Field 
             component={Input}
-            name="project-name"
+            name="projectName"
             type="text"
             placeholder="*Project Name"
             errorMessage="Please provide unique project name."
@@ -96,7 +96,7 @@ class NewProjectForm extends Component {
           />
           <Field 
             component={DatePicker}
-            name="report-date"
+            name="reportDate"
             type="date"
             defaultValue={moment()}
           />
@@ -109,7 +109,7 @@ class NewProjectForm extends Component {
           />
           <Field 
             component={Input}
-            name="name"
+            name="userName"
             type="text"
             placeholder="*Project admin name"
             errorMessage="Name is required, please provide a valid name."
@@ -124,6 +124,41 @@ class NewProjectForm extends Component {
   }
 }
 
+
+
+// VALUES TO VALIDATE:
+// projectName
+// userName
+// line1
+// city
+// country
+// email
+const validate = (formValues) => {
+  const errors = {};
+  
+  if(!formValues.projectName) {
+    errors.projectName = "error";
+  }
+  if(!formValues.userName) {
+    errors.userName = "error";
+  }
+  if(!formValues.line1) {
+    errors.line1 = "error";
+  }
+  if(!formValues.city) {
+    errors.city = "error";
+  }
+  if(!formValues.country) {
+    errors.country = "error";
+  }
+  if(!formValues.email) {
+    errors.email = "error";
+  }
+
+  return errors;
+}
+
 export default reduxForm({
-  form: "newProject"
+  form: "newProject", 
+  validate
 })(NewProjectForm)
