@@ -10,12 +10,7 @@ const { Title } = Typography;
 
 export class Dashboard extends Component {
   componentDidMount() {
-    LocalAPI.get("/users/current")
-      .then(response => {
-        this.props.setCurrentUser(response.data);
-      }).catch(err => {
-        console.log(err);
-      })
+
   }
 
   render() {

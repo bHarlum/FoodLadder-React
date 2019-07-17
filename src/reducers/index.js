@@ -7,7 +7,7 @@ import userReducer from "./user_reducer";
 
 export default combineReducers({
   form: formReducer,
-  header_styles: headerStylesReducer,
+  headerStyles: headerStylesReducer,
   auth: authReducer,
   user: userReducer
 });
