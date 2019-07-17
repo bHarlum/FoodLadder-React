@@ -11,8 +11,8 @@ export class Register extends Component {
     return (
       <FullPage>
         <Centered>
-          <Title>Register New Project</Title>
-          <RegisterForm/>
+          <Title>Register</Title>
+          <RegisterForm history={this.props.history}/>
         </Centered>
       </FullPage>
     );
