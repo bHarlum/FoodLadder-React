@@ -1,5 +1,4 @@
 import types from "./types";
-import styled from "styled-components";
 
 export const validateInvitationCode = () => {
   return {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { Centered, FullPage } from "./layout/Layout";
-import InvitationCodeForm from "./forms/InvitationCodeForm";
+// import InvitationCodeForm from "./forms/InvitationCodeForm";
 
 import bannerImage from "./../assets/images/marketing_image_3.jpeg";
 
@@ -18,7 +18,6 @@ const Banner = styled.div`
 export class Landing extends Component {
 
   componentDidMount() {
-    console.log("Landing page rendering");
     this.props.setHeader({
       position: "fixed",
       logoFill: "#fff",
@@ -39,7 +38,7 @@ export class Landing extends Component {
       <FullPage>
         <Banner>
           <Centered>
-            <InvitationCodeForm history={this.props.history} />
+            {/* <InvitationCodeForm history={this.props.history} value={this.props.location.search.match('\\unique=(.*)')[1]}/> */}
           </Centered>
         </Banner>
       </FullPage>

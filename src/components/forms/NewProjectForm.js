@@ -16,11 +16,12 @@ class NewProjectForm extends Component {
     const {projectName, userName, email, line1, line2, state, city, postcode, country, reportDate} = values;
     const data = {
       newProject: {
+          userName: userName,
           name: projectName,
-          users: {
-            email,
-            name: userName
-          }, 
+          users: [{
+            email         
+          }], 
+          uniqueCode: {},
           address: {
             line1,
             line2,
@@ -70,7 +71,7 @@ class NewProjectForm extends Component {
           />
           <Field 
             component={Input}
-            name="post-code"
+            name="postcode"
             type="text"
             placeholder="post code"
           />
