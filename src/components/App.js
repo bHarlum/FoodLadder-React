@@ -3,6 +3,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Layout } from "antd";
 import './../styles/App.css';
 
+import PrivateRoute from "./PrivateRoute";
+
 import Landing from './Landing';
 import Register from './auth/Register';
 import Login from './auth/Login';
@@ -20,6 +22,7 @@ import LoginForm from "./forms/LoginForm";
 
 import ReduxTest from './ReduxTest';
 import ReduxFormTest from './ReduxFormTest';
+import TestRegisterForm from './forms/TestRegisterForm';
 
 const { Footer: AntFooter, Content } = Layout;
 
@@ -35,7 +38,7 @@ class App extends Component {
                 <Route exact path='/' component={Landing} />
                 <Route exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
-                <Route exact path='/dashboard' component={Dashboard} />
+                <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <Route exact path='/forum' component={Forum} />
                 <Route exact path="/forum/threads/new" component={NewThread} />
                 <Route exact path="/forum/threads/:id" component={ThreadPage} />
@@ -44,6 +47,7 @@ class App extends Component {
                 <Route exact path='/loginform' component={LoginForm} />
                 <Route exact path="/redux" component={ReduxTest} />
                 <Route exact path="/reduxform" component={ReduxFormTest} />
+                <Route exact path="/testregister" component={TestRegisterForm} />
               </Switch>
             </Content>
             <AntFooter>

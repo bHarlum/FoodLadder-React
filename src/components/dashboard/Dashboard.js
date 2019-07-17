@@ -9,7 +9,7 @@ export class Dashboard extends Component {
   render() {
     return (
       <FullPage>
-        <Row justifyContent="space-around" gutter={6}>
+        <Row gutter={6}>
           <Col xs={{ span: 24 }} md={{ span: 8 }}>
             <Title level={3}>Your Projects</Title>
             <Card>
