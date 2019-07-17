@@ -21,6 +21,10 @@ class ThreadPage extends Component {
       });
   }
 
+  componentWillUnmount() {
+    this.props.setThread(null);
+  }
+
   render() {
     const { thread } = this.props;
     return (
