@@ -36,7 +36,6 @@ export const Input = (props) => {
           type={props.type} 
           placeholder={props.placeholder}
           prefix={props.prefix}
-          value={props.defaultValue}
         />
       } { props.type === "textarea" &&
         <TextArea {...props.input} 

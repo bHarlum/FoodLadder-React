@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Steps, Button, message } from "antd";
 import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
-import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import { setAuthToken } from "./../../actions";
