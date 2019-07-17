@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import './../styles/App.css';
 
 import PrivateRoute from "./PrivateRoute";
+import UnregisteredRoute from "./UnregisteredRoute";
 
 import Landing from './Landing';
 import Register from './auth/Register';
@@ -20,10 +21,6 @@ import Footer from "./layout/Footer";
 
 import LoginForm from "./forms/LoginForm";
 
-import ReduxTest from './ReduxTest';
-import ReduxFormTest from './ReduxFormTest';
-import TestRegisterForm from './forms/TestRegisterForm';
-
 const { Footer: AntFooter, Content } = Layout;
 
 class App extends Component {
@@ -36,7 +33,7 @@ class App extends Component {
             <Content>
               <Switch>
                 <Route exact path='/' component={Landing} />
-                <Route exact path='/register' component={Register} />
+                <UnregisteredRoute exact path='/register' component={Register} />
                 <Route exact path='/login' component={Login} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <Route exact path='/forum' component={Forum} />
@@ -45,9 +42,6 @@ class App extends Component {
                 <Route exact path='/projects' component={Project} />
                 <Route exact path='/projects/new' component={NewProject} />
                 <Route exact path='/loginform' component={LoginForm} />
-                <Route exact path="/redux" component={ReduxTest} />
-                <Route exact path="/reduxform" component={ReduxFormTest} />
-                <Route exact path="/testregister" component={TestRegisterForm} />
               </Switch>
             </Content>
             <AntFooter>

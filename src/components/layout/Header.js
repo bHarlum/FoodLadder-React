@@ -4,8 +4,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { Button } from "antd";
 
-import history from "./../../history";
-
 import Logo from "./Logo";
 import LocalAPI from "./../../apis/local";
 import { setAuthToken, clearAuthToken } from "./../../actions/index";
@@ -24,10 +22,6 @@ const Float = styled.div`
 `
 
 class Header extends Component {
-
-  componentDidMount() {
-    console.log(history);
-  }
 
   logout = (event) => {
     LocalAPI.get("/users/logout")
