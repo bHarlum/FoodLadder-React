@@ -62,7 +62,7 @@ class Header extends Component {
           <Dropdown overlay={
               <Menu>
                 <Menu.Item key="0">
-                  <a href="#">Settings</a>
+                  <a href="/settings">Settings</a>
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="2">
