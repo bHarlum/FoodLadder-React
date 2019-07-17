@@ -1,41 +1,12 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, Avatar, Dropdown as AntDropdown, Menu } from "antd";
+import { Button, Avatar, Menu } from "antd";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
 import { setAuthToken, clearAuthToken, setCurrentUser, clearCurrentUser } from "./../../../actions/index";
-import antStyled from "./../../antStyled";
-
-const HeaderContainer = styled.div`
-  position: ${ props => props.position || "static" };
-  width: 100%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-`;
-
-const Float = styled.div`
-  position: absolute;
-  right: 40px;
-  top: 45px;
-`
-
-const UserBadge = styled.div`
-  width: 250px;
-  padding: 15px 30px;
-`;
-
-const Name = styled.h3`
-  display: inline;
-  margin: 0 0 0 15px;
-`;
-
-const Dropdown = antStyled(AntDropdown)`
-  cursor: pointer;
-`;
+import { HeaderContainer, Dropdown, Float, UserBadge, Name } from "./HeaderStyles";
 
 class Header extends Component {
 
