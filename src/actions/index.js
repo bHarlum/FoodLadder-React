@@ -1,12 +1,5 @@
 import types from "./types";
 
-export const testAction = () => {
-  return {
-    type: types.REDUX_TEST,
-    payload: "Redux test payload"
-  };
-}
-
 export const validateInvitationCode = () => {
   return {
     type: types.VALIDATE_INVITATION_CODE,
@@ -25,7 +18,7 @@ export const setHeader = (styles) => {
 }
 
 export const setAuthToken = (token) => {
-  sessionStorage.setItem("token", token);
+  localStorage.setItem("token", token);
   return {
     type: types.AUTH_TOKEN,
     payload: token
@@ -33,9 +26,23 @@ export const setAuthToken = (token) => {
 }
 
 export const clearAuthToken = () => {
-  sessionStorage.clear();
+  localStorage.clear();
   return {
     type: types.AUTH_TOKEN,
     payload: null
+  }
+}
+
+export const setCurrentUser = (user) => {
+  return {
+    type: types.CURRENT_USER,
+    payload: user
+  }
+}
+
+export const clearCurrentUser = () => {
+  return {
+    type: types.CURRENT_USER,
+    payload: {}
   }
 }

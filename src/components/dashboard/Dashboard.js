@@ -1,11 +1,23 @@
 import React, { Component } from 'react';
 import { Row, Col, Typography, Card } from "antd";
+import { connect } from "react-redux";
 
+import LocalAPI from "./../../apis/local";
+import { setCurrentUser } from "./../../actions";
 import { FullPage } from "./../layout/Layout";
 
 const { Title } = Typography;
 
 export class Dashboard extends Component {
+  componentDidMount() {
+    LocalAPI.get("/users/current")
+      .then(response => {
+        this.props.setCurrentUser(response.data);
+      }).catch(err => {
+        console.log(err);
+      })
+  }
+
   render() {
     return (
       <FullPage>
@@ -52,4 +64,4 @@ export class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+export default connect(null, { setCurrentUser })(Dashboard);

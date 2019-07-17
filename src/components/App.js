@@ -32,9 +32,9 @@ class App extends Component {
             <Header />
             <Content>
               <Switch>
-                <Route exact path='/' component={Landing} />
+                <UnregisteredRoute exact path='/' component={Landing} />
                 <UnregisteredRoute exact path='/register' component={Register} />
-                <Route exact path='/login' component={Login} />
+                <UnregisteredRoute exact path='/login' component={Login} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
                 <Route exact path='/forum' component={Forum} />
                 <Route exact path="/forum/threads/new" component={NewThread} />

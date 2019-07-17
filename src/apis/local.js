@@ -22,7 +22,7 @@ LocalAPI.setAuthHeader = function (token) {
 
 LocalAPI.interceptors.response.use(function (config) {
   if (config.status === 401) {
-    sessionStorage.removeItem("token");
+    localStorage.removeItem("token");
     LocalAPI.defaults.headers.common["Authorization"] = null;
     return Promise.reject("Invalid Token");
   }

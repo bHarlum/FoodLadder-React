@@ -1,14 +1,14 @@
 import types from "./../actions/types";
 
 const defaultState = {
-  value: null
-}
+  current: {}
+};
 
 export default (state = defaultState, action) => {
   switch(action.type) {
-    case types.REDUX_TEST: 
-      console.log("running");
-      return {...state, value: action.payload};
+    case types.CURRENT_USER:
+      console.log(`setting current user to ${action.payload}`);
+      return {...state, current: action.payload};
     default:
       return state;
   }
