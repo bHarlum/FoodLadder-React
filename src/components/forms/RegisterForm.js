@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { reduxForm, Field } from "redux-form";
 
 import LocalAPI from "./../../apis/local";
-import { setAuthToken } from "./../../actions";
+import { setAuthToken, setCurrentUser } from "./../../actions";
 import { Input, Icon } from "./FormLayout";
 
 const { Step } = Steps;
@@ -213,4 +213,4 @@ const WrappedRegisterForm = reduxForm({
   validate
 })(RegisterForm);
 
-export default connect(null, { setAuthToken })(WrappedRegisterForm);
+export default connect(null, { setAuthToken, setCurrentUser })(WrappedRegisterForm);

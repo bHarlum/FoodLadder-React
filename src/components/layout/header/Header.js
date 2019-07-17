@@ -34,6 +34,25 @@ const Name = styled.h3`
 
 class Header extends Component {
 
+  setUser = () => {
+    if(this.props.token && this.props.currentUser.id === undefined){
+      LocalAPI.get("/users/current")
+      .then(response => {
+        this.props.setCurrentUser(response.data);
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+  }
+
+  componentDidMount() {
+    this.setUser();
+  }
+
+  componentDidUpdate() {
+    this.setUser();
+  }
+
   logout = (event) => {
     LocalAPI.get("/users/logout")
       .then(response => {
@@ -96,7 +115,7 @@ const mapStateToProps = (state) => {
   return {
     currentUser: state.user.current,
     token: state.auth.token,
-    headerStyles: state.header_styles,
+    headerStyles: state.headerStyles,
   }
 }
 

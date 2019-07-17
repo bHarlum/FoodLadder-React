@@ -1,13 +1,15 @@
 import types from "./../actions/types";
 
 const defaultState = {
-  current: {}
+  thread: null
 };
 
 export default (state = defaultState, action) => {
   switch(action.type) {
-    case types.CURRENT_USER:
-      return {...state, current: action.payload};
+    case types.SET_THREAD:
+      return {...state, 
+        thread: action.payload
+      };
     default:
       return state;
   }

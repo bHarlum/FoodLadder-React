@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Button, Typography } from "antd";
+import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./FormLayout";
@@ -14,18 +15,13 @@ class NewThreadForm extends Component {
     const data = { newThread: { title, posts: [] }};
     data.newThread.posts.push({
       body,
-      // TODO: Change below to current user 
-      author: {
-        id: 1,
-        firstName: "Testy",
-        lastName: "McTest",
-        admin: true
-      }
+      author: this.props.currentUser
     })
 
     try {
       const response = await LocalAPI.post(`/threads`, data);
       console.log(response);  
+      this.props.history.push("/forum");
     } catch(error) {
       console.log(error);
     }
@@ -74,8 +70,15 @@ const validate = (formValues) => {
   return errors;
 }
 
-export default reduxForm({
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.current
+  }
+}
+
+const WrappedThreadForm = reduxForm({
   form: "newThread",
   validate
 })(NewThreadForm)
  
+export default connect(mapStateToProps, {})(WrappedThreadForm);

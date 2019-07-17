@@ -21,6 +21,7 @@ export class Forum extends Component {
 
   render() {
     const { threads } = this.state;
+    console.log(threads);
     return (
       <Row>
         <Col xs={{ span: 24 }} md={{ span: 5 }} />

@@ -1,48 +1,51 @@
 import React, { Component } from 'react';
+import { Row, Col } from "antd";
+import { connect } from "react-redux";
 
+import LocalAPI from "./../../../apis/local";
 import Post from "./post/Post";
 import { FullPage } from "./../../layout/Layout";
-
-const posts = [
-  {
-    body: "test",
-    author: {
-      firstName: "Ari",
-      lastName: "Friedgut",
-      admin: false,
-    },
-    key: 1
-  },
-  {
-    body: "test 2",
-    author: {
-      firstName: "Bruce",
-      lastName: "McClure",
-      admin: false,
-    },
-    key: 2
-  },
-  {
-    body: "test 3",
-    author: {
-      firstName: "Bryce",
-      lastName: "Harlum",
-      admin: true,
-    },
-    key: 3,
-  }
-]
+import NewPostForm from "./../../forms/NewPostForm";
+import { setThread } from "./../../../actions";
 
 class ThreadPage extends Component {
+
+  componentDidMount = () => {
+    const { id } = this.props.match.params;
+    LocalAPI.get(`/threads/${id}`)
+      .then(res => {
+        console.log(res.data);
+        this.props.setThread(res.data);
+      }).catch( err => {
+        console.log(err);
+      });
+  }
+
   render() {
+    const { thread } = this.props;
     return (
       <FullPage>
-        {posts.map(post => {
-          return <Post key={post.key}>{post.body}</Post>
-        })}
+        <Row>
+          <Col span={6}></Col>
+          <Col span={12}>
+            { thread && thread.posts.map(post => {
+              return <Post key={post._id}>{post.body}</Post>
+            })}
+            { thread && 
+              <NewPostForm thread={thread} />
+            }
+          </Col>
+          <Col span={6}></Col>
+        </Row>
       </FullPage>
     );
   }
 }
 
-export default ThreadPage;
+const mapStateToProps = (state) => {
+  return {
+    thread: state.forum.thread,
+  }
+}
+
+export default connect(mapStateToProps, { setThread })(ThreadPage);
