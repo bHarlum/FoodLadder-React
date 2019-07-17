@@ -1,13 +1,15 @@
 import types from "./../actions/types";
 
 const defaultState = {
-  token: sessionStorage.getItem("token") || null
+  token: localStorage.getItem("token") || null
 };
 
 export default (state = defaultState, action) => {
   switch(action.type) {
     case types.AUTH_TOKEN:
-      return {...state, token: action.payload};
+      return {...state, 
+        token: action.payload
+      };
     default:
       return state;
   }

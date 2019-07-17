@@ -17,7 +17,11 @@ export const FormContainer = styled.div`
 // -----------------------------------------------
 // Custom Input component to use with Redux Field.
 // The following props are required for use: 
-//    name, type (text or textarea), placeholder, errorMessage (if field is required)
+//    name, type (text or textarea), placeholder, errorMessage (if field is required).
+
+//    In order for the errorMessage to appear, reduxForm validation must assign a valid 
+//    ant design form validateStatus string ("error", "warning", "success", "validating") 
+//    to the correct key on the error object.
 // -----------------------------------------------
 
 export const Input = (props) => {
@@ -30,15 +34,21 @@ export const Input = (props) => {
     > { props.type === "text" && 
         <AntInput {...props.input} 
           type={props.type} 
-          placeholder={props.placeholder} 
-          value={props.defaultValue}/>
+          placeholder={props.placeholder}
+          prefix={props.prefix}
+          value={props.defaultValue}
+        />
       } { props.type === "textarea" &&
         <TextArea {...props.input} 
           type={props.type} 
           placeholder={props.placeholder} 
           autosize={{ minRows: 3 }} />
       } { props.type === "password" &&
-        <AntInput {...props.input} type={props.type} placeholder={props.placeholder}/>
+        <AntInput {...props.input} 
+          type={props.type} 
+          placeholder={props.placeholder}
+          prefix={props.prefix}
+        />
       }
     </Form.Item>
   );

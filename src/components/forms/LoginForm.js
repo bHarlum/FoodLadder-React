@@ -13,7 +13,7 @@ class LoginForm extends Component {
     const { email, password } = formValues;
     LocalAPI.post(`/users/login`, {email, password})
       .then( (response) => {
-        this.props.setAuthToken(response.data);
+        this.props.setAuthToken(response.data.token);
       })
       .then( response => {
         this.props.history.push("/dashboard");
