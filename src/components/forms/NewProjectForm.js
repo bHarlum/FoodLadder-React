@@ -60,20 +60,20 @@ class NewProjectForm extends Component {
             component={Input}
             name="line1"
             type="text"
-            placeholder="*Address"
+            placeholder="*Address line 1"
             errorMessage="please provide an address."
           />
           <Field 
             component={Input}
             name="line2"
             type="text"
-            placeholder="Address"
+            placeholder="Address Line 2"
           />
           <Field 
             component={Input}
             name="postcode"
             type="text"
-            placeholder="post code"
+            placeholder="Postcode"
           />
           <Field 
             component={Input}
@@ -95,6 +95,7 @@ class NewProjectForm extends Component {
             placeholder="*Country"
             errorMessage="Please provide a Country."
           />
+          <label htmlFor="reportDate">First Reporting Date</label>
           <Field 
             component={DatePicker}
             name="reportDate"

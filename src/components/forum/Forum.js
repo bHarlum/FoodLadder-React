@@ -7,17 +7,6 @@ import ThreadCard from "./thread/ThreadCard";
 
 const { Search } = Input;
 
-const testThreads = [
-  {
-    title: "test1",
-    content: "test content 1"
-  },
-  {
-    title: "test2",
-    content: "test content 2"
-  }
-];
-
 const lorem = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores...";
 
 export class Forum extends Component {

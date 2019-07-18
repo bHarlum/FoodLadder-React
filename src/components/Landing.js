@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 import { Centered, FullPage } from "./layout/Layout";
-// import InvitationCodeForm from "./forms/InvitationCodeForm";
+import InvitationCodeForm from "./forms/InvitationCodeForm";
 
 import bannerImage from "./../assets/images/marketing_image_3.jpeg";
 
