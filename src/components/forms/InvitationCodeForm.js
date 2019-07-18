@@ -5,8 +5,8 @@ import { Input } from "./FormLayout";
 
 class InvitationCodeForm extends Component {
 
-  onFormSubmit = (values) => {
-    this.props.history.push("/dashboard");
+  onFormSubmit = (formValues) => {
+    this.props.history.push(`/register/${formValues.code}`);
   }
 
   render(){
@@ -18,7 +18,6 @@ class InvitationCodeForm extends Component {
             component={Input}
             name="code"
             type="text"
-            defaultValue={this.props.value}
             placeholder="Invitation Code"
             errorMessage="Please enter your unique code."
           />

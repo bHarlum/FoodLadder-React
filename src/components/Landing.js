@@ -34,12 +34,14 @@ export class Landing extends Component {
     })
   }
 
-  render() {
+  render() {  
+    let initialValues = "";
+    if(this.props.location.search) initialValues = { code: this.props.location.search.match('\\unique=(.*)')[1]};
     return (
       <FullPage>
         <Banner>
           <Centered>
-            {/* <InvitationCodeForm history={this.props.history} value={this.props.location.search.match('\\unique=(.*)')[1]}/> */}
+            <InvitationCodeForm history={this.props.history} initialValues={initialValues}/>
           </Centered>
         </Banner>
       </FullPage>
