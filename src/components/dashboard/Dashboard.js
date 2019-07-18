@@ -18,7 +18,7 @@ export class Dashboard extends Component {
         { currentUser.admin &&
           <AdminDashboard />
         }
-        { !currentUser.admin && 
+        { currentUser.admin === false && 
           <Row gutter={6}>
             <Col xs={{ span: 24 }} md={{ span: 8 }}>
               <Title level={3}>Your Projects</Title>

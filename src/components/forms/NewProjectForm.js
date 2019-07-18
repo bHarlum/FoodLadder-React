@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Typography, DatePicker } from "antd";
+import { Button, Typography, DatePicker, message } from "antd";
 import moment from "moment";
 
 import LocalAPI from "./../../apis/local";
@@ -37,7 +37,9 @@ class NewProjectForm extends Component {
 
       try {
         const response = await LocalAPI.post(`/projects`, data);
-        console.log(response);  
+        console.log(response); 
+        this.props.history.push('/dashboard');
+        message.success('Project created and project administrator invited.');
       } catch(error) {
         console.log(error);
       }

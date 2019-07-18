@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import LocalAPI from "./../../apis/local";
 import LoginForm from "./../forms/LoginForm";
@@ -7,34 +8,22 @@ import NewRegisterForm from "./../forms/NewRegisterForm";
 import ProjectConfirmation from "./ProjectConfirmation";
 import ProjectProfileDetails from "./ProjectProfileDetails";
 import { FullPage, Centered } from "./../layout/Layout";
-import { Typography, Result, Button, Spin, Steps, Icon as AntIcon } from "antd";
+import { Typography, Result, Button, Spin, Icon as AntIcon } from "antd";
+import { clearAuthToken, clearCurrentUser } from "./../../actions";
 
 const { Title, Paragraph } = Typography;
-const { Step } = Steps;
 
 export class Register extends Component {
 
   state = {
-    currentStep: 0,
     project: null,
     loading: true,
     user: "",
     userExists: false
   }
 
-  next = () => {
-    this.setState((state) => ({
-      currentStep: state.currentStep + 1
-    }));
-  }
-
-  prev = () => {
-    this.setState((state) => ({
-      currentStep: state.currentStep + -1
-    }));
-  }
-
   componentDidMount = async () => {
+    
     const { id } = this.props.match.params;
     await LocalAPI.get(`/projects/${id}`)
       .then(res => {
@@ -47,7 +36,6 @@ export class Register extends Component {
       .catch(err => {
         console.log(err);
       });
-    console.log(this.state.user);
     await LocalAPI.get(`/users/find/${this.state.user}`)
       .then(res => {
         if(res.data){
@@ -58,18 +46,21 @@ export class Register extends Component {
       .catch(err => {
         console.log(err);
       });
+    console.log(this.props.currentUser);
+    if(this.props.currentUser.id){
+      await LocalAPI.get("/users/logout")
+      .then(response => {
+        this.props.clearAuthToken();
+        this.props.clearCurrentUser();
+        console.log("logged out user");
+      }).catch(err => {
+        console.log(err);
+      });
+    }
   }
 
   render() {
     const { project, loading, currentStep, userExists } = this.state;
-    const steps = [
-      <ProjectConfirmation />,
-      <NewRegisterForm 
-        history={this.props.history} 
-        project={this.state.project} 
-        userExists={this.state.userExists} />,
-      <ProjectProfileDetails />
-    ];
 
     return (
       <FullPage>
@@ -82,46 +73,22 @@ export class Register extends Component {
               <Centered>
                 <Title>Project Registration</Title>
 
-                <Steps current={currentStep}>
-                  <Step icon={<AntIcon type="home" />} />
-                  <Step icon={<AntIcon type="user" />} />
-                  <Step icon={<AntIcon type="smile" />} />
-                </Steps>
-
-                <fieldset className="steps-content">
-                { currentStep !== 1 && steps[currentStep] }
-                { currentStep === 1 && 
-                  <div>
-                    { userExists && 
-                      <Centered>
-                        <Title level={3}>Hi, {this.state.user}</Title> 
-                        <Title level={2}>looks like you already have an account.</Title>
-                        <Paragraph>Please sign in to gain access to this project.</Paragraph>
-                        <LoginForm /> 
-                      </Centered>
-                    }
-                    { !userExists && steps[currentStep] }
-                  </div>
-                }
-                </fieldset>
-
-                <fieldset className="steps-action">
-                  {currentStep < steps.length - 1 && (
-                    <Button type="primary" onClick={() => this.next()}>
-                      Next
-                    </Button>
-                  )}
-                  {currentStep === steps.length - 1 && (
-                    <Button type="primary" htmlType="submit" /* onClick={() => message.success('Processing complete!') }*/>
-                      Done
-                    </Button>
-                  )}
-                  {currentStep > 0 && (
-                    <Button onClick={() => this.prev()}>
-                      Previous
-                    </Button>
-                  )}
-                </fieldset>
+                <div>
+                  { userExists && 
+                    <Centered>
+                      <Title level={3}>Hi, {this.state.user}</Title> 
+                      <Title level={2}>looks like you already have an account.</Title>
+                      <Paragraph>Please sign in to gain access to this project.</Paragraph>
+                      <LoginForm /> 
+                    </Centered>
+                  } { !userExists &&
+                    <Centered>
+                      <Title level={3}>Welcome!</Title>
+                      <Title level={4}>Please register your details below.</Title>
+                      <RegisterForm project={this.state.project} history={this.props.history} />
+                    </Centered>
+                  }
+                </div>
 
               </Centered>
             }
@@ -141,4 +108,9 @@ export class Register extends Component {
   }
 }
 
-export default Register;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.user.current,
+  }
+}
+export default connect(mapStateToProps, { clearAuthToken, clearCurrentUser })(Register);
