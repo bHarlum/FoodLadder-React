@@ -45,3 +45,10 @@ export const clearCurrentUser = () => {
     payload: {}
   }
 }
+
+export const setThread = (newThread) => {
+  return {
+    type: types.SET_THREAD,
+    payload: newThread
+  }
+}

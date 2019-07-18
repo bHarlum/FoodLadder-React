@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Switch } from 'react-router-dom';
 import { Layout } from "antd";
 import './../styles/App.css';
 
@@ -36,12 +36,12 @@ class App extends Component {
                 <UnregisteredRoute exact path='/register/:id' component={Register} />
                 <UnregisteredRoute exact path='/login' component={Login} />
                 <PrivateRoute exact path='/dashboard' component={Dashboard} />
-                <Route exact path='/forum' component={Forum} />
-                <Route exact path="/forum/threads/new" component={NewThread} />
-                <Route exact path="/forum/threads/:id" component={ThreadPage} />
-                <Route exact path='/projects' component={Project} />
-                <Route exact path='/projects/new' component={NewProject} />
-                <Route exact path='/loginform' component={LoginForm} />
+                <PrivateRoute exact path='/forum' component={Forum} />
+                <PrivateRoute exact path="/forum/threads/new" component={NewThread} />
+                <PrivateRoute exact path="/forum/threads/:id" component={ThreadPage} />
+                <PrivateRoute exact path='/projects' component={Project} />
+                <PrivateRoute exact path='/projects/new' component={NewProject} />
+                <UnregisteredRoute exact path='/loginform' component={LoginForm} />
               </Switch>
             </Content>
             <AntFooter>
