@@ -31,6 +31,7 @@ class AdminDashboard extends Component {
                 <List.Item.Meta 
                   title={item.name}
                 />
+                <p>Next reporting date: {item.reportDate}</p>
               </List.Item>
             );
           }}
