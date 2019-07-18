@@ -15,6 +15,8 @@ import NewProject from './projects/NewProject';
 import Dashboard from './dashboard/Dashboard';
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
+import Faq from "./forum/Faq";
+import PrivacyPolicy from "./forum/PrivacyPolicy";
 
 import Header from "./layout/header/Header";
 import Footer from "./layout/Footer";
@@ -42,6 +44,8 @@ class App extends Component {
                 <PrivateRoute exact path='/projects' component={Project} />
                 <PrivateRoute exact path='/projects/new' component={NewProject} />
                 <UnregisteredRoute exact path='/loginform' component={LoginForm} />
+                <UnregisteredRoute exact path='/forum/faq' component={Faq} />
+                <UnregisteredRoute exact path='/forum/privacypolicy' component={PrivacyPolicy} />
               </Switch>
             </Content>
             <AntFooter>
