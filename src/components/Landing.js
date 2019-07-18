@@ -26,7 +26,6 @@ export class Landing extends Component {
   }
 
   componentWillUnmount() {
-    console.log("Landing page unmounting");
     this.props.setHeader({
       position: "static",
       logoFill: "#000"
@@ -34,13 +33,13 @@ export class Landing extends Component {
   }
 
   render() {  
-    let initialValues = "";
-    if(this.props.location.search) initialValues = { code: this.props.location.search.match('\\unique=(.*)')[1]};
+    // let initialValues = "";
+    // if(this.props.location.search) initialValues = { code: this.props.location.search.match('\\unique=(.*)')[1]};
     return (
       <FullPage>
         <Banner>
           <Centered>
-            <InvitationCodeForm history={this.props.history} initialValues={initialValues}/>
+            <InvitationCodeForm history={this.props.history}/>
           </Centered>
         </Banner>
       </FullPage>
