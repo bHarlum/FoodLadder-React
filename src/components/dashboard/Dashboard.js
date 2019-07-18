@@ -36,7 +36,7 @@ export class Dashboard extends Component {
         { currentUser.admin === false && 
           <Row gutter={6}>
             <Col xs={{ span: 24 }} md={{ span: 8 }}>
-              <Title level={3}>Your Projects</Title>
+              <Title level={3}>{projects.length > 1 && "Your Projects"}{projects.length === 1 && "Your Project"}</Title>
               <List
                 dataSource={projects}
                 renderItem={item => {
