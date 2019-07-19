@@ -35,16 +35,6 @@ class Header extends Component {
     this.setUser();
   }
 
-  logout = (event) => {
-    LocalAPI.get("/users/logout")
-      .then(response => {
-        this.props.clearAuthToken();
-        this.props.clearCurrentUser();
-      }).catch(err => {
-        console.log(err);
-      });
-  }
-
   render(){
 
     return(
