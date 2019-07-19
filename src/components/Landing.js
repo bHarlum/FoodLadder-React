@@ -38,7 +38,7 @@ export class Landing extends Component {
     return (
       <FullPage>
         <Banner>
-          <Centered>
+          <Centered landing>
             <InvitationCodeForm history={this.props.history}/>
           </Centered>
         </Banner>

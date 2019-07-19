@@ -8,7 +8,6 @@ import { Input, FormContainer } from "./FormLayout";
 
 const { Title } = Typography;
 
-
 class NewProjectForm extends Component {
 
   onFormSubmit = async (values) => {
@@ -46,7 +45,7 @@ class NewProjectForm extends Component {
   }
 
   render() {
-    const {handleSubmit} = this.props;
+    const { handleSubmit } = this.props;
     return (
       <FormContainer>
         <Title>Create new Project</Title>
@@ -127,8 +126,6 @@ class NewProjectForm extends Component {
     )
   }
 }
-
-
 
 // VALUES TO VALIDATE:
 // projectName

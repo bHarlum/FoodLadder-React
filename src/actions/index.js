@@ -52,3 +52,10 @@ export const setThread = (newThread) => {
     payload: newThread
   }
 }
+
+export const setSpinner = (bool) => {
+  return {
+    type: types.SET_SPINNER,
+    payload: bool
+  }
+}
