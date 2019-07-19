@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button, Icon } from "antd";
+import { Row, Col, Input, Button, Icon, List } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
 
 const { Search } = Input;
+
+const lorem = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores...";
 
 export class Forum extends Component {
 
@@ -24,19 +26,21 @@ export class Forum extends Component {
     console.log(threads);
     return (
       <Row>
-        <Col xs={{ span: 24 }} md={{ span: 5 }} />
-        <Col xs={{ span: 24 }} md={{ span: 14 }}>
-          <h1>Threads</h1>
-          { threads && threads.map( thread => {
-            const { posts } = thread;
-            return(
-              <Link key={thread._id} to={`/forum/threads/${thread._id}`}>
-                <ThreadCard title={thread.title} latestReply={posts[posts.length-1].author.firstName} />
-              </Link>
-            )
-          })}
+        <Col s={{ span: 24 }} md={{ span: 5 }} />
+        <Col s={{ span: 24 }} md={{ span: 14 }}>
+          { threads && 
+            <List 
+              dataSource={threads}
+              itemLayout="vertical"
+              renderItem={item => {
+                return(
+                  <ThreadCard item={item}>{lorem}</ThreadCard>
+                )
+              }}
+            />
+          }
         </Col>
-        <Col xs={{ span: 24 }} md={{ span: 5 }}>
+        <Col s={{ span: 24 }} md={{ span: 5 }}>
           <Search 
             placeholder="Search posts"
             enterButton

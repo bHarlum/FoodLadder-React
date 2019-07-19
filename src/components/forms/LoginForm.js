@@ -10,12 +10,17 @@ import LocalAPI from "./../../apis/local";
 class LoginForm extends Component {
 
   onFormSubmit = (formValues) => {
-    const { email, password } = formValues;
-    LocalAPI.post(`/users/login`, {email, password})
+    let { email, password } = formValues;
+    const { projectId } = this.props;
+    if(!this.props.showEmail){
+      email = this.props.email;
+    }
+    LocalAPI.post(`/users/login`, {email, password, projectId})
       .then( (response) => {
         this.props.setAuthToken(response.data.token);
       })
       .then( response => {
+        console.log(response);
         this.props.history.push("/dashboard");
       }) 
       .catch(err => {
@@ -24,18 +29,20 @@ class LoginForm extends Component {
   }
 
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, showEmail } = this.props;
     return (
       <FormContainer>
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
-          <Field 
-            component={Input}
-            name="email"
-            type="text"
-            placeholder="Email"
-            icon="mail"
-            errorMessage="Please enter your email."
-          />
+          { showEmail && 
+            <Field 
+              component={Input}
+              name="email"
+              type="text"
+              placeholder="Email"
+              icon="mail"
+              errorMessage="Please enter your email."
+            />
+          }
           <Field 
             component={Input}
             name="password"

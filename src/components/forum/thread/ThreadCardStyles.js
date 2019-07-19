@@ -1,6 +1,6 @@
 import antStyled from "./../../antStyled";
 
-import { Card as AntCard, Typography } from "antd";
+import { Card as AntCard, Typography, Tag as AntTag } from "antd";
 
 const { Paragraph: AntParagraph, Text, Title: AntTitle } = Typography;
 
@@ -19,4 +19,9 @@ export const Paragraph = antStyled(AntParagraph)`
 
 export const Title = antStyled(AntTitle)`
   margin-bottom: 2px;
+`;
+
+export const Tag = antStyled(AntTag)`
+  border: none;
+  background-color: rgb(230, 230, 230);
 `;
