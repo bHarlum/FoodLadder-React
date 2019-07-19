@@ -10,7 +10,8 @@ import { setAuthToken } from "./../../actions";
 class RegisterForm extends Component {
 
   onFormSubmit = (formValues) => {
-    const { firstName, lastName, phone, email, password } = formValues;
+    const { email } = this.props;
+    const { firstName, lastName, phone, password } = formValues;
     const { project } = this.props;
     const projectId = project._id;
 
@@ -57,14 +58,6 @@ class RegisterForm extends Component {
         />
         <Field 
           component={Input}
-          name="email"
-          type="text"
-          placeholder="Email"
-          errorMessage="Please enter your email."
-          prefix={<Icon type="mail" />}
-        />
-        <Field 
-          component={Input}
           name="password"
           type="password"
           placeholder="Password"
@@ -87,6 +80,22 @@ class RegisterForm extends Component {
 
 const validate = (formValues) => {
   const errors = {};
+
+  if(!formValues.firstName) {
+    errors.firstName = "error";
+  }
+
+  if(!formValues.lastName) {
+    errors.lastName = "error";
+  }
+
+  if(!formValues.password) {
+    errors.password = "error";
+  }
+
+  if(formValues.passConfirm !== formValues.password) {
+    errors.password = "error";
+  }
 
   return errors;
 }

@@ -34,7 +34,6 @@ export class Forum extends Component {
               itemLayout="vertical"
               renderItem={item => {
                 return(
-                  // <ThreadCard item={item}>{item.posts[0].body}</ThreadCard>
                   <ThreadCard item={item}>{lorem}</ThreadCard>
                 )
               }}
