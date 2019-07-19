@@ -1,3 +1,4 @@
+import React, { Component } from 'react';
 import styled from "styled-components";
 
 export const Centered = styled.div`
@@ -16,3 +17,16 @@ export const Centered = styled.div`
 export const FullPage = styled.div`
   min-height: 71vh;
 `;
+
+function jsUcfirst(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+export class Capitalized extends Component {
+
+  render() {
+    return (
+      jsUcfirst(this.props.text)
+    );
+  }
+};

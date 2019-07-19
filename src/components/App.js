@@ -50,6 +50,7 @@ class App extends Component {
                 <PrivateRoute exact path='/projects' component={Project} />
                 <PrivateRoute exact path='/projects/new' component={NewProject} />
                 <UnregisteredRoute exact path='/loginform' component={LoginForm} />
+
               </Switch>
             </Content>
             <AntFooter>

@@ -1,12 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, Avatar, Menu } from "antd";
+import { Button } from "antd";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
-import { setAuthToken, clearAuthToken, setCurrentUser, clearCurrentUser } from "./../../../actions/index";
-import { HeaderContainer, Dropdown, Float, UserBadge, Name } from "./HeaderStyles";
+import { 
+  setAuthToken, 
+  clearAuthToken, 
+  setCurrentUser, 
+  clearCurrentUser 
+} from "./../../../actions/index";
+import { HeaderContainer, Float, UserBadge } from "./HeaderStyles";
+import NavBar from "./NavBar";
 
 class Header extends Component {
 
@@ -29,17 +35,8 @@ class Header extends Component {
     this.setUser();
   }
 
-  logout = (event) => {
-    LocalAPI.get("/users/logout")
-      .then(response => {
-        this.props.clearAuthToken();
-        this.props.clearCurrentUser();
-      }).catch(err => {
-        console.log(err);
-      });
-  }
-
   render(){
+
     return(
       <HeaderContainer position={this.props.headerStyles.position}>
         {this.props.token && 
@@ -47,29 +44,8 @@ class Header extends Component {
           <Link to="/dashboard">
             <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
           </Link>
-          <nav>
-            <ul>
-              <li>
-                <Link to="/forum">Forum</Link>
-              </li>
-            </ul>
-          </nav>
-          <Dropdown overlay={
-              <Menu>
-                <Menu.Item key="0">
-                  <a href="/settings">Settings</a>
-                </Menu.Item>
-                <Menu.Divider />
-                <Menu.Item key="2">
-                  <Button type="dashed" onClick={this.logout}>Logout</Button>
-                </Menu.Item>
-              </Menu>
-          } trigger={['click']}>
-            <UserBadge>
-              <Avatar icon="user" size={35} />
-              <Name>{this.props.currentUser.firstName}</Name>
-            </UserBadge>
-          </Dropdown>
+          <NavBar currentUser={this.props.currentUser}/>
+          
         </>
         }
         {!this.props.token &&
