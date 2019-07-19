@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
-import { Row, Col, Tag, Avatar } from "antd";
+import { Avatar, List, Icon } from "antd";
 
-import { Card, Note, Paragraph, Title } from "./ThreadCardStyles";
+import { Tag } from "./ThreadCardStyles";
+
+const IconText = ({ type, text }) => (
+  <span>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </span>
+);
 
 class ThreadCard extends Component {
   static defaultProps = {
-    tags: []
+    tags: ["tag1", "tag2", "tag3"]
   };
 
   render(){
@@ -15,23 +22,31 @@ class ThreadCard extends Component {
       );
     });
 
+    const { title, _id: id } = this.props.item;
+
     return (
-      <Card>
-        <Row>
-          <Col span={3}>
-            <Avatar size={80} icon="user" />
-          </Col>
-          <Col span={16}>
-            <Title level={4}>{this.props.title}</Title>
-            <Note>Latest reply by <b>{this.props.latestReply}</b> 6 minutes ago</Note>
-            <Paragraph>{this.props.excerpt}</Paragraph>
-            {tags}
-          </Col>
-          <Col span={5}>
-            <p>comments</p>
-          </Col>
-        </Row>
-      </Card>
+      <List.Item
+        key={ id }
+        actions={[
+          <IconText type="star-o" text="156" />,
+          <IconText type="like-o" text="156" />,
+          <IconText type="message" text="2" />,
+        ]}
+        extra={
+          <img
+            width={272}
+            alt="logo"
+            src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+          />
+        }
+      >
+        <List.Item.Meta 
+          title={title}
+          description={tags}
+          avatar={<Avatar icon="user" />}
+        />
+        {this.props.children}
+      </List.Item>
     );
   }
 }

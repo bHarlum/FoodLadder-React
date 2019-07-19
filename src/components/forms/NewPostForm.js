@@ -10,6 +10,7 @@ import { setThread } from "./../../actions";
 class NewPostForm extends Component {
 
   onFormSubmit = (formValues) => {
+    const { reset } = this.props;
     const { body } = formValues;
     const updatedThread = {
       posts: this.props.thread.posts
@@ -22,6 +23,7 @@ class NewPostForm extends Component {
     LocalAPI.patch(`/threads/${this.props.thread._id}`, { updatedThread })
       .then( res => {
         this.props.setThread(res.data);
+        reset();
       }).catch( err => {
         console.log(err);
       });
@@ -56,7 +58,7 @@ const validate = (formValues) => {
 }
 
 const WrappedForm = reduxForm({
-  form: "new-post",
+  form: "newpost",
   validate
 })(NewPostForm);
 
