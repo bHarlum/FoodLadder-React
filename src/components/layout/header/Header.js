@@ -7,6 +7,7 @@ import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
 import { setAuthToken, clearAuthToken, setCurrentUser, clearCurrentUser } from "./../../../actions/index";
 import { HeaderContainer, Dropdown, Float, UserBadge, Name } from "./HeaderStyles";
+import { Nav } from "./../Layout";
 
 class Header extends Component {
 
@@ -47,13 +48,19 @@ class Header extends Component {
           <Link to="/dashboard">
             <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
           </Link>
-          <nav>
+          <Nav>
             <ul>
               <li>
                 <Link to="/forum">Forum</Link>
               </li>
+              <li>
+                <Link to="/faq">FAQ</Link>
+              </li>
+              <li>
+                <Link to="/resources">Resources</Link>
+              </li>
             </ul>
-          </nav>
+          </Nav>
           <Dropdown overlay={
               <Menu>
                 <Menu.Item key="0">

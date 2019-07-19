@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, List, Row, Col, Typography } from "antd";
-import { Link } from "react-router-dom";
+import { List, Row, Col, Typography } from "antd";
 
 import LocalAPI from "./../../apis/local";
 
@@ -24,7 +23,6 @@ class AdminDashboard extends Component {
   }
 
   render(){
-    const { currentUser } = this.props;
     const { projects, notifications, posts } = this.state;
 
     return(

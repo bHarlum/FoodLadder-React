@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { Typography } from "antd";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import { setCurrentUser } from "./../../actions";
@@ -9,12 +7,9 @@ import { FullPage } from "./../layout/Layout";
 import AdminDashboard from "./AdminDashboard";
 import UserDashboard from "./UserDashboard";
 
-const { Title } = Typography;
-
 export class Dashboard extends Component {
 
   state = {
-    projects: []
   }
 
   componentDidMount() {
@@ -28,7 +23,6 @@ export class Dashboard extends Component {
 
   render() {
     const { currentUser } = this.props;
-    const { projects } = this.state;
     return (
       <FullPage>
         { currentUser.admin &&
