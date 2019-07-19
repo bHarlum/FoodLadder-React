@@ -7,7 +7,7 @@ import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
 import { setAuthToken, clearAuthToken, setCurrentUser, clearCurrentUser } from "./../../../actions/index";
 import { HeaderContainer, Dropdown, Float, UserBadge, Name } from "./HeaderStyles";
-import { Nav } from "./../Layout";
+import { Nav, Capitalized } from "./../Layout";
 
 class Header extends Component {
 
@@ -41,6 +41,8 @@ class Header extends Component {
   }
 
   render(){
+    const { firstName } = this.props.currentUser;
+
     return(
       <HeaderContainer position={this.props.headerStyles.position}>
         {this.props.token && 
@@ -74,7 +76,9 @@ class Header extends Component {
           } trigger={['click']}>
             <UserBadge>
               <Avatar icon="user" size={35} />
-              <Name>{this.props.currentUser.firstName}</Name>
+              { firstName &&
+                <Name><Capitalized text={firstName} /></Name>
+              }
             </UserBadge>
           </Dropdown>
         </>
