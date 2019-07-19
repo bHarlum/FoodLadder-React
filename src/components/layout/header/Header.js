@@ -1,13 +1,18 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button, Avatar, Menu } from "antd";
+import { Button } from "antd";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
-import { setAuthToken, clearAuthToken, setCurrentUser, clearCurrentUser } from "./../../../actions/index";
-import { HeaderContainer, Dropdown, Float, UserBadge, Name } from "./HeaderStyles";
-import { Nav, Capitalized } from "./../Layout";
+import { 
+  setAuthToken, 
+  clearAuthToken, 
+  setCurrentUser, 
+  clearCurrentUser 
+} from "./../../../actions/index";
+import { HeaderContainer, Float, UserBadge } from "./HeaderStyles";
+import NavBar from "./NavBar";
 
 class Header extends Component {
 
@@ -41,7 +46,6 @@ class Header extends Component {
   }
 
   render(){
-    const { firstName } = this.props.currentUser;
 
     return(
       <HeaderContainer position={this.props.headerStyles.position}>
@@ -50,37 +54,8 @@ class Header extends Component {
           <Link to="/dashboard">
             <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
           </Link>
-          <Nav>
-            <ul>
-              <li>
-                <Link to="/forum">Forum</Link>
-              </li>
-              <li>
-                <Link to="/faq">FAQ</Link>
-              </li>
-              <li>
-                <Link to="/resources">Resources</Link>
-              </li>
-            </ul>
-          </Nav>
-          <Dropdown overlay={
-              <Menu>
-                <Menu.Item key="0">
-                  <a href="/settings">Settings</a>
-                </Menu.Item>
-                <Menu.Divider />
-                <Menu.Item key="2">
-                  <Button type="dashed" onClick={this.logout}>Logout</Button>
-                </Menu.Item>
-              </Menu>
-          } trigger={['click']}>
-            <UserBadge>
-              <Avatar icon="user" size={35} />
-              { firstName &&
-                <Name><Capitalized text={firstName} /></Name>
-              }
-            </UserBadge>
-          </Dropdown>
+          <NavBar currentUser={this.props.currentUser}/>
+          
         </>
         }
         {!this.props.token &&

@@ -18,28 +18,6 @@ export const FullPage = styled.div`
   min-height: 71vh;
 `;
 
-export const Nav = styled.nav`
-  ul {
-    margin-bottom: 0;
-
-    li {
-      display: inline-block;
-      text-transform: uppercase;
-      font-weight: 100;
-      margin: 0 15px;
-  
-      a {
-        color: #000;
-        opacity: 0.6;
-        transition: .4s;
-      }
-      a:hover {
-        opacity: 1;
-      }
-    } 
-  } 
-`
-
 function jsUcfirst(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
 }
