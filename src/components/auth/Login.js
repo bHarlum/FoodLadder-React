@@ -12,7 +12,7 @@ export class Login extends Component {
       <FullPage>
         <Centered>
           <Title>Login</Title>
-          <LoginForm history={this.props.history} />
+          <LoginForm history={this.props.history} showEmail={true} />
         </Centered>
       </FullPage>
     );

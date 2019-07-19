@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Col, Avatar, List, Icon } from "antd";
+import { Avatar, List, Icon } from "antd";
 
-import { Card, Note, Paragraph, Title, Tag } from "./ThreadCardStyles";
+import { Tag } from "./ThreadCardStyles";
 
 const IconText = ({ type, text }) => (
   <span>

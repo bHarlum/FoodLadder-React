@@ -11,7 +11,20 @@ export const Icon = antStyled(AntIcon)`
 `;
 
 export const FormContainer = styled.div`
-  width: 300px;
+  width: ${props => props.large ? '550px' : '300px'};
+`;
+
+export const Note = styled.p`
+  text-align: center;
+  margin: 20px 0;
+  font-size: 13pt;
+`;
+
+export const Box = styled.div`
+  min-height: ${props => props.large ? "383px": "300px"};
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 // -----------------------------------------------

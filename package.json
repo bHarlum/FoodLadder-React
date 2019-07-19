@@ -20,7 +20,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --coverage",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 9009 -s public",
     "build-storybook": "build-storybook -s public"
@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
-    "@storybook/react": "^5.1.9"
+    "@storybook/react": "^5.1.9",
+    "react-test-renderer": "^16.8.6"
   }
 }
