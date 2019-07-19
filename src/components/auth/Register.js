@@ -38,6 +38,7 @@ export class Register extends Component {
         console.log(err);
       });
     //Checking if user exists 
+    
     await LocalAPI.get(`/users/find/${this.state.user}`)
       .then(res => {
         if(res.data){

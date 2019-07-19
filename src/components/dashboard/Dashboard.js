@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Typography, Card, Button, List } from "antd";
+import { Typography } from "antd";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -7,6 +7,7 @@ import LocalAPI from "./../../apis/local";
 import { setCurrentUser } from "./../../actions";
 import { FullPage } from "./../layout/Layout";
 import AdminDashboard from "./AdminDashboard";
+import UserDashboard from "./UserDashboard";
 
 const { Title } = Typography;
 
@@ -34,47 +35,7 @@ export class Dashboard extends Component {
           <AdminDashboard />
         }
         { currentUser.admin === false && 
-          <Row gutter={6}>
-            <Col xs={{ span: 24 }} md={{ span: 8 }}>
-              <Title level={3}>{projects.length > 1 && "Your Projects"}{projects.length === 1 && "Your Project"}</Title>
-              <List
-                dataSource={projects}
-                renderItem={item => {
-                  return(
-                    <List.Item>
-                      <List.Item.Meta 
-                        title={item.name}
-                      />
-                    </List.Item>
-                  );
-                }}
-              />
-            </Col>
-            <Col xs={{ span: 24 }} md={{ span: 8 }}>
-              <Title level={3}>Notifications</Title>
-              <Card>
-                Notification
-              </Card>
-              <Card>
-                Notification
-              </Card>
-              <Card>
-                Notification
-              </Card>
-            </Col>
-            <Col xs={{ span: 24 }} md={{ span: 8 }}>
-              <Title level={4}>Your Posts</Title>
-              <Card>
-                Post
-              </Card>
-              <Card>
-                Post
-              </Card>
-              <Card>
-                Post
-              </Card>
-            </Col>
-          </Row>
+          <UserDashboard />
         }
         
       </FullPage>
