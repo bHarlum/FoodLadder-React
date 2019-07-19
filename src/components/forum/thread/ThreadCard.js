@@ -15,11 +15,9 @@ class ThreadCard extends Component {
     tags: ["tag1", "tag2", "tag3"]
   };
 
-  render(){
-    const tags = this.props.tags.map((tag) => {
-      return(
-        <Tag>{tag}</Tag>
-      );
+  render() {
+    const tags = this.props.tags.map(tag => {
+      return <Tag>{tag}</Tag>;
     });
 
     const { title, _id: id } = this.props.item;
