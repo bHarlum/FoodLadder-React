@@ -2,7 +2,10 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Menu, Button, Avatar } from "antd";
 import HamburgerMenu from "react-hamburger-menu";
+import { connect } from "react-redux";
 
+import { clearAuthToken, clearCurrentUser } from "./../../../actions";
+import LocalAPI from './../../../apis/local';
 import { Dropdown, Nav, UserBadge, Name } from "./HeaderStyles";
 import { Capitalized } from "./../Layout";
 
@@ -20,6 +23,16 @@ class NavBar extends Component {
       burgerOpen: !this.state.burgerOpen,
       mobileNavClass: !this.state.mobileNavClass
     });
+  }
+
+  logout = (event) => {
+    LocalAPI.get("/users/logout")
+      .then(response => {
+        this.props.clearAuthToken();
+        this.props.clearCurrentUser();
+      }).catch(err => {
+        console.log(err);
+      });
   }
 
   render() {
@@ -43,7 +56,7 @@ class NavBar extends Component {
           <Dropdown overlay={
               <Menu>
                 <Menu.Item key="0">
-                  <a href="/settings">Settings</a>
+                  <Link to="/settings">Settings</Link>
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="2">
@@ -64,16 +77,16 @@ class NavBar extends Component {
             mode="inline"
           >
             <Menu.Item key="3">
-              <a href="/forum">Forum</a>
+              <Link to="/forum">Forum</Link>
             </Menu.Item>
             <Menu.Item key="4">
-              <a href="/faq">FAQ</a>
+              <Link to="/faq">FAQ</Link>
             </Menu.Item>
             <Menu.Item key="5">
-              <a href="/resources">Resources</a>
+              <Link to="/resources">Resources</Link>
             </Menu.Item>
             <Menu.Item key="6">
-              <a href="/settings">Settings</a>
+              <Link to="/settings">Settings</Link>
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item key="7">
@@ -94,4 +107,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar;
+export default connect(null, { clearAuthToken, clearCurrentUser })(NavBar);
