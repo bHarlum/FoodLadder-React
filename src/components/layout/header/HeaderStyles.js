@@ -67,12 +67,18 @@ export const Nav = styled.nav`
   }
 
   .mobile-nav {
-    display: block;
+    display: flex;
     position: fixed;
     top: 0;
     right: 0;
     width: 100%;
+    height: 100vh;
     z-index: 4;
+    transition: .5s;
+  }
+
+  .mobile-nav.false {
+    right: -100vw;
   }
 
   @media(min-width: 850px){

@@ -9,19 +9,22 @@ import { Capitalized } from "./../Layout";
 class NavBar extends Component {
 
   state = {
-    burgerOpen: false
+    burgerOpen: false,
+    mobileNavClass: false
   }
 
   //NEED TO REFACTOR
   handleBurgerClick = () => {
     console.log("click");
     this.setState({
-      burgerOpen: !this.state.burgerOpen
+      burgerOpen: !this.state.burgerOpen,
+      mobileNavClass: !this.state.mobileNavClass
     });
   }
 
   render() {
     const { firstName } = this.props.currentUser;
+    const { mobileNavClass } = this.state;
 
     return(
       <Nav>
@@ -56,7 +59,7 @@ class NavBar extends Component {
             </UserBadge>
           </Dropdown>
         </div>
-        <div className="mobile-nav">
+        <div className={`mobile-nav ${mobileNavClass}`}>
           <Menu
             mode="inline"
           >
