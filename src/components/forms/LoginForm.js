@@ -9,14 +9,24 @@ import LocalAPI from "./../../apis/local";
 
 class LoginForm extends Component {
 
-  onFormSubmit = (formValues) => {
+  onFormSubmit = (formValues, projectId) => {
     const { email, password } = formValues;
     LocalAPI.post(`/users/login`, {email, password})
       .then( (response) => {
         this.props.setAuthToken(response.data.token);
       })
       .then( response => {
-        this.props.history.push("/dashboard");
+        if(projectId){
+          LocalAPI.patch('/users/update/projects', { projectId })
+            .then(response => {
+              console.log(response);
+            })
+            .catch(err => {
+              console.log(err);
+            });
+        } else {
+          this.props.history.push("/dashboard");
+        }
       }) 
       .catch(err => {
         console.log(err);

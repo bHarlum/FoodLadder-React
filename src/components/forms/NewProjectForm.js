@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Typography, DatePicker } from "antd";
+import { Button, Typography, DatePicker, message } from "antd";
 import moment from "moment";
 
 import LocalAPI from "./../../apis/local";
@@ -37,7 +37,9 @@ class NewProjectForm extends Component {
 
       try {
         const response = await LocalAPI.post(`/projects`, data);
-        console.log(response);  
+        console.log(response); 
+        this.props.history.push('/dashboard');
+        message.success('Project created and project administrator invited.');
       } catch(error) {
         console.log(error);
       }
@@ -60,20 +62,20 @@ class NewProjectForm extends Component {
             component={Input}
             name="line1"
             type="text"
-            placeholder="*Address"
+            placeholder="*Address line 1"
             errorMessage="please provide an address."
           />
           <Field 
             component={Input}
             name="line2"
             type="text"
-            placeholder="Address"
+            placeholder="Address Line 2"
           />
           <Field 
             component={Input}
             name="postcode"
             type="text"
-            placeholder="post code"
+            placeholder="Postcode"
           />
           <Field 
             component={Input}
@@ -95,6 +97,7 @@ class NewProjectForm extends Component {
             placeholder="*Country"
             errorMessage="Please provide a Country."
           />
+          <label htmlFor="reportDate">First Reporting Date</label>
           <Field 
             component={DatePicker}
             name="reportDate"

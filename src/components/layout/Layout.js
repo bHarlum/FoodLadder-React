@@ -5,7 +5,7 @@ export const Centered = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  min-height: 500px;
+  min-height: 570px;
 `;
 
 export const FullPage = styled.div`
