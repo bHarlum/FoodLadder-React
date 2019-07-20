@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Avatar, List, Icon } from "antd";
+import { Link } from "react-router-dom";
 
 import { Tag } from "./ThreadCardStyles";
 
@@ -22,31 +23,33 @@ class ThreadCard extends Component {
       );
     });
 
-    const { title, _id: id } = this.props.item;
+    const { title, _id: id, views, upvotes, posts } = this.props.item;
 
     return (
-      <List.Item
-        key={ id }
-        actions={[
-          <IconText type="star-o" text="156" />,
-          <IconText type="like-o" text="156" />,
-          <IconText type="message" text="2" />,
-        ]}
-        extra={
-          <img
-            width={272}
-            alt="logo"
-            src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+      <Link to={`/forum/threads/${id}`}>
+        <List.Item
+          key={ id }
+          actions={[
+            <IconText type="eye" text={views} />,
+            <IconText type="like-o" text={upvotes} />,
+            <IconText type="message" text={posts.length - 1} />,
+          ]}
+          extra={
+            <img
+              width={272}
+              alt="logo"
+              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+            />
+          }
+        >
+          <List.Item.Meta 
+            title={title}
+            // description={tags}
+            avatar={<Avatar icon="user" />}
           />
-        }
-      >
-        <List.Item.Meta 
-          title={title}
-          description={tags}
-          avatar={<Avatar icon="user" />}
-        />
-        {this.props.children}
-      </List.Item>
+          {this.props.children}
+        </List.Item>
+      </Link>
     );
   }
 }

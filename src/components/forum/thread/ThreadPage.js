@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col } from "antd";
+import { Row, Col, Typography } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../../apis/local";
@@ -7,6 +7,8 @@ import Post from "./post/Post";
 import { FullPage } from "./../../layout/Layout";
 import NewPostForm from "./../../forms/NewPostForm";
 import { setThread } from "./../../../actions";
+
+const { Title } = Typography;
 
 class ThreadPage extends Component {
 
@@ -32,7 +34,12 @@ class ThreadPage extends Component {
         <Row>
           <Col span={6}></Col>
           <Col span={12}>
-            { thread && thread.posts.map(post => {
+            { thread &&
+              <Title>{thread.title}</Title>
+
+            }
+            { thread && 
+              thread.posts.map(post => {
               return <Post key={post._id}>{post.body}</Post>
             })}
             { thread && 
