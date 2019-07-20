@@ -17,11 +17,13 @@ import NavBar from "./NavBar";
 class Header extends Component {
 
   setUser = () => {
+    console.log("setting User");
     if(this.props.token && this.props.currentUser.id === undefined){
       LocalAPI.get("/users/current")
       .then(response => {
         this.props.setCurrentUser(response.data);
       }).catch(err => {
+        this.props.clearAuthToken();
         console.log(err);
       })
     }
