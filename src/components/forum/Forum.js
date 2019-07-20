@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
+import { Excerpt } from "./../layout/Layout";
 
 const { Search } = Input;
 
@@ -34,7 +35,9 @@ export class Forum extends Component {
               itemLayout="vertical"
               renderItem={item => {
                 return(
-                  <ThreadCard item={item}>{lorem}</ThreadCard>
+                  <ThreadCard item={item}>
+                    <Excerpt text={item.posts[0].body} />
+                  </ThreadCard>
                 )
               }}
             />

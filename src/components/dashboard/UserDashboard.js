@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Row, Col, Typography } from "antd";
+import { List, Row, Col, Typography, Icon } from "antd";
 
 import LocalAPI from "./../../apis/local";
 
@@ -45,6 +45,7 @@ class AdminDashboard extends Component {
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
           <Title level={3}>Notifications</Title>
           <List
+            locale={{emptyText: `You have no notifications`}}
             dataSource={notifications}
             renderItem={item => {
               return(
@@ -60,6 +61,7 @@ class AdminDashboard extends Component {
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
           <Title level={4}>Your Posts</Title>
           <List
+            locale={{emptyText: `You haven't made any posts`}}
             dataSource={posts}
             renderItem={item => {
               return(

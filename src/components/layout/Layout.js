@@ -18,15 +18,20 @@ export const FullPage = styled.div`
   min-height: 71vh;
 `;
 
-function jsUcfirst(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-export class Capitalized extends Component {
-
-  render() {
-    return (
-      jsUcfirst(this.props.text)
-    );
-  }
+export const Capitalized = (props) => {
+  return (
+    props.text.charAt(0).toUpperCase() + props.text.slice(1)
+  );
 };
+
+export const Excerpt = (props) => {
+  if(props.text.length > 100){
+    return (
+      props.text.substr(0, 100) + "..."
+    )
+  } else {
+    return (
+      props.text
+    )
+  }
+}
