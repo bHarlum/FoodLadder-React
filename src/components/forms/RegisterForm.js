@@ -94,7 +94,7 @@ const validate = (formValues) => {
   }
 
   if(formValues.passConfirm !== formValues.password) {
-    errors.password = "error";
+    errors.passConfirm = "error";
   }
 
   return errors;

@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React from "react";
 import styled from "styled-components";
+import { Icon } from "antd";
 
 export const Centered = styled.div`
   display: flex;
@@ -18,15 +19,31 @@ export const FullPage = styled.div`
   min-height: 71vh;
 `;
 
-function jsUcfirst(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+export const Capitalized = (props) => {
+  return (
+    props.text.charAt(0).toUpperCase() + props.text.slice(1)
+  );
+};
+
+export const Excerpt = (props) => {
+  if(props.text.length > 100){
+    return (
+      props.text.substr(0, 100) + "..."
+    )
+  } else {
+    return (
+      props.text
+    )
+  }
 }
 
-export class Capitalized extends Component {
+export const Section = styled.div`
+  padding: 30px;
+`;
 
-  render() {
-    return (
-      jsUcfirst(this.props.text)
-    );
-  }
-};
+export const IconText = ({ type, text }) => (
+  <span>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </span>
+);

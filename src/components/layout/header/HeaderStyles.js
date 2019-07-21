@@ -1,26 +1,27 @@
 import styled from "styled-components";
-import { Dropdown as AntDropdown } from "antd";
+import { Dropdown as AntDropdown, Button, Layout } from "antd";
 
 import antStyled from "./../../antStyled";
 
-export const HeaderContainer = styled.div`
+const { Header } = Layout;
+
+export const HeaderContainer = antStyled(Header)`
   position: ${ props => props.position || "static" };
   width: 100%;
-  padding: 0 20px;
+  height: 71px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: space-around;
+  background-color: ${props => props.position === "fixed" ? 'rgba(255, 255, 255, 0)' : '#fff'} ;
 `;
 
 export const Float = styled.div`
   position: absolute;
   right: 40px;
-  top: 45px;
 `
 
 export const UserBadge = styled.div`
   width: 250px;
-  padding: 15px 30px;
+  padding: 0 30px;
 `;
 
 export const Name = styled.h3`
@@ -39,29 +40,26 @@ export const Nav = styled.nav`
 
     li {
       display: inline-block;
-      text-transform: uppercase;
       font-weight: 100;
       margin: 0 15px;
   
       a {
-        color: #000;
-        opacity: 0.6;
-        transition: .4s;
+        color: rgb(0, 0, 0);
+        transition: .5s;
       }
-      a:hover {
-        opacity: 1;
-      }
+
     } 
   } 
 
   .desktop-nav {
     display: none;
+    height: 100%;
   }
 
   .hamburger {
     display: block;
     position: absolute;
-    top: 50px;
+    top: 19px;
     right: 40px;
     z-index: 5;
   }
