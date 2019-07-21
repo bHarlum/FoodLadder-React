@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import { Icon } from "antd";
 
 export const Centered = styled.div`
   display: flex;
@@ -16,3 +18,32 @@ export const Centered = styled.div`
 export const FullPage = styled.div`
   min-height: 71vh;
 `;
+
+export const Capitalized = (props) => {
+  return (
+    props.text.charAt(0).toUpperCase() + props.text.slice(1)
+  );
+};
+
+export const Excerpt = (props) => {
+  if(props.text.length > 100){
+    return (
+      props.text.substr(0, 100) + "..."
+    )
+  } else {
+    return (
+      props.text
+    )
+  }
+}
+
+export const Section = styled.div`
+  padding: 30px;
+`;
+
+export const IconText = ({ type, text }) => (
+  <span>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </span>
+);

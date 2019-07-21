@@ -4,10 +4,9 @@ import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
+import { Excerpt, Section } from "./../layout/Layout";
 
 const { Search } = Input;
-
-const lorem = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores...";
 
 export class Forum extends Component {
 
@@ -25,34 +24,38 @@ export class Forum extends Component {
     const { threads } = this.state;
     console.log(threads);
     return (
-      <Row>
-        <Col s={{ span: 24 }} md={{ span: 5 }} />
-        <Col s={{ span: 24 }} md={{ span: 14 }}>
-          { threads && 
-            <List 
-              dataSource={threads}
-              itemLayout="vertical"
-              renderItem={item => {
-                return(
-                  <ThreadCard item={item}>{lorem}</ThreadCard>
-                )
-              }}
+      <Section>
+        <Row>
+          <Col s={{ span: 24 }} md={{ span: 5 }} />
+          <Col s={{ span: 24 }} md={{ span: 14 }}>
+            { threads && 
+              <List 
+                dataSource={threads}
+                itemLayout="vertical"
+                renderItem={item => {
+                  return(
+                    <ThreadCard item={item}>
+                      <Excerpt text={item.posts[0].body} />
+                    </ThreadCard>
+                  )
+                }}
+              />
+            }
+          </Col>
+          <Col s={{ span: 24 }} md={{ span: 5 }}>
+            <Search 
+              placeholder="Search posts"
+              enterButton
             />
-          }
-        </Col>
-        <Col s={{ span: 24 }} md={{ span: 5 }}>
-          <Search 
-            placeholder="Search posts"
-            enterButton
-          />
-          <Link to="forum/threads/new">
-            <Button type="primary">
-              <Icon type="plus" />
-              Create a New Post
-            </Button>
-          </Link>
-        </Col>
-      </Row>
+            <Link to="forum/threads/new">
+              <Button type="primary">
+                <Icon type="plus" />
+                Create a New Post
+              </Button>
+            </Link>
+          </Col>
+        </Row>
+      </Section>
     );
   }
 }

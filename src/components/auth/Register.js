@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import LoginForm from "./../forms/LoginForm";
 import RegisterForm from "./../forms/RegisterForm";
-import ProjectConfirmation from "./ProjectConfirmation";
-import ProjectProfileDetails from "./ProjectProfileDetails";
 import { FullPage, Centered } from "./../layout/Layout";
-import { Typography, Result, Button, Spin, Icon as AntIcon } from "antd";
+import { Typography, Result, Button } from "antd";
 import { clearAuthToken, clearCurrentUser, setSpinner } from "./../../actions";
 
 const { Title, Paragraph } = Typography;
@@ -38,6 +35,7 @@ export class Register extends Component {
         console.log(err);
       });
     //Checking if user exists 
+
     await LocalAPI.get(`/users/find/${this.state.user}`)
       .then(res => {
         if(res.data){
@@ -66,7 +64,7 @@ export class Register extends Component {
   }
 
   render() {
-    const { project, loading, currentStep, userExists } = this.state;
+    const { project, userExists } = this.state;
 
     return (
       <FullPage>

@@ -9,19 +9,19 @@ import { setSpinner } from "./../../actions/index";
 
 const { Title } = Typography;
 
-export class Project extends Component {
+export class User extends Component {
 
   state = {
-    project: null
+    user: null
   }
 
   componentDidMount() {
     this.props.setSpinner(true);
     const { id } = this.props.match.params;
-    LocalAPI.get(`/projects/${id}`)
+    LocalAPI.get(`/users/${id}`)
       .then( async response => {
         await this.setState({
-          project: response.data
+          user: response.data
         })
         this.props.setSpinner(false);
         console.log(this.state);
@@ -31,12 +31,12 @@ export class Project extends Component {
   }
 
   render() {
-    const { project } = this.state;
+    const { user } = this.state;
     return (
       <FullPage>
         <Section>
-          {project &&
-            <Title>{project.name}</Title>
+          {user &&
+            <Title>{user.firstName}</Title>
           }
         </Section>
       </FullPage>
@@ -44,4 +44,4 @@ export class Project extends Component {
   }
 }
 
-export default connect(null, { setSpinner })(Project);
+export default connect(null, { setSpinner })(User);
