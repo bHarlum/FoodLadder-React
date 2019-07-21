@@ -44,10 +44,10 @@ class NavBar extends Component {
         <div className="desktop-nav">
           <ul>
             <li>
-              <Link to="/forum">Forum</Link>
+              <Link to="/dashboard">Home</Link>
             </li>
             <li>
-              <Link to="/faq">FAQ</Link>
+              <Link to="/forum">Forum</Link>
             </li>
             <li>
               <Link to="/resources">Resources</Link>
