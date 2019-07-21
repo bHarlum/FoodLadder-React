@@ -63,7 +63,7 @@ class AdminDashboard extends Component {
                         { activated && 
                           <Icon type="check"/>
                         }{ !activated && 
-                          <Icon type="cross"/>
+                          <Icon type="close"/>
                         }
                       </List.Item>
                     </Card>
