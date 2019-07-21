@@ -1,4 +1,6 @@
+import React from "react";
 import styled from "styled-components";
+import { Icon } from "antd";
 
 export const Centered = styled.div`
   display: flex;
@@ -34,3 +36,14 @@ export const Excerpt = (props) => {
     )
   }
 }
+
+export const Section = styled.div`
+  padding: 30px;
+`;
+
+export const IconText = ({ type, text }) => (
+  <span>
+    <Icon type={type} style={{ marginRight: 8 }} />
+    {text}
+  </span>
+);

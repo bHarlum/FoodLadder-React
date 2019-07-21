@@ -2,28 +2,10 @@ import React, { Component } from 'react';
 import { Avatar, List, Icon } from "antd";
 import { Link } from "react-router-dom";
 
-// import { Tag } from "./ThreadCardStyles";
-
-const IconText = ({ type, text }) => (
-  <span>
-    <Icon type={type} style={{ marginRight: 8 }} />
-    {text}
-  </span>
-);
+import { IconText } from "./../../layout/Layout";
 
 class ThreadCard extends Component {
-  static defaultProps = {
-    tags: ["tag1", "tag2", "tag3"]
-  };
-
   render(){
-
-    //TODO: This can be removed if tags aren't being implemented.
-    // const tags = this.props.tags.map((tag) => {
-    //   return(
-    //     <Tag>{tag}</Tag>
-    //   );
-    // });
 
     const { title, _id: id, views, upvotes, posts } = this.props.item;
 
@@ -40,7 +22,7 @@ class ThreadCard extends Component {
             <img
               width={272}
               alt="logo"
-              src="https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png"
+              src="https://foodladder.org/wp-content/uploads/2018/07/IMG_4319-1-1.jpg"
             />
           }
         >
