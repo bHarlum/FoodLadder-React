@@ -36,7 +36,7 @@ class NavBar extends Component {
   }
 
   render() {
-    const { firstName } = this.props.currentUser;
+    const { firstName, id } = this.props.currentUser;
     const { mobileNavClass } = this.state;
 
     return(
@@ -56,7 +56,7 @@ class NavBar extends Component {
           <Dropdown overlayStyle={{ top: "200px"}} overlay={
               <Menu >
                 <Menu.Item key="0">
-                  <Link to="/settings">Profile</Link>
+                  <Link to={`/users/${id}`}>Profile</Link>
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="2">

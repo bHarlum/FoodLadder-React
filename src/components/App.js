@@ -17,6 +17,7 @@ import Dashboard from './dashboard/Dashboard';
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
 import Resources from "./resources//Resources";
+import Profile from "./users/Profile";
 
 import Header from "./layout/header/Header";
 import Footer from "./layout/Footer";
@@ -52,6 +53,7 @@ class App extends Component {
                 <PrivateRoute exact path='/projects/new' component={NewProject} />
                 <PrivateRoute exact path='/projects/:id' component={Project} />
                 <PrivateRoute exact path='/resources' component={Resources} />
+                <PrivateRoute exact path='/users/:id' component={Profile} />
 
               </Switch>
             </Content>
