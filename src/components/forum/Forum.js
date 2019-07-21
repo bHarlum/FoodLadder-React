@@ -8,8 +8,6 @@ import { Excerpt } from "./../layout/Layout";
 
 const { Search } = Input;
 
-const lorem = "Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores...";
-
 export class Forum extends Component {
 
   state = {

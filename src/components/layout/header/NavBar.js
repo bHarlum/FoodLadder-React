@@ -53,10 +53,10 @@ class NavBar extends Component {
               <Link to="/resources">Resources</Link>
             </li>
           </ul>
-          <Dropdown overlay={
-              <Menu>
+          <Dropdown overlayStyle={{ top: "200px"}} overlay={
+              <Menu >
                 <Menu.Item key="0">
-                  <Link to="/settings">Settings</Link>
+                  <Link to="/settings">Profile</Link>
                 </Menu.Item>
                 <Menu.Divider />
                 <Menu.Item key="2">

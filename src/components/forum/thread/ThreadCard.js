@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Avatar, List, Icon } from "antd";
 import { Link } from "react-router-dom";
 
-import { Tag } from "./ThreadCardStyles";
+// import { Tag } from "./ThreadCardStyles";
 
 const IconText = ({ type, text }) => (
   <span>
@@ -17,11 +17,13 @@ class ThreadCard extends Component {
   };
 
   render(){
-    const tags = this.props.tags.map((tag) => {
-      return(
-        <Tag>{tag}</Tag>
-      );
-    });
+
+    //TODO: This can be removed if tags aren't being implemented.
+    // const tags = this.props.tags.map((tag) => {
+    //   return(
+    //     <Tag>{tag}</Tag>
+    //   );
+    // });
 
     const { title, _id: id, views, upvotes, posts } = this.props.item;
 

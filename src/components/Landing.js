@@ -7,7 +7,7 @@ import InvitationCodeForm from "./forms/InvitationCodeForm";
 
 import bannerImage from "./../assets/images/marketing_image_3.jpeg";
 
-import { setHeader } from "./../actions/index";
+import { setHeader, resetHeader } from "./../actions/index";
 
 const Banner = styled.div`
   background-image: url(${bannerImage});
@@ -26,10 +26,7 @@ export class Landing extends Component {
   }
 
   componentWillUnmount() {
-    this.props.setHeader({
-      position: "static",
-      logoFill: "#000"
-    })
+    this.props.resetHeader();
   }
 
   render() {  
@@ -47,4 +44,4 @@ export class Landing extends Component {
   }
 }
 
-export default connect(null, {setHeader})(Landing);
+export default connect(null, {setHeader, resetHeader})(Landing);

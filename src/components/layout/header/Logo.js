@@ -3,7 +3,7 @@ import React from "react";
 const Logo = (props) => {
   return(
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width={props.width} height={props.height} viewBox="0 0 1190.55 320.513" enableBackground="new 0 0 1190.55 320.513"
+    height="auto" width={props.width} viewBox="0 0 1190.55 320.513" enableBackground="new 0 0 1190.55 320.513"
 	 xmlSpace="preserve">
     <path fillRule="evenodd" clipRule="evenodd" fill={props.fill} d="M93.944,48.695c8.729-2.137,17.896-3.205,27.498-3.205
       c9.632,0,18.828,1.068,27.587,3.205c19.114,4.666,36.122,14.464,51.022,29.394c21.642,21.643,32.463,47.801,32.463,78.475

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Row, Col, Typography, Icon } from "antd";
+import { List, Row, Col, Typography } from "antd";
 
 import LocalAPI from "./../../apis/local";
 

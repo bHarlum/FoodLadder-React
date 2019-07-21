@@ -11,7 +11,7 @@ import {
   setCurrentUser, 
   clearCurrentUser 
 } from "./../../../actions/index";
-import { HeaderContainer, Float, UserBadge } from "./HeaderStyles";
+import { HeaderContainer, Float } from "./HeaderStyles";
 import NavBar from "./NavBar";
 
 class Header extends Component {
@@ -40,11 +40,11 @@ class Header extends Component {
   render(){
 
     return(
-      <HeaderContainer position={this.props.headerStyles.position}>
+      <HeaderContainer>
         {this.props.token && 
         <>
           <Link to="/dashboard">
-            <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
+            <Logo width={this.props.headerStyles.logoWidth} fill={this.props.headerStyles.logoFill} />
           </Link>
           <NavBar currentUser={this.props.currentUser}/>
           
@@ -52,7 +52,7 @@ class Header extends Component {
         }
         {!this.props.token &&
         <>
-          <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
+          <Logo width={this.props.headerStyles.logoWidth} fill={this.props.headerStyles.logoFill} />
           <Float>
             <Link to="/login">
               <Button type="dashed">Login</Button>
