@@ -1,14 +1,17 @@
 import styled from "styled-components";
-import { Dropdown as AntDropdown, Button } from "antd";
+import { Dropdown as AntDropdown, Button, Layout } from "antd";
 
 import antStyled from "./../../antStyled";
 
-export const HeaderContainer = styled.div`
+const { Header } = Layout;
+
+export const HeaderContainer = antStyled(Header)`
   position: ${ props => props.position || "static" };
   width: 100%;
-  height: 100%;
+  height: 71px;
   display: flex;
   justify-content: space-around;
+  background-color: ${props => props.position === "fixed" ? 'rgba(255, 255, 255, 0)' : '#fff'} ;
 `;
 
 export const Float = styled.div`

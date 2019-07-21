@@ -23,14 +23,7 @@ import Footer from "./layout/Footer";
 import { Centered } from "./layout/Layout";
 import antStyled from "./antStyled";
 
-const { Footer: AntFooter, Content, Header: AntHeader } = Layout;
-
-const LightHeader = antStyled(AntHeader)`
-  background-color: ${props => props.position === "fixed" ? 'rgba(255, 255, 255, 0)' : '#fff'} ;
-  width: 100%;
-  height: 71px;
-  position: ${ props => props.position || "static" };
-`;
+const { Footer: AntFooter, Content } = Layout;
 
 class App extends Component {
   render() {
@@ -44,9 +37,7 @@ class App extends Component {
         }
         <BrowserRouter>
           <Layout>
-            <LightHeader position={headerStyles.position}>
-              <Header />
-            </LightHeader>
+            <Header />
             <Content>
               <Switch>
                 <Route exact path='/register/:id' component={Register} />

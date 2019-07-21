@@ -38,21 +38,22 @@ class Header extends Component {
   }
 
   render(){
+    const { headerStyles, token, currentUser } = this.props;
 
     return(
-      <HeaderContainer>
-        {this.props.token && 
+      <HeaderContainer position={headerStyles.position}>
+        {token && 
         <>
           <Link to="/dashboard">
-            <Logo width={this.props.headerStyles.logoWidth} fill={this.props.headerStyles.logoFill} />
+            <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
           </Link>
-          <NavBar currentUser={this.props.currentUser}/>
+          <NavBar currentUser={currentUser}/>
           
         </>
         }
-        {!this.props.token &&
+        {!token &&
         <>
-          <Logo width={this.props.headerStyles.logoWidth} fill={this.props.headerStyles.logoFill} />
+          <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
           <Float>
             <Link to="/login">
               <Button type="dashed">Login</Button>
