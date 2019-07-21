@@ -49,8 +49,8 @@ class App extends Component {
                 <PrivateRoute exact path='/forum' component={Forum} />
                 <PrivateRoute exact path="/forum/threads/new" component={NewThread} />
                 <PrivateRoute exact path="/forum/threads/:id" component={ThreadPage} />
-                <PrivateRoute exact path='/projects/:id' component={Project} />
                 <PrivateRoute exact path='/projects/new' component={NewProject} />
+                <PrivateRoute exact path='/projects/:id' component={Project} />
                 <PrivateRoute exact path='/resources' component={Resources} />
 
               </Switch>
