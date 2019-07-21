@@ -25,14 +25,18 @@ class AdminDashboard extends Component {
       <Card>
         <List
           dataSource={projects}
+          locale={{emptyText: `There are no projects`}}
           renderItem={item => {
+            const { name, reportDate, _id } = item;
             return(
-              <List.Item>
-                <List.Item.Meta 
-                  title={item.name}
-                />
-                <p>Next reporting date: {item.reportDate}</p>
-              </List.Item>
+              <Link to={`/projects/${_id}`}>
+                <List.Item>
+                  <List.Item.Meta 
+                    title={name}
+                  />
+                  <p>Next reporting date: {reportDate}</p>
+                </List.Item>
+              </Link>
             );
           }}
         />
