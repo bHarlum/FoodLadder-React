@@ -18,8 +18,9 @@ import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
 import Faq from "./forum/Faq";
 import PrivacyPolicy from "./forum/PrivacyPolicy";
-import Resources from "./resources//Resources";
+import Resources from "./resources/Resources";
 import Profile from "./users/Profile";
+import EditProject from "./projects/EditProject";
 
 import Header from "./layout/header/Header";
 import { Centered } from "./layout/Layout";
@@ -54,6 +55,7 @@ class App extends Component {
 
                 <UnregisteredRoute exact path="/" component={Landing} />
                 <UnregisteredRoute exact path="/login" component={Login} />
+                <PrivateRoute exact path='/projects/edit/:id' component={EditProject} />
 
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/forum" component={Forum} />
