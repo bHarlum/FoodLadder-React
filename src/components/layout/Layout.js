@@ -16,7 +16,7 @@ export const Centered = styled.div`
 `;
 
 export const FullPage = styled.div`
-  min-height: 71vh;
+  min-height: 76vh;
 `;
 
 export const Capitalized = (props) => {

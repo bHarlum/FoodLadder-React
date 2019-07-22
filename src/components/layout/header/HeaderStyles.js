@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Dropdown as AntDropdown, Button, Layout } from "antd";
+import { Dropdown as AntDropdown, Layout } from "antd";
 
 import antStyled from "./../../antStyled";
 
@@ -9,9 +9,16 @@ export const HeaderContainer = antStyled(Header)`
   position: ${ props => props.position || "static" };
   width: 100%;
   height: 71px;
-  display: flex;
+  display: block;
   justify-content: space-around;
   background-color: ${props => props.position === "fixed" ? 'rgba(255, 255, 255, 0)' : '#fff'} ;
+
+  @media(min-width: 850px) {
+    display: flex;
+  }
+
+  box-shadow: ${ props => props.position === "fixed" ? 'none' : '0 5px 6px rgb(200, 200, 200, .2)'};
+  z-index: 1;
 `;
 
 export const Float = styled.div`
@@ -20,8 +27,8 @@ export const Float = styled.div`
 `
 
 export const UserBadge = styled.div`
-  width: 250px;
-  padding: 0 30px;
+  width: 170px;
+  padding: 0 0 0 30px;
 `;
 
 export const Name = styled.h3`

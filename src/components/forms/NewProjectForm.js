@@ -18,7 +18,7 @@ class NewProjectForm extends Component {
       line2,
       state,
       city,
-      postcode,
+      postCode,
       country,
       reportDate
     } = values;
@@ -37,7 +37,7 @@ class NewProjectForm extends Component {
           line2,
           state,
           city,
-          postcode,
+          postCode,
           country
         },
         reportDate,
@@ -48,7 +48,9 @@ class NewProjectForm extends Component {
 
     try {
       const response = await LocalAPI.post(`/projects`, data);
-      console.log(response);
+      console.log(response); 
+      this.props.history.push('/dashboard');
+      message.success('Project created and project administrator invited.');
     } catch (error) {
       console.log(error);
     }
@@ -82,7 +84,7 @@ class NewProjectForm extends Component {
           />
           <Field
             component={Input}
-            name="postcode"
+            name="postCode"
             type="text"
             placeholder="Postcode"
           />
@@ -136,13 +138,6 @@ class NewProjectForm extends Component {
   }
 }
 
-// VALUES TO VALIDATE:
-// projectName
-// userName
-// line1
-// city
-// country
-// email
 const validate = formValues => {
   const errors = {};
 

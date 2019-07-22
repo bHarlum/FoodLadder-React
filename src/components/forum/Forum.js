@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button, Icon, List } from "antd";
+import { Row, Col, Button, Icon, List, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
-import { Excerpt, Section } from "./../layout/Layout";
+import { Excerpt, Section, FullPage } from "./../layout/Layout";
 
-const { Search } = Input;
+const { Title } = Typography;
 
 export class Forum extends Component {
 
@@ -24,38 +24,39 @@ export class Forum extends Component {
     const { threads } = this.state;
     console.log(threads);
     return (
-      <Section>
-        <Row>
-          <Col s={{ span: 24 }} md={{ span: 5 }} />
-          <Col s={{ span: 24 }} md={{ span: 14 }}>
-            { threads && 
-              <List 
-                dataSource={threads}
-                itemLayout="vertical"
-                renderItem={item => {
-                  return(
-                    <ThreadCard item={item}>
-                      <Excerpt text={item.posts[0].body} />
-                    </ThreadCard>
-                  )
-                }}
-              />
-            }
-          </Col>
-          <Col s={{ span: 24 }} md={{ span: 5 }}>
-            <Search 
-              placeholder="Search posts"
-              enterButton
-            />
-            <Link to="forum/threads/new">
-              <Button type="primary">
-                <Icon type="plus" />
-                Create a New Post
-              </Button>
-            </Link>
-          </Col>
-        </Row>
-      </Section>
+      <FullPage>
+        <Section>
+          <Row>
+            <Col s={{ span: 24 }} md={{ span: 5 }} />
+            <Col s={{ span: 24 }} md={{ span: 14 }}>
+              <Title>Forum</Title>
+              { threads && 
+                <List 
+                  dataSource={threads}
+                  itemLayout="vertical"
+                  renderItem={item => {
+                    return(
+                      <ThreadCard item={item}>
+                        <Excerpt text={item.posts[0].body} />
+                      </ThreadCard>
+                    )
+                  }}
+                />
+              }
+            </Col>
+            <Col s={{ span: 24 }} md={{ span: 5 }}>
+              <Section>
+                <Link to="forum/threads/new">
+                  <Button type="primary">
+                    <Icon type="plus" />
+                    Create a New Post
+                  </Button>
+                </Link>
+              </Section>
+            </Col>
+          </Row>
+        </Section>
+      </FullPage>
     );
   }
 }
