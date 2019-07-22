@@ -105,8 +105,8 @@ export class Register extends Component {
             <Result
               status="404"
               title="404"
-              subTitle="Oops, the page you visited does not exist."
-              extra={<Button type="primary">Back Home</Button>}
+              subTitle={`Oops, we can't find that code in our system. Please contact us if you think this is a mistake.`}
+              extra={<a href="https://foodladder.org/get-in-touch-2/"><Button type="primary">Contact Us</Button></a>}
             />
           }    
         </div>
