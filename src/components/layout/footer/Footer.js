@@ -1,11 +1,18 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Icon } from "antd";
+import { Row, Col, Icon, Layout } from "antd";
+import antStyled from "./../../../components/antStyled";
+
+const { Footer: AntFooter } = Layout;
+
+const FooterContainer = antStyled(AntFooter)`
+  background-color: #fff;
+`;
 
 class Footer extends Component {
   render() {
     return (
-      <div>
+      <FooterContainer>
         <Row>
           <Col span={1}>
             <a href="https://www.facebook.com/foodladder">
@@ -37,7 +44,7 @@ class Footer extends Component {
             <a href="https://foodladder.org/get-in-touch-2/">Contact Us</a>
           </Col>
         </Row>
-      </div>
+      </FooterContainer>
     );
   }
 }

@@ -24,9 +24,8 @@ import Profile from "./users/Profile";
 import Header from "./layout/header/Header";
 import { Centered } from "./layout/Layout";
 import Footer from "./layout/footer/Footer";
-import antStyled from "./antStyled";
 
-const { Footer: AntFooter, Content } = Layout;
+const { Content } = Layout;
 
 class App extends Component {
   render() {
@@ -77,9 +76,7 @@ class App extends Component {
                 <PrivateRoute exact path="/users/:id" component={Profile} />
               </Switch>
             </Content>
-            <AntFooter>
-              <Footer />
-            </AntFooter>
+            <Footer />
           </Layout>
         </BrowserRouter>
       </div>
