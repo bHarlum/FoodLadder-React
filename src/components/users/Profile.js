@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { statement } from '@babel/template';
 import { Typography } from "antd";
 import { connect } from "react-redux";
 

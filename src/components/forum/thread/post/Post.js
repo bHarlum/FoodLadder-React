@@ -11,7 +11,7 @@ export class Post extends Component {
 
   render() {
     const { actions } = this.props;
-    const { author, createdAt, upvotes } = this.props.post;
+    const { author, createdAt } = this.props.post;
     return (
       <PostCard
         actions={actions}

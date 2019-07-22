@@ -57,7 +57,7 @@ export class Faq extends Component {
     return (
       <>
       <Title>FAQ</Title>
-      <Collapse bordered={false} defaultActiveKey={["1"]}>
+      <Collapse accordion bordered={false} defaultActiveKey={["1"]}>
         <Panel header="Q: Do you own any of your social enterprises?" key="1">
           {text}
         </Panel>

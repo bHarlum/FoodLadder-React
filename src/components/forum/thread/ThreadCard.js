@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Avatar, List, Icon } from "antd";
+import { Avatar, List } from "antd";
 import { Link } from "react-router-dom";
 
 import { IconText } from "./../../layout/Layout";

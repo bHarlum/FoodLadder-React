@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button, Icon, List, Typography } from "antd";
+import { Row, Col, Button, Icon, List, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
 import { Excerpt, Section, FullPage } from "./../layout/Layout";
 
-const { Search } = Input;
 const { Title } = Typography;
 
 export class Forum extends Component {
@@ -47,10 +46,6 @@ export class Forum extends Component {
             </Col>
             <Col s={{ span: 24 }} md={{ span: 5 }}>
               <Section>
-                {/* <Search 
-                  placeholder="Search posts"
-                  enterButton
-                /> */}
                 <Link to="forum/threads/new">
                   <Button type="primary">
                     <Icon type="plus" />

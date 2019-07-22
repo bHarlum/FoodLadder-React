@@ -18,7 +18,7 @@ class NewProjectForm extends Component {
       line2,
       state,
       city,
-      postcode,
+      postCode,
       country,
       reportDate
     } = values;
@@ -37,7 +37,7 @@ class NewProjectForm extends Component {
           line2,
           state,
           city,
-          postcode,
+          postCode,
           country
         },
         reportDate,
@@ -84,7 +84,7 @@ class NewProjectForm extends Component {
           />
           <Field
             component={Input}
-            name="postcode"
+            name="postCode"
             type="text"
             placeholder="Postcode"
           />
@@ -138,13 +138,6 @@ class NewProjectForm extends Component {
   }
 }
 
-// VALUES TO VALIDATE:
-// projectName
-// userName
-// line1
-// city
-// country
-// email
 const validate = formValues => {
   const errors = {};
 

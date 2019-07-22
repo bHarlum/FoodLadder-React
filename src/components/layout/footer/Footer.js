@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Row, Col, Icon, Layout } from "antd";
+import { connect } from "react-redux";
+
 import antStyled from "./../../../components/antStyled";
 
 const { Footer: AntFooter } = Layout;
@@ -31,6 +33,7 @@ const SocialIcons = antStyled(Col)`
 
 class Footer extends Component {
   render() {
+    const { token } = this.props;
     return (
       <FooterContainer>
         <SpacedRow>
@@ -50,7 +53,9 @@ class Footer extends Component {
           </SocialIcons>
           
           <Col span={6}>
-            <Link to="/forum/faq">Frequently Asked Questions</Link>
+            { token &&
+            <Link to="/resources">Frequently Asked Questions</Link>
+            }
           </Col>
           <Col span={3}>
             <Link to="/forum/privacypolicy">Privacy Policy</Link>
@@ -64,4 +69,10 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token
+  }
+}
+
+export default connect(mapStateToProps)(Footer);

@@ -28,7 +28,7 @@ const { Content } = Layout;
 
 class App extends Component {
   render() {
-    let { loading, headerStyles } = this.props;
+    let { loading } = this.props;
     return (
       <div>
         {loading && (
