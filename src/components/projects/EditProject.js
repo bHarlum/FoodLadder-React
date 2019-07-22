@@ -18,9 +18,9 @@ class EditProject extends Component {
 
   uploadSettings = {
     name: 'file',
-    action: `http://localhost:3001/projects/upload`,
+    action: `${process.env.REACT_APP_API_URL}/projects/upload`,
     headers: {
-      authorization: `Bearer ${this.props.token}`,
+      authorization: `Bearer ${this.props.token}`
     },
     onChange(info) {
       if (info.file.status !== 'uploading') {
@@ -36,9 +36,9 @@ class EditProject extends Component {
 
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const project = await LocalAPI.get(`/projects/${id}`);
-    this.setState({project: project.data});
-    console.log(this.state);
+    const response = await LocalAPI.get(`/projects/${id}`);
+    await this.setState({project: response.data});
+    this.uploadSettings.headers.id = this.state.project._id;
   }
 
   render(){
