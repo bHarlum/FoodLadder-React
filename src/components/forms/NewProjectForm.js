@@ -48,7 +48,9 @@ class NewProjectForm extends Component {
 
     try {
       const response = await LocalAPI.post(`/projects`, data);
-      console.log(response);
+      console.log(response); 
+      this.props.history.push('/dashboard');
+      message.success('Project created and project administrator invited.');
     } catch (error) {
       console.log(error);
     }
