@@ -16,7 +16,6 @@ import NewProject from "./projects/NewProject";
 import Dashboard from "./dashboard/Dashboard";
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
-import Faq from "./resources/Faq";
 import PrivacyPolicy from "./forum/PrivacyPolicy";
 import Resources from "./resources/Resources";
 import Profile from "./users/Profile";
@@ -42,17 +41,16 @@ class App extends Component {
             <Header />
             <Content>
               <Switch>
-                <UnregisteredRoute exact path="/forum/faq" component={Faq} />
+                
+                <Route exact path="/register/:id" component={Register} />
+
+                <UnregisteredRoute exact path="/" component={Landing} />
+                <UnregisteredRoute exact path="/login" component={Login} />
                 <UnregisteredRoute
                   exact
                   path="/forum/privacypolicy"
                   component={PrivacyPolicy}
                 />
-
-                <Route exact path="/register/:id" component={Register} />
-
-                <UnregisteredRoute exact path="/" component={Landing} />
-                <UnregisteredRoute exact path="/login" component={Login} />
 
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/forum" component={Forum} />
