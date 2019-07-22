@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Row, Col, Typography } from "antd";
+import { Row, Col, Typography, Icon } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../../apis/local";
 import Post from "./post/Post";
-import { FullPage } from "./../../layout/Layout";
+import { FullPage, Section } from "./../../layout/Layout";
 import NewPostForm from "./../../forms/NewPostForm";
 import { setThread } from "./../../../actions";
+import { RepliesTitle } from "./ThreadStyles";
 
 const { Title } = Typography;
 
@@ -15,9 +16,9 @@ class ThreadPage extends Component {
   componentDidMount = () => {
     const { id } = this.props.match.params;
     LocalAPI.get(`/threads/${id}`)
-      .then(res => {
-        console.log(res.data);
-        this.props.setThread(res.data);
+      .then( res => {
+        const thread = res.data;
+        this.props.setThread(thread);
       }).catch( err => {
         console.log(err);
       });
@@ -29,25 +30,49 @@ class ThreadPage extends Component {
 
   render() {
     const { thread } = this.props;
+
     return (
       <FullPage>
-        <Row>
-          <Col span={6}></Col>
-          <Col span={12}>
-            { thread &&
-              <Title>{thread.title}</Title>
-
-            }
-            { thread && 
-              thread.posts.map(post => {
-              return <Post key={post._id}>{post.body}</Post>
-            })}
-            { thread && 
-              <NewPostForm thread={thread} />
-            }
-          </Col>
-          <Col span={6}></Col>
-        </Row>
+        <Section>
+          <Row>
+            <Col xs={{ span: 24 }} md={{span: 6}}></Col>
+            <Col xs={{ span: 24 }} md={{span: 12}}>
+              { thread &&
+              <>
+                <Title>{thread.title}</Title>
+              </>
+              }
+              { thread &&
+                <Post
+                  key={thread.posts[0]._id}
+                  post={thread.posts[0]}
+                  first="true"
+                >
+                  {thread.posts[0].body}
+                </Post>
+              }
+              { thread && 
+                <RepliesTitle>Replies to {thread.posts[0].author.firstName}'s post...</RepliesTitle>
+              }
+              { thread &&                 
+                thread.posts.slice(1, thread.posts.length).map(post => {
+                return(
+                  <Post 
+                    key={post._id}
+                    post={post}
+                    actions={[<><Icon type="like" />Was this helpful?</>]}
+                  >
+                    {post.body}
+                  </Post>
+                )
+              })}
+              { thread && 
+                <NewPostForm thread={thread} />
+              }
+            </Col>
+            <Col xs={{ span: 24 }} md={{span: 6}}></Col>
+          </Row>
+        </Section>
       </FullPage>
     );
   }

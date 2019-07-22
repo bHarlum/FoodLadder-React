@@ -41,17 +41,18 @@ class App extends Component {
             <Header />
             <Content>
               <Switch>
+
+                <Route
+                    exact
+                    path="/forum/privacypolicy"
+                    component={PrivacyPolicy}
+                  />
                 
                 <Route exact path="/register/:id" component={Register} />
 
                 <UnregisteredRoute exact path="/" component={Landing} />
                 <UnregisteredRoute exact path="/login" component={Login} />
-                <UnregisteredRoute
-                  exact
-                  path="/forum/privacypolicy"
-                  component={PrivacyPolicy}
-                />
-
+                
                 <PrivateRoute exact path="/dashboard" component={Dashboard} />
                 <PrivateRoute exact path="/forum" component={Forum} />
                 <PrivateRoute

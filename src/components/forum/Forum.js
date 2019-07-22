@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button, Icon, List } from "antd";
+import { Row, Col, Input, Button, Icon, List, Typography } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
@@ -7,6 +7,7 @@ import ThreadCard from "./thread/ThreadCard";
 import { Excerpt, Section, FullPage } from "./../layout/Layout";
 
 const { Search } = Input;
+const { Title } = Typography;
 
 export class Forum extends Component {
 
@@ -29,6 +30,7 @@ export class Forum extends Component {
           <Row>
             <Col s={{ span: 24 }} md={{ span: 5 }} />
             <Col s={{ span: 24 }} md={{ span: 14 }}>
+              <Title>Forum</Title>
               { threads && 
                 <List 
                   dataSource={threads}

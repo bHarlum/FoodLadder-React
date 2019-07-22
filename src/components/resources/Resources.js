@@ -27,7 +27,7 @@ const sections = [
 class Resources extends Component {
 
   state = {
-    current: 1
+    current: 0
   }
 
   onMenuClick = async (item) => {
@@ -45,7 +45,7 @@ class Resources extends Component {
         <SideBar>
           <Menu
             mode="inline"
-            defaultSelectedKeys={["1"]}
+            defaultSelectedKeys={["0"]}
             onClick={this.onMenuClick}
           >
             <Menu.Item key="0">FAQs</Menu.Item>

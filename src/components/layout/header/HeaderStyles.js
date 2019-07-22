@@ -9,9 +9,13 @@ export const HeaderContainer = antStyled(Header)`
   position: ${ props => props.position || "static" };
   width: 100%;
   height: 71px;
-  display: flex;
+  display: block;
   justify-content: space-around;
   background-color: ${props => props.position === "fixed" ? 'rgba(255, 255, 255, 0)' : '#fff'} ;
+
+  @media(min-width: 850px) {
+    display: flex;
+  }
 `;
 
 export const Float = styled.div`
@@ -20,8 +24,8 @@ export const Float = styled.div`
 `
 
 export const UserBadge = styled.div`
-  width: 250px;
-  padding: 0 30px;
+  width: 170px;
+  padding: 0 0 0 30px;
 `;
 
 export const Name = styled.h3`
