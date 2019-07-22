@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { statement } from '@babel/template';
 import { Typography, Card } from "antd";
 import { connect } from "react-redux";
 
@@ -37,7 +36,6 @@ export class Project extends Component {
     return (
       <FullPage>
         <Section>
-          
           {project &&
             <div>
               <Card style={ {backgroundImage: 'url(https://foodladder.org/wp-content/uploads/2018/08/IMG_4397-1-2000x1200.jpg)'} }><Title>{project.name}</Title></Card>
@@ -51,7 +49,6 @@ export class Project extends Component {
               </Card>
             </div>
           }
-          
         </Section>
       </FullPage>
     );

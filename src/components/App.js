@@ -16,13 +16,13 @@ import NewProject from './projects/NewProject';
 import Dashboard from './dashboard/Dashboard';
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
-import Resources from "./resources//Resources";
+import Resources from "./resources/Resources";
 import Profile from "./users/Profile";
+import EditProject from "./projects/EditProject";
 
 import Header from "./layout/header/Header";
 import Footer from "./layout/Footer";
 import { Centered } from "./layout/Layout";
-import antStyled from "./antStyled";
 
 const { Footer: AntFooter, Content } = Layout;
 
@@ -50,6 +50,7 @@ class App extends Component {
                 <PrivateRoute exact path='/forum' component={Forum} />
                 <PrivateRoute exact path="/forum/threads/new" component={NewThread} />
                 <PrivateRoute exact path="/forum/threads/:id" component={ThreadPage} />
+                <PrivateRoute exact path='/projects/edit/:id' component={EditProject} />
                 <PrivateRoute exact path='/projects/new' component={NewProject} />
                 <PrivateRoute exact path='/projects/:id' component={Project} />
                 <PrivateRoute exact path='/resources' component={Resources} />
