@@ -9,9 +9,6 @@ import UserDashboard from "./UserDashboard";
 
 export class Dashboard extends Component {
 
-  state = {
-  }
-
   componentDidMount() {
     LocalAPI.get("/projects/user/current")
       .then( response => {

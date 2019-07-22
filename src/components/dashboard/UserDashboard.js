@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { List, Row, Col, Typography } from "antd";
+import { List, Row, Col, Typography, Avatar } from "antd";
 
 import LocalAPI from "./../../apis/local";
+import { Section } from "./../layout/Layout";
 
 const { Title } = Typography;
 
@@ -28,49 +29,59 @@ class AdminDashboard extends Component {
     return(
       <Row gutter={6}>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
-          <Title level={3}>{projects.length > 1 && "Your Projects"}{projects.length === 1 && "Your Project"}</Title>
-          <List
-            dataSource={projects}
-            renderItem={item => {
-              return(
-                <List.Item>
-                  <List.Item.Meta 
-                    title={item.name}
-                  />
-                </List.Item>
-              );
-            }}
-          />
+          <Section>
+            <Title level={3}>{projects.length > 1 && "Your Projects"}{projects.length === 1 && "Your Project"}</Title>
+            <List
+              dataSource={projects}
+              renderItem={item => {
+                return(
+                  <List.Item>
+                    <List.Item.Meta 
+                      avatar={<Avatar size={64} shape="square">Project Image</Avatar>}
+                      title={item.name}
+                      description={`${item.address.state}, ${item.address.country}`}
+                    />
+                  </List.Item>
+                );
+              }}
+            />
+          </Section>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
-          <Title level={3}>Notifications</Title>
-          <List
-            dataSource={notifications}
-            renderItem={item => {
-              return(
-                <List.Item>
-                  <List.Item.Meta 
-                    title={item.name}
-                  />
-                </List.Item>
-              );
-            }}
-          />
+          <Section>
+            <Title level={3}>Notifications</Title>
+            <List
+              locale={{emptyText: `You have no notifications`}}
+              dataSource={notifications}
+              renderItem={item => {
+                return(
+                  <List.Item>
+                    <List.Item.Meta 
+                      title={item.name}
+                    />
+                  </List.Item>
+                );
+              }}
+            />
+          </Section>
         </Col>
         <Col xs={{ span: 24 }} md={{ span: 8 }}>
-          <Title level={4}>Your Posts</Title>
-          <List
-            dataSource={posts}
-            renderItem={item => {
-              return(
-                <List.Item>
-                  <List.Item.Meta 
-                    title={item.name}
-                  />
-                </List.Item>
-              );
-            }}
-          />
+          <Section>
+            <Title level={4}>Your Posts</Title>
+            <List
+              locale={{emptyText: `You haven't made any posts`}}
+              dataSource={posts}
+              renderItem={item => {
+                return(
+                  <List.Item>
+                    <List.Item.Meta 
+                      title={item.name}
+                    />
+                  </List.Item>
+                );
+              }}
+            />
+          </Section>
         </Col>
       </Row>
     )

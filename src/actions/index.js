@@ -16,6 +16,17 @@ export const setHeader = (styles) => {
   }
 }
 
+export const resetHeader = () => {
+  return { 
+    type: types.HEADER_STYLES,
+    payload: {
+      position: "static",
+      logoFill: "#000",
+      logoWidth: "250px"
+    }
+  }
+}
+
 export const setAuthToken = (token) => {
   localStorage.setItem("token", token);
   return {

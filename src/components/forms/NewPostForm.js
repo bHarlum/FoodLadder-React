@@ -12,6 +12,7 @@ class NewPostForm extends Component {
   onFormSubmit = (formValues) => {
     const { reset } = this.props;
     const { body } = formValues;
+    const { id: userId } = this.props.thread.posts[0].author;
     const updatedThread = {
       posts: this.props.thread.posts
     }
@@ -20,7 +21,7 @@ class NewPostForm extends Component {
       body
     });
     console.log(updatedThread);
-    LocalAPI.patch(`/threads/${this.props.thread._id}`, { updatedThread })
+    LocalAPI.patch(`/threads/${this.props.thread._id}`, { updatedThread, userId })
       .then( res => {
         this.props.setThread(res.data);
         reset();

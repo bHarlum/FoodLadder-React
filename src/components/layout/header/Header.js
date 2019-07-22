@@ -11,7 +11,7 @@ import {
   setCurrentUser, 
   clearCurrentUser 
 } from "./../../../actions/index";
-import { HeaderContainer, Float, UserBadge } from "./HeaderStyles";
+import { HeaderContainer, Float } from "./HeaderStyles";
 import NavBar from "./NavBar";
 
 class Header extends Component {
@@ -22,6 +22,7 @@ class Header extends Component {
       .then(response => {
         this.props.setCurrentUser(response.data);
       }).catch(err => {
+        this.props.clearAuthToken();
         console.log(err);
       })
     }
@@ -36,21 +37,22 @@ class Header extends Component {
   }
 
   render(){
+    const { headerStyles, token, currentUser } = this.props;
 
     return(
-      <HeaderContainer position={this.props.headerStyles.position}>
-        {this.props.token && 
+      <HeaderContainer position={headerStyles.position}>
+        {token && 
         <>
           <Link to="/dashboard">
-            <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
+            <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
           </Link>
-          <NavBar currentUser={this.props.currentUser}/>
+          <NavBar currentUser={currentUser}/>
           
         </>
         }
-        {!this.props.token &&
+        {!token &&
         <>
-          <Logo width={this.props.headerStyles.logoWidth} height="130px" fill={this.props.headerStyles.logoFill} />
+          <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
           <Float>
             <Link to="/login">
               <Button type="dashed">Login</Button>
