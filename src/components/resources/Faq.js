@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 
-import { Collapse } from "antd";
+import { Collapse, Typography } from "antd";
 
 const { Panel } = Collapse;
+const { Title } = Typography;
 
 const text = (
   <p style={{ paddingLeft: 24 }}>
@@ -54,6 +55,8 @@ const text_6 = (
 export class Faq extends Component {
   render() {
     return (
+      <>
+      <Title>FAQ</Title>
       <Collapse bordered={false} defaultActiveKey={["1"]}>
         <Panel header="Q: Do you own any of your social enterprises?" key="1">
           {text}
@@ -77,6 +80,7 @@ export class Faq extends Component {
           {text_6}
         </Panel>
       </Collapse>
+      </>
     );
   }
 }

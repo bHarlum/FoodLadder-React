@@ -16,9 +16,9 @@ import NewProject from "./projects/NewProject";
 import Dashboard from "./dashboard/Dashboard";
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
-import Faq from "./forum/Faq";
+import Faq from "./resources/Faq";
 import PrivacyPolicy from "./forum/PrivacyPolicy";
-import Resources from "./resources//Resources";
+import Resources from "./resources/Resources";
 import Profile from "./users/Profile";
 
 import Header from "./layout/header/Header";
