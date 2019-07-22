@@ -5,6 +5,7 @@ import moment from "moment";
 
 import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./FormLayout";
+import { Section } from "./../layout/Layout";
 
 const { Title } = Typography;
 
@@ -59,81 +60,83 @@ class NewProjectForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <FormContainer>
-        <Title>Create new Project</Title>
-        <form onSubmit={handleSubmit(this.onFormSubmit)}>
-          <Field
-            component={Input}
-            name="projectName"
-            type="text"
-            placeholder="*Project Name"
-            errorMessage="Please provide unique project name."
-          />
-          <Field
-            component={Input}
-            name="line1"
-            type="text"
-            placeholder="*Address line 1"
-            errorMessage="please provide an address."
-          />
-          <Field
-            component={Input}
-            name="line2"
-            type="text"
-            placeholder="Address Line 2"
-          />
-          <Field
-            component={Input}
-            name="postCode"
-            type="text"
-            placeholder="Postcode"
-          />
-          <Field
-            component={Input}
-            name="city"
-            type="text"
-            placeholder="*City/Suburb"
-            errorMessage="Please provide a City/Suburb."
-          />
-          <Field
-            component={Input}
-            name="state"
-            type="text"
-            placeholder="State"
-          />
-          <Field
-            component={Input}
-            name="country"
-            type="text"
-            placeholder="*Country"
-            errorMessage="Please provide a Country."
-          />
-          <Field
-            component={DatePicker}
-            name="reportDate"
-            type="date"
-            defaultValue={moment()}
-          />
-          <Field
-            component={Input}
-            name="email"
-            type="text"
-            placeholder="*Project admin email"
-            errorMessage="Email is required, please provide a valid email."
-          />
-          <Field
-            component={Input}
-            name="userName"
-            type="text"
-            placeholder="*Project admin name"
-            errorMessage="Name is required, please provide a valid name."
-          />
+      <Section>
+        <FormContainer>
+          <Title>Create new Project</Title>
+          <form onSubmit={handleSubmit(this.onFormSubmit)}>
+            <Field
+              component={Input}
+              name="projectName"
+              type="text"
+              placeholder="*Project Name"
+              errorMessage="Please provide unique project name."
+            />
+            <Field
+              component={Input}
+              name="line1"
+              type="text"
+              placeholder="*Address line 1"
+              errorMessage="please provide an address."
+            />
+            <Field
+              component={Input}
+              name="line2"
+              type="text"
+              placeholder="Address Line 2"
+            />
+            <Field
+              component={Input}
+              name="postCode"
+              type="text"
+              placeholder="Postcode"
+            />
+            <Field
+              component={Input}
+              name="city"
+              type="text"
+              placeholder="*City/Suburb"
+              errorMessage="Please provide a City/Suburb."
+            />
+            <Field
+              component={Input}
+              name="state"
+              type="text"
+              placeholder="*State"
+            />
+            <Field
+              component={Input}
+              name="country"
+              type="text"
+              placeholder="*Country"
+              errorMessage="Please provide a Country."
+            />
+            <Field
+              component={DatePicker}
+              name="reportDate"
+              type="date"
+              defaultValue={moment()}
+            />
+            <Field
+              component={Input}
+              name="email"
+              type="text"
+              placeholder="*Project admin email"
+              errorMessage="Email is required, please provide a valid email."
+            />
+            <Field
+              component={Input}
+              name="userName"
+              type="text"
+              placeholder="*Project admin name"
+              errorMessage="Name is required, please provide a valid name."
+            />
 
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-        </form>
-      </FormContainer>
+            <Button type="primary" htmlType="submit">
+              Submit
+            </Button>
+          </form>
+        </FormContainer>
+      </Section>
     );
   }
 }
@@ -153,6 +156,10 @@ const validate = formValues => {
   if (!formValues.city) {
     errors.city = "error";
   }
+  if (!formValues.state) {
+    errors.state = "error";
+  }
+
   if (!formValues.country) {
     errors.country = "error";
   }

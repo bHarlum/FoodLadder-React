@@ -9,7 +9,8 @@ import {
   setAuthToken, 
   clearAuthToken, 
   setCurrentUser, 
-  clearCurrentUser 
+  clearCurrentUser,
+  setSpinner
 } from "./../../../actions/index";
 import { HeaderContainer, Float } from "./HeaderStyles";
 import NavBar from "./NavBar";
@@ -17,13 +18,16 @@ import NavBar from "./NavBar";
 class Header extends Component {
 
   setUser = () => {
+    this.props.setSpinner(true);
     if(this.props.token && this.props.currentUser.id === undefined){
       LocalAPI.get("/users/current")
       .then(response => {
         this.props.setCurrentUser(response.data);
+        this.props.setSpinner(false);
       }).catch(err => {
         this.props.clearAuthToken();
         console.log(err);
+        this.props.setSpinner(false);
       })
     }
   }
@@ -46,13 +50,14 @@ class Header extends Component {
           <Link to="/dashboard">
             <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
           </Link>
-          <NavBar currentUser={currentUser}/>
-          
+          <NavBar currentUser={currentUser}/> 
         </>
         }
         {!token &&
         <>
-          <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
+          <Link to="/">
+            <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
+          </Link>
           <Float>
             <Link to="/login">
               <Button type="dashed">Login</Button>
@@ -77,6 +82,7 @@ export default connect(mapStateToProps, {
   setAuthToken, 
   clearAuthToken, 
   setCurrentUser,
-  clearCurrentUser
+  clearCurrentUser,
+  setSpinner
 })(Header);
  

@@ -1,18 +1,13 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
 import { Button, Typography, Upload, Icon} from "antd";
-import moment from "moment";
 
 import { Input, FormContainer } from "./FormLayout";
 import LocalAPI from "./../../apis/local";
 
-
-
-
 const { Title } = Typography;
 
 class EditProjectForm extends Component {
-  
   
   onFormSubmit = async values => {
     console.log(values);
@@ -23,8 +18,6 @@ class EditProjectForm extends Component {
     const response = await LocalAPI('/projects/upload', {file})
     console.log(response);
   }
-
-
 
   render() {
 

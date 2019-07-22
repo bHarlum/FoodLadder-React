@@ -38,28 +38,29 @@ export const Box = styled.div`
 // -----------------------------------------------
 
 export const Input = (props) => {
-
+  const { label, errorMessage, type, placeholder, prefix } = props;
   let status = props.meta.touched ? props.meta.error : "";
   return(
     <Form.Item 
       validateStatus={status}
-      help={status && props.errorMessage}
-    > { props.type === "text" && 
+      label={label}
+      help={status && errorMessage}
+    > { type === "text" && 
         <AntInput {...props.input} 
-          type={props.type} 
-          placeholder={props.placeholder}
-          prefix={props.prefix}
+          type={type} 
+          placeholder={placeholder}
+          prefix={prefix}
         />
-      } { props.type === "textarea" &&
+      } { type === "textarea" &&
         <TextArea {...props.input} 
-          type={props.type} 
-          placeholder={props.placeholder} 
+          type={type} 
+          placeholder={placeholder} 
           autosize={{ minRows: 3 }} />
-      } { props.type === "password" &&
+      } { type === "password" &&
         <AntInput {...props.input} 
-          type={props.type} 
-          placeholder={props.placeholder}
-          prefix={props.prefix}
+          type={type} 
+          placeholder={placeholder}
+          prefix={prefix}
         />
       }
     </Form.Item>
