@@ -1,15 +1,23 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Typography} from "antd";
+import { Button, Typography, message } from "antd";
 
+import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./FormLayout";
 
 const { Title } = Typography;
 
 class EditProjectForm extends Component {
    
-  onFormSubmit = async values => {
-    console.log(values);
+  onFormSubmit = async formValues => {
+    LocalAPI.patch(`/projects/${this.props.project._id}/update`)
+      .then(response => {
+        console.log(response);
+        this.props.history.push(`/projects/${this.props.project._id}`);
+        message.warning("this form isn't completely functional yet");
+      }).catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
