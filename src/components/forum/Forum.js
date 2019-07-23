@@ -22,7 +22,6 @@ export class Forum extends Component {
 
   render() {
     const { threads } = this.state;
-    console.log(threads);
     return (
       <FullPage>
         <Section>
