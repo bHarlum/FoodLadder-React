@@ -1,4 +1,7 @@
 import React, { Component } from "react";
+import { Button, Upload, Icon, message} from "antd";
+import {connect} from "react-redux";
+
 
 import { Centered } from "./../layout/Layout";
 import EditProjectForm from "./../../components/forms/EditProjectForm";
@@ -13,11 +16,29 @@ class EditProject extends Component {
     project: ""
   };
 
+  uploadSettings = {
+    name: 'file',
+    action: `${process.env.REACT_APP_API_URL}/projects/upload`,
+    headers: {
+      authorization: `Bearer ${this.props.token}`
+    },
+    onChange(info) {
+      if (info.file.status !== 'uploading') {
+        console.log(info.file, info.fileList);
+      }
+      if (info.file.status === 'done') {
+        message.success(`${info.file.name} file uploaded successfully`);
+      } else if (info.file.status === 'error') {
+        message.error(`${info.file.name} file upload failed.`);
+      }
+    },
+  };
+
   async componentDidMount() {
     const { id } = this.props.match.params;
-    const project = await LocalAPI.get(`/projects/${id}`)
-    this.setState({project: project.data});
-    console.log(this.state);
+    const response = await LocalAPI.get(`/projects/${id}`);
+    await this.setState({project: response.data});
+    this.uploadSettings.headers.id = this.state.project._id;
   }
 
   render(){
@@ -26,6 +47,7 @@ class EditProject extends Component {
     return(
       <Centered>
         { this.state.project && 
+        <>
           <EditProjectForm 
           project={this.state.project}
           history={this.props.history} 
@@ -40,10 +62,21 @@ class EditProject extends Component {
             country: this.state.project.address.country
           }}
         />
+        <Upload name="file" {...this.uploadSettings}>
+          <Button>
+            <Icon type="upload" /> 
+              Add an Image
+          </Button>
+        </Upload>
+      </>
       }
-      </Centered>
+    </Centered>
     );
   }
 }
-
-export default EditProject;
+const mapStateToProps = state => {
+  return {
+    token: state.auth.token
+  }
+}
+export default connect(mapStateToProps)(EditProject);

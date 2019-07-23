@@ -1,30 +1,16 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Typography, Upload, Icon} from "antd";
-import moment from "moment";
+import { Button, Typography} from "antd";
 
 import { Input, FormContainer } from "./FormLayout";
-import LocalAPI from "./../../apis/local";
-
-
-
 
 const { Title } = Typography;
 
 class EditProjectForm extends Component {
-  
-  
+   
   onFormSubmit = async values => {
     console.log(values);
   };
-
-  async onChange({ file, onSuccess}) {
-    console.log(file);
-    const response = await LocalAPI('/projects/upload', {file})
-    console.log(response);
-  }
-
-
 
   render() {
 
@@ -77,14 +63,6 @@ class EditProjectForm extends Component {
             name="bio"
             type="textarea"
           />
-          <Upload name="file" >
-            <Button onChange={this.onChange} >
-              <Icon 
-                type="upload" 
-                /> 
-                Add a Image
-            </Button>
-          </Upload>
 
           <Button type="primary" htmlType="submit">
             Submit
