@@ -10,9 +10,11 @@ const { Title } = Typography;
 
 class NewThreadForm extends Component {
 
-  fileData = {
-    link: null,
-    size: null
+  state = {
+    file: {
+      key: "",
+      size: ""
+    }
   }
 
   uploadSettings = {
@@ -21,14 +23,12 @@ class NewThreadForm extends Component {
     headers: {
       authorization: `Bearer ${this.props.token}`
     },
-    onChange(info) {
+    onChange: (info) => {
       if (info.file.status !== 'uploading') {
         console.log(info.file, info.fileList);
       }
       if (info.file.status === 'done') {
-        this.fileData.link = info.file.response.link;
-        this.fileData.size = info.file.response.size;
-
+        this.setState({file: {key: info.file.response.key, size: info.file.response.size}});
         message.success(`${info.file.name} file uploaded successfully`);
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
@@ -39,15 +39,15 @@ class NewThreadForm extends Component {
 
   onFormSubmit = async (values) => {
     const { title, body } = values;
-    const data = { newThread: { title, posts: [], file: this.fileData }};
+    const data = { newThread: { title, posts: [], file: {link: this.state.file.key, size: this.state.file.size}}};
     data.newThread.posts.push({
       body,
       author: this.props.currentUser
     })
 
     try {
+      console.log("TYRING TO CREATE IT AYE");
       const response = await LocalAPI.post(`/threads`, data);
-      console.log(response);  
       this.props.history.push("/forum");
     } catch(error) {
       console.log(error);

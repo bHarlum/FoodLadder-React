@@ -42,10 +42,7 @@ export class Project extends Component {
       }).catch(err => {
         console.log(err);
       });
-      // console.log("+++++++++")
-      // LocalAPI.get("/files/export/uploads/1563855216279-Screen Shot 2019-07-05 at 10.05.54 am.png", response => {
-      //   console.log(response);
-      // });
+
   }
 
   render() {
