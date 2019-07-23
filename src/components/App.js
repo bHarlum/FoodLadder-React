@@ -20,6 +20,7 @@ import PrivacyPolicy from "./misc/PrivacyPolicy";
 import Resources from "./resources/Resources";
 import Profile from "./users/Profile";
 import EditProject from "./projects/EditProject";
+import Faq from "./misc/Faq";
 
 import Header from "./layout/header/Header";
 import { Centered } from "./layout/app_styles";
@@ -75,6 +76,7 @@ class App extends Component {
                 <PrivateRoute exact path="/projects/:id" component={Project} />
                 <PrivateRoute exact path="/resources" component={Resources} />
                 <PrivateRoute exact path="/users/:id" component={Profile} />
+                <PrivateRoute exact path="/faq" component={Faq} />
               </Switch>
             </Content>
             <Footer />

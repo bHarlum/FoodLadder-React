@@ -28,7 +28,7 @@ class Footer extends Component {
           
           <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             { token &&
-            <Link to="/resources">Frequently Asked Questions</Link>
+            <Link to="/faq">Frequently Asked Questions</Link>
             }
           </Col>
           <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>

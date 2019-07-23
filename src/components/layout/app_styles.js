@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "antd";
+import { Icon, Row, Col } from "antd";
 
 export const Centered = styled.div`
   display: flex;
@@ -51,3 +51,19 @@ export const IconText = ({ type, text }) => (
 export const Note = styled.p`
   font-size: 18px;
 `;
+
+export const ColumnedSection = (props) => {
+  return(
+    <Row>
+      <Col s={{ span: 24 }} md={{ span: 5 }}>
+        {props.firstCol}
+      </Col>
+      <Col s={{ span: 24 }} md={{ span: 14 }}>
+        {props.children}
+      </Col>
+      <Col s={{ span: 24 }} md={{ span: 5 }}>
+        {props.thirdCol}
+      </Col>
+    </Row>
+  );
+}

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
-import { Excerpt, Section, FullPage, Note } from "./../layout/app_styles";
+import { Excerpt, Section, FullPage, Note, ColumnedSection } from "./../layout/app_styles";
 import { setLocation } from "./../../actions";
 
 const { Title } = Typography;
@@ -33,28 +33,8 @@ export class Forum extends Component {
     return (
       <FullPage>
         <Section>
-          <Row>
-            <Col s={{ span: 24 }} md={{ span: 5 }} />
-            <Col s={{ span: 24 }} md={{ span: 14 }}>
-              <Title>Forum</Title>
-              { threads && 
-                <List 
-                  dataSource={threads}
-                  itemLayout="vertical"
-                  renderItem={item => {
-                    return(
-                      <ThreadCard item={item}>
-                        <Excerpt text={item.posts[0].body} />
-                      </ThreadCard>
-                    )
-                  }}
-                />
-              }
-              { !threads &&
-                <Note>There are no posts yet</Note>
-              }
-            </Col>
-            <Col s={{ span: 24 }} md={{ span: 5 }}>
+          <ColumnedSection
+            thirdCol={
               <Section>
                 <Link to="forum/threads/new">
                   <Button type="primary">
@@ -63,8 +43,26 @@ export class Forum extends Component {
                   </Button>
                 </Link>
               </Section>
-            </Col>
-          </Row>
+            }
+          >
+            <Title>Forum</Title>
+            { threads && 
+              <List 
+                dataSource={threads}
+                itemLayout="vertical"
+                renderItem={item => {
+                  return(
+                    <ThreadCard item={item}>
+                      <Excerpt text={item.posts[0].body} />
+                    </ThreadCard>
+                  )
+                }}
+              />
+            }
+            { !threads &&
+              <Note>There are no posts yet</Note>
+            }
+          </ColumnedSection>
         </Section>
       </FullPage>
     );

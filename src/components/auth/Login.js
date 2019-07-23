@@ -12,7 +12,7 @@ export class Login extends Component {
     return (
       <FullPage>
         <Row>
-          <Col xs={{span: 24}} md={{span: 12}} style={{height: "500px"}}>
+          <Col className="desktop-only" xs={{span: 24}} md={{span: 12}} style={{height: "500px"}}>
             <BannerImage/>
           </Col>
           <Col xs={{span: 24}} md={{span: 12}}>
