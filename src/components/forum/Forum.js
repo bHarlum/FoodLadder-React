@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Row, Col, Button, Icon, List, Typography } from "antd";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
 import { Excerpt, Section, FullPage } from "./../layout/app_styles";
+import { setLocation } from "./../../actions";
 
 const { Title } = Typography;
 
@@ -18,6 +20,11 @@ export class Forum extends Component {
     const getThreads = await LocalAPI.get('/threads');
     const threads = getThreads.data;
     this.setState({ threads });
+    this.props.setLocation("forum");
+  }
+
+  componentWillUnmount() {
+    this.props.setLocation(null);
   }
 
   render() {
@@ -61,4 +68,4 @@ export class Forum extends Component {
   }
 }
 
-export default Forum;
+export default connect(null, { setLocation })(Forum);

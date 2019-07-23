@@ -38,23 +38,24 @@ class NavBar extends Component {
   render() {
     const { firstName, id } = this.props.currentUser;
     const { mobileNavClass } = this.state;
+    const { location } = this.props;
 
     return(
-      <Nav>
+      <Nav location={location}>
         <div className="desktop-nav">
           <ul>
-            <li>
+            <li className="dashboard">
               <Link to="/dashboard">Home</Link>
             </li>
-            <li>
+            <li className="forum">
               <Link to="/forum">Forum</Link>
             </li>
-            <li>
+            <li className="resources">
               <Link to="/resources">Resources</Link>
             </li>
           </ul>
           <Dropdown overlayStyle={{ top: "200px"}} overlay={
-              <Menu >
+              <Menu>
                 <Menu.Item key="0">
                   <Link to={`/users/${id}`}>Profile</Link>
                 </Menu.Item>
@@ -86,7 +87,7 @@ class NavBar extends Component {
               <Link to="/resources">Resources</Link>
             </Menu.Item>
             <Menu.Item key="6">
-              <Link to="/settings">Settings</Link>
+              <Link to="/profile">Profile</Link>
             </Menu.Item>
             <Menu.Divider />
             <Menu.Item key="7">
@@ -107,4 +108,10 @@ class NavBar extends Component {
   }
 }
 
-export default connect(null, { clearAuthToken, clearCurrentUser })(NavBar);
+const mapStateToProps = state => {
+  return {
+    location: state.nav.location
+  }
+}
+
+export default connect(mapStateToProps, { clearAuthToken, clearCurrentUser })(NavBar);

@@ -6,6 +6,7 @@ import authReducer from "./auth_reducer";
 import userReducer from "./user_reducer";
 import threadReducer from "./thread_reducer";
 import spinnerReducer from "./spinner_reducer";
+import locationReducer from "./location_reducer";
 
 export default combineReducers({
   form: formReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   auth: authReducer,
   user: userReducer,
   forum: threadReducer,
-  loading: spinnerReducer
+  loading: spinnerReducer,
+  nav: locationReducer
 });

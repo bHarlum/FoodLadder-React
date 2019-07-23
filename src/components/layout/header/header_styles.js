@@ -44,11 +44,13 @@ export const Nav = styled.nav`
 
   ul {
     margin-bottom: 0;
+    pointer-events: none;
 
     li {
       display: inline-block;
       font-weight: 100;
       margin: 0 15px;
+      transition: .3s;
   
       a {
         color: rgb(0, 0, 0);
@@ -57,6 +59,34 @@ export const Nav = styled.nav`
 
     } 
   } 
+
+  ul > * {
+    opacity: .3;
+  }
+
+  ul > .dashboard {
+    opacity: ${props => props.location === "dashboard" ? '1' : '.3'};
+  }
+
+  ul > .forum {
+    opacity: ${props => props.location === "forum" ? '1' : '.3'};
+  }
+
+  ul > .resources {
+    opacity: ${props => props.location === "resources" ? '1' : '.3'};
+  }
+
+  ul > * {
+    pointer-events: auto;
+  }
+
+  ul:hover > * {
+    opacity: 0.3;
+  }
+
+  ul:hover > *:hover {
+    opacity: 1;
+  }
 
   .desktop-nav {
     display: none;

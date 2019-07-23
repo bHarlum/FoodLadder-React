@@ -20,7 +20,6 @@ class Header extends Component {
     if(this.props.token && !this.props.currentUser.id){
       LocalAPI.get("/users/current")
         .then(response => {
-          console.log(response);
           this.props.setCurrentUser(response.data);
         }).catch(err => {
           this.props.clearAuthToken();
@@ -30,7 +29,6 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    console.log("header mounted");
     this.setUser();
   }
 

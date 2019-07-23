@@ -1,27 +1,13 @@
 import React, { Component } from "react";
 import { Layout, Menu } from "antd";
+import { connect } from "react-redux";
 
-import antStyled from "./../antStyled";
 import Faq from "./Faq";
 import Manuals from "./Manuals";
 import Blueprints from "./Blueprints";
 import { Section, FullPage } from "./../layout/app_styles";
-
-const { Sider, Content: AntContent } = Layout;
-
-const SideBar = antStyled(Sider)`
-  min-height: 78vh;
-  background-color: rgb(247, 247, 247);
-
-  ul, li {
-    background-color: rgb(249, 249, 249);
-  }
-`;
-
-const Content = antStyled(AntContent)`
-  min-height: 78vh;
-  overflow: scroll;
-`;
+import { SideBar, Content } from "./resources_styles";
+import { setLocation } from "./../../actions";
 
 const sections = [
   <Faq/>,
@@ -33,6 +19,14 @@ class Resources extends Component {
 
   state = {
     current: 0
+  }
+
+  componentDidMount() {
+    this.props.setLocation("resources");
+  }
+
+  componentWillUnmount() {
+    this.props.setLocation(null);
   }
 
   onMenuClick = async (item) => {
@@ -71,4 +65,4 @@ class Resources extends Component {
   }
 }
 
-export default Resources;
+export default connect(null, { setLocation })(Resources);
