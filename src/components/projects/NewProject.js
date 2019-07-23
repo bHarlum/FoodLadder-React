@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Centered } from "./../layout/Layout";
+import { Centered } from "./../layout/app_styles";
 import NewProjectForm from "./../../components/forms/NewProjectForm";
 
 class NewProject extends Component {

@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { Avatar, List } from "antd";
 import { Link } from "react-router-dom";
 
-import { IconText } from "./../../layout/Layout";
-import { Card } from "./ThreadStyles";
+import { IconText } from "../../layout/app_styles";
+import { Card } from "./thread_styles";
 
 class ThreadCard extends Component {
   render(){
 
-    const { title, _id: id, views, upvotes, posts } = this.props.item;
+    const { title, _id: id, views, upvotes, posts, file } = this.props.item;
+    const imageLink = file ? encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${file.link}`) : "https://foodladder.org/wp-content/uploads/2018/07/IMG_4319-1-1.jpg";
 
     return (
       <Card>
@@ -24,7 +25,7 @@ class ThreadCard extends Component {
               <img
                 width={272}
                 alt="logo"
-                src="https://foodladder.org/wp-content/uploads/2018/07/IMG_4319-1-1.jpg"
+                src={ imageLink }
               />
             }
           >

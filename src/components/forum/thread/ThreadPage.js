@@ -4,10 +4,10 @@ import { connect } from "react-redux";
 
 import LocalAPI from "./../../../apis/local";
 import Post from "./post/Post";
-import { FullPage, Section } from "./../../layout/Layout";
+import { FullPage, Section } from "../../layout/app_styles";
 import NewPostForm from "./../../forms/NewPostForm";
 import { setThread } from "./../../../actions";
-import { RepliesTitle } from "./ThreadStyles";
+import { RepliesTitle } from "./thread_styles";
 
 const { Title } = Typography;
 
@@ -41,7 +41,7 @@ class ThreadPage extends Component {
               <>
                 <Title>{thread.title}</Title>
               </>
-              }
+              } 
               { thread &&
                 <Post
                   key={thread.posts[0]._id}

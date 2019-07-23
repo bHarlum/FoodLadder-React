@@ -3,20 +3,31 @@ import { reduxForm, Field } from "redux-form";
 import { Button, Typography, message } from "antd";
 
 import LocalAPI from "./../../apis/local";
-import { Input, FormContainer } from "./FormLayout";
+import { Input, FormContainer } from "./form_styles";
 
 const { Title } = Typography;
 
 class EditProjectForm extends Component {
    
   onFormSubmit = async formValues => {
-    LocalAPI.patch(`/projects/${this.props.project._id}/update`)
+    const { line1, line2, postcode, state, city, country, bio } = formValues;
+    const { _id } = this.props.project;
+    const updatedProject = {
+      address: {
+        line1, line2, postcode, state, city, country
+      },
+      bio
+    };
+    LocalAPI.patch(`/projects/${this.props.project._id}/update`, {updatedProject, projectId: _id})
       .then(response => {
+        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         console.log(response);
+        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         this.props.history.push(`/projects/${this.props.project._id}`);
-        message.warning("this form isn't completely functional yet");
+        message.success("Project Updated.");
       }).catch(err => {
         console.log(err);
+        message.error("Error Updating Project");
       });
   };
 

@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import { List, Row, Col, Typography, Avatar } from "antd";
+import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
-import { Section } from "./../layout/Layout";
+import { Section } from "./../layout/app_styles";
 
 const { Title } = Typography;
 
@@ -35,13 +36,15 @@ class AdminDashboard extends Component {
               dataSource={projects}
               renderItem={item => {
                 return(
-                  <List.Item>
-                    <List.Item.Meta 
-                      avatar={<Avatar size={64} shape="square">Project Image</Avatar>}
-                      title={item.name}
-                      description={`${item.address.state}, ${item.address.country}`}
-                    />
-                  </List.Item>
+                  <Link to={`/projects/${item._id}`}>
+                    <List.Item>
+                      <List.Item.Meta 
+                        avatar={<Avatar size={64} shape="square">Project Image</Avatar>}
+                        title={item.name}
+                        description={`${item.address.state}, ${item.address.country}`}
+                      />
+                    </List.Item>
+                  </Link>
                 );
               }}
             />

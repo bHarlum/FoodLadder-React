@@ -1,30 +1,14 @@
 import React, { Component } from "react";
 import { Layout, Menu } from "antd";
+import { connect } from "react-redux";
 
-import antStyled from "./../antStyled";
-import Faq from "./Faq";
 import Manuals from "./Manuals";
 import Blueprints from "./Blueprints";
-import { Section, FullPage } from "./../layout/Layout";
-
-const { Sider, Content: AntContent } = Layout;
-
-const SideBar = antStyled(Sider)`
-  min-height: 78vh;
-  background-color: rgb(247, 247, 247);
-
-  ul, li {
-    background-color: rgb(249, 249, 249);
-  }
-`;
-
-const Content = antStyled(AntContent)`
-  min-height: 78vh;
-  overflow: scroll;
-`;
+import { Section, FullPage } from "./../layout/app_styles";
+import { SideBar, Content } from "./resources_styles";
+import { setLocation } from "./../../actions";
 
 const sections = [
-  <Faq/>,
   <Manuals/>,
   <Blueprints />
 ];
@@ -33,6 +17,14 @@ class Resources extends Component {
 
   state = {
     current: 0
+  }
+
+  componentDidMount() {
+    this.props.setLocation("resources");
+  }
+
+  componentWillUnmount() {
+    this.props.setLocation(null);
   }
 
   onMenuClick = async (item) => {
@@ -54,9 +46,8 @@ class Resources extends Component {
               defaultSelectedKeys={["0"]}
               onClick={this.onMenuClick}
             >
-              <Menu.Item style={{marginTop: 0}} key="0">FAQs</Menu.Item>
-              <Menu.Item key="1">Manuals</Menu.Item>
-              <Menu.Item key="2">Blueprints</Menu.Item>
+              <Menu.Item style={{marginTop: 0}} key="0">Manuals</Menu.Item>
+              <Menu.Item key="1">Blueprints</Menu.Item>
 
             </Menu>
           </SideBar>
@@ -71,4 +62,4 @@ class Resources extends Component {
   }
 }
 
-export default Resources;
+export default connect(null, { setLocation })(Resources);

@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import antStyled from "./../antStyled";
+import antStyled from "../antStyled";
 
-import { Icon as AntIcon, Form, Input as AntInput } from "antd";
+import { Icon as AntIcon, Form, Input as AntInput, Card } from "antd";
 
 const { TextArea } = AntInput;
 
@@ -12,6 +12,21 @@ export const Icon = antStyled(AntIcon)`
 
 export const FormContainer = styled.div`
   width: ${props => props.large ? '550px' : '300px'};
+  .ant-form-item {
+    margin-bottom: 0;
+    height: 50px;
+    transition: .3s;
+  }
+
+  .ant-form-item.ant-form-item-with-help {
+    height: 70px
+    transition: .3s;
+  }
+
+  .ant-calendar-picker {
+    width: 100%;
+    margin-bottom: 8px;
+  }
 `;
 
 export const Note = styled.p`
@@ -65,3 +80,17 @@ export const Input = (props) => {
     </Form.Item>
   );
 }
+
+export const InviteCard = antStyled(Card)`
+  background-color: rgba(255, 255, 255, .9);
+  max-width: 300px;
+
+  h1 {
+    font-weight: bold;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+`;

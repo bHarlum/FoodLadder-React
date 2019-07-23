@@ -7,7 +7,7 @@ import "./../styles/App.css";
 import PrivateRoute from "./PrivateRoute";
 import UnregisteredRoute from "./UnregisteredRoute";
 
-import Landing from "./Landing";
+import Landing from "./landing/Landing";
 import Register from "./auth/Register";
 import Login from "./auth/Login";
 import Forum from "./forum/Forum";
@@ -16,13 +16,14 @@ import NewProject from "./projects/NewProject";
 import Dashboard from "./dashboard/Dashboard";
 import ThreadPage from "./forum/thread/ThreadPage";
 import NewThread from "./forum/thread/NewThread";
-import PrivacyPolicy from "./forum/PrivacyPolicy";
+import PrivacyPolicy from "./misc/PrivacyPolicy";
 import Resources from "./resources/Resources";
 import Profile from "./users/Profile";
 import EditProject from "./projects/EditProject";
+import Faq from "./misc/Faq";
 
 import Header from "./layout/header/Header";
-import { Centered } from "./layout/Layout";
+import { Centered } from "./layout/app_styles";
 import Footer from "./layout/footer/Footer";
 
 const { Content } = Layout;
@@ -75,6 +76,7 @@ class App extends Component {
                 <PrivateRoute exact path="/projects/:id" component={Project} />
                 <PrivateRoute exact path="/resources" component={Resources} />
                 <PrivateRoute exact path="/users/:id" component={Profile} />
+                <PrivateRoute exact path="/faq" component={Faq} />
               </Switch>
             </Content>
             <Footer />
