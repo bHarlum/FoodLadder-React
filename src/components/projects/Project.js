@@ -42,6 +42,10 @@ export class Project extends Component {
       }).catch(err => {
         console.log(err);
       });
+      // console.log("+++++++++")
+      // LocalAPI.get("/files/export/uploads/1563855216279-Screen Shot 2019-07-05 at 10.05.54 am.png", response => {
+      //   console.log(response);
+      // });
   }
 
   render() {
@@ -54,11 +58,11 @@ export class Project extends Component {
             <Section>
               {project &&
                 <Row>
-                  {/* { project.files[0] &&  */}
-                    {/* <ImageContainer image={project.files[0].link} /> */}
-                  {/* } { !project.files[0] && */}
+                   { project.files[0] && 
+                     <ImageContainer image={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${project.files[0].link}`)} />
+                   } { !project.files[0] &&
                     <ImageContainer image="https://ucd9601a2aadc2bf745b563ceeb9.previews.dropboxusercontent.com/p/thumb/AAeg_qTNbFZ5eOwRiW04IDDqHEhJPaNb_z_UL3fqeG037ZHNTz9saH68AlnbldLOphoZ_Rt7MnyWmXbMdA7I70UIaYVBwI7y05ZTQDcCHMmVnJZVr2CvUNjkz5WkKH87Raq80XfTC7-pqsyccpIcbRZNBvEvhctPef8n3wLqLgbssRMp_WHqAcrhdTS89aiL4clMXi2duC89ejZWGmAN2-a68qs4nS8DbjjjE1auOnBSsMdEZTYmaW7LVvahnucifzUN4Kl-lGL7X3yxTkBVNEFkKyfPoWA2gmnG5hf-UmF_UmtYZcuuSs2x6GBPSPFv7kVuFsNb_G_ZSPdauQIs931T/p.jpeg?fv_content=true&size_mode=5" />
-                  {/* } */}
+                   }
                   <Col xs={{ span: 24 }} md={{ span: 12 }}>
                     <span><Icon type="home" />{project.address.city}, {project.address.country}</span>
                     <Title>{project.title}</Title>
