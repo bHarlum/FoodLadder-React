@@ -47,3 +47,7 @@ export const IconText = ({ type, text }) => (
     {text}
   </span>
 );
+
+export const Note = styled.p`
+  font-size: 18px;
+`;

@@ -11,7 +11,7 @@ class Footer extends Component {
     return (
       <FooterContainer>
         <SpacedRow>
-          <SocialIcons span={4}>
+          <SocialIcons sm={{ span: 24 }} md={{ span: 9}} lg={{ span: 6 }}>
             <a href="https://www.facebook.com/foodladder">
               <Icon type="facebook" theme="filled" />
             </a>
@@ -26,15 +26,15 @@ class Footer extends Component {
             </a>
           </SocialIcons>
           
-          <Col span={6}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             { token &&
             <Link to="/resources">Frequently Asked Questions</Link>
             }
           </Col>
-          <Col span={3}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             <Link to="/forum/privacypolicy">Privacy Policy</Link>
           </Col>
-          <Col span={3}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             <a href="https://foodladder.org/get-in-touch-2/">Contact Us</a>
           </Col>
         </SpacedRow>

@@ -12,6 +12,21 @@ export const Icon = antStyled(AntIcon)`
 
 export const FormContainer = styled.div`
   width: ${props => props.large ? '550px' : '300px'};
+  .ant-form-item {
+    margin-bottom: 0;
+    height: 50px;
+    transition: .3s;
+  }
+
+  .ant-form-item.ant-form-item-with-help {
+    height: 70px
+    transition: .3s;
+  }
+
+  .ant-calendar-picker {
+    width: 100%;
+    margin-bottom: 8px;
+  }
 `;
 
 export const Note = styled.p`
@@ -77,16 +92,5 @@ export const InviteCard = antStyled(Card)`
   button {
     width: 100%;
     margin-bottom: 10px;
-  }
-
-  .ant-form-item {
-    margin-bottom: 0;
-    height: 50px;
-    transition: .3s;
-  }
-
-  .ant-form-item.ant-form-item-with-help {
-    height: 70px
-    transition: .3s;
   }
 `;

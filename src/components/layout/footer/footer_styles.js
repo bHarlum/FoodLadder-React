@@ -17,8 +17,10 @@ export const FooterContainer = antStyled(AntFooter)`
 `;
 
 export const SpacedRow = antStyled(Row)`
-  display: flex;
-  justify-content: space-between;
+  @media(min-width: 775px) {
+    display: flex;
+    justify-content: space-between;
+  }
 `
 
 export const SocialIcons = antStyled(Col)`

@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
-import { Excerpt, Section, FullPage } from "./../layout/app_styles";
+import { Excerpt, Section, FullPage, Note } from "./../layout/app_styles";
 import { setLocation } from "./../../actions";
 
 const { Title } = Typography;
@@ -49,6 +49,9 @@ export class Forum extends Component {
                     )
                   }}
                 />
+              }
+              { !threads &&
+                <Note>There are no posts yet</Note>
               }
             </Col>
             <Col s={{ span: 24 }} md={{ span: 5 }}>

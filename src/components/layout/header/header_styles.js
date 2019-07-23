@@ -26,6 +26,7 @@ export const HeaderContainer = antStyled(Header)`
 export const Float = styled.div`
   position: absolute;
   right: 40px;
+  top: 0;
 `
 
 export const UserBadge = styled.div`
