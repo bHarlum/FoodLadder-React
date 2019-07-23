@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Card } from "antd";
+import { Button } from "antd";
 import { Input, InviteCard } from "./form_styles";
 
 class InvitationCodeForm extends Component {
