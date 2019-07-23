@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { Typography, Card, Row, Col, Button, Icon } from "antd";
+import { Typography, Row, Col, Button, Icon } from "antd";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 import LocalAPI from "./../../apis/local";
-import { Section, FullPage } from './../layout/Layout';
+import { Section, FullPage } from './../layout/app_styles';
 import { setSpinner } from "./../../actions/index";
 
 const { Title, Paragraph } = Typography;
@@ -32,8 +32,6 @@ export class Project extends Component {
     LocalAPI.get(`/projects/${id}`)
       .then( async response => {
         const { data } = response;
-        const { users } = data;
-        const { currentUser } = this.props;
         await this.setState({
           project: data,
         })

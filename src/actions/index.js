@@ -7,7 +7,7 @@ export const validateInvitationCode = () => {
   };
 }
 
-export const setHeader = (styles) => {
+export const setHeader = styles => {
   return {
     type: types.HEADER_STYLES,
     payload: {
@@ -27,7 +27,7 @@ export const resetHeader = () => {
   }
 }
 
-export const setAuthToken = (token) => {
+export const setAuthToken = token => {
   localStorage.setItem("token", token);
   return {
     type: types.AUTH_TOKEN,
@@ -43,7 +43,7 @@ export const clearAuthToken = () => {
   }
 }
 
-export const setCurrentUser = (user) => {
+export const setCurrentUser = user => {
   return {
     type: types.CURRENT_USER,
     payload: user
@@ -57,16 +57,23 @@ export const clearCurrentUser = () => {
   }
 }
 
-export const setThread = (newThread) => {
+export const setThread = newThread => {
   return {
     type: types.SET_THREAD,
     payload: newThread
   }
 }
 
-export const setSpinner = (bool) => {
+export const setSpinner = bool => {
   return {
     type: types.SET_SPINNER,
     payload: bool
+  }
+}
+
+export const setLocation = location => {
+  return {
+    type: types.SET_LOCATION,
+    payload: location
   }
 }

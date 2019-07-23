@@ -3,7 +3,7 @@ import { Button } from 'antd';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from "react-redux";
 
-import { FormContainer, Input } from "./FormLayout";
+import { FormContainer, Input } from "./form_styles";
 import { setAuthToken } from "./../../actions/index";
 import LocalAPI from "./../../apis/local";
 

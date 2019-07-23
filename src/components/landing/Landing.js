@@ -1,19 +1,10 @@
 import React, { Component } from 'react';
-import styled from "styled-components";
 import { connect } from "react-redux";
 
-import { Centered, FullPage } from "./layout/Layout";
-import InvitationCodeForm from "./forms/InvitationCodeForm";
-
-import bannerImage from "./../assets/images/marketing_image_3.jpeg";
-
-import { setHeader, resetHeader } from "./../actions/index";
-
-const Banner = styled.div`
-  background-image: url(${bannerImage});
-  background-size: cover;
-  background-position: center;
-`;
+import { Centered, FullPage } from "../layout/app_styles";
+import InvitationCodeForm from "../forms/InvitationCodeForm";
+import { setHeader, resetHeader } from "../../actions/index";
+import { Banner } from "./landing_styles";
 
 export class Landing extends Component {
 
@@ -30,8 +21,6 @@ export class Landing extends Component {
   }
 
   render() {  
-    // let initialValues = "";
-    // if(this.props.location.search) initialValues = { code: this.props.location.search.match('\\unique=(.*)')[1]};
     return (
       <FullPage>
         <Banner>

@@ -1,35 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Icon, Layout } from "antd";
+import { Col, Icon } from "antd";
 import { connect } from "react-redux";
 
-import antStyled from "./../../../components/antStyled";
-
-const { Footer: AntFooter } = Layout;
-
-const FooterContainer = antStyled(AntFooter)`
-  background-color: #fff;
-  a {
-    color: #000;
-    opacity: .5;
-    transition: .5s;
-  }
-  a:hover {
-    opacity: 1;
-  }
-`;
-
-const SpacedRow = antStyled(Row)`
-  display: flex;
-  justify-content: space-between;
-`
-
-const SocialIcons = antStyled(Col)`
-  a {
-    font-size: 20px;
-    margin: 0 12px;
-  }
-`;
+import { FooterContainer, SpacedRow, SocialIcons } from "./footer_styles";
 
 class Footer extends Component {
   render() {
@@ -37,7 +11,7 @@ class Footer extends Component {
     return (
       <FooterContainer>
         <SpacedRow>
-          <SocialIcons span={4}>
+          <SocialIcons sm={{ span: 24 }} md={{ span: 9}} lg={{ span: 6 }}>
             <a href="https://www.facebook.com/foodladder">
               <Icon type="facebook" theme="filled" />
             </a>
@@ -52,15 +26,15 @@ class Footer extends Component {
             </a>
           </SocialIcons>
           
-          <Col span={6}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             { token &&
-            <Link to="/resources">Frequently Asked Questions</Link>
+            <Link to="/faq">Frequently Asked Questions</Link>
             }
           </Col>
-          <Col span={3}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             <Link to="/forum/privacypolicy">Privacy Policy</Link>
           </Col>
-          <Col span={3}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             <a href="https://foodladder.org/get-in-touch-2/">Contact Us</a>
           </Col>
         </SpacedRow>

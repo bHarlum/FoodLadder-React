@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import LocalAPI from "./../../apis/local";
 import LoginForm from "./../forms/LoginForm";
 import RegisterForm from "./../forms/RegisterForm";
-import { FullPage, Centered } from "./../layout/Layout";
+import { FullPage, Centered } from "./../layout/app_styles";
 import { Typography, Result, Button } from "antd";
 import { clearAuthToken, clearCurrentUser, setSpinner } from "./../../actions";
 
@@ -21,41 +21,37 @@ export class Register extends Component {
   componentDidMount = async () => {
     this.props.setSpinner(true);
     const { id } = this.props.match.params;
+    
     // Getting project
     await LocalAPI.get(`/projects/${id}`)
       .then(res => {
-        console.log("getting project");
         this.setState({
           project: res.data, 
           user: res.data.users[0].email
         });
-        console.log(this.state);
       })
       .catch(err => {
         console.log(err);
       });
-    //Checking if user exists 
 
+    //Checking if user exists 
     await LocalAPI.get(`/users/find/${this.state.user}`)
       .then(res => {
         if(res.data){
-          console.log("setting userExists");
           this.setState({userExists: true});
         }
-        console.log(this.state);
       })
       .catch(err => {
         console.log(err);
       });
     console.log(this.props.currentUser);
+
     //Logging out user if logged in
     if(this.props.currentUser.id || this.props.token){
       await LocalAPI.get("/users/logout")
       .then(response => {
-        console.log("Logging out user");
         this.props.clearAuthToken();
         this.props.clearCurrentUser();
-        console.log("logged out user");
       }).catch(err => {
         console.log(err);
       });
@@ -69,7 +65,7 @@ export class Register extends Component {
     return (
       <FullPage>
         <div>
-          {project &&
+          {(project && !project.activated) &&
             <Centered>
               <Title>Project Registration</Title>
 
@@ -101,7 +97,7 @@ export class Register extends Component {
 
             </Centered>
           }
-          {!project &&
+          {(!project || project.activated) &&
             <Result
               status="404"
               title="404"

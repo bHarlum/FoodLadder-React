@@ -3,7 +3,7 @@ import { Card, Button, List, Col, Row, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
-import { Section, IconText } from "./../layout/Layout"
+import { Section, IconText } from "./../layout/app_styles";
 
 class AdminDashboard extends Component {
 
@@ -24,8 +24,8 @@ class AdminDashboard extends Component {
     const { projects } = this.state;
     return(
       <Row>
-        <Col span={5}></Col>
-        <Col span={14}>
+        <Col xs={{ span: 24 }} md={{ span: 5 }}></Col>
+        <Col xs={{ span: 24 }} md={{ span: 14 }}>
           <Section>
             <Row>
               <Col span={12}>
@@ -72,7 +72,7 @@ class AdminDashboard extends Component {
             
           </Section>
         </Col>
-        <Col span={5}></Col>
+        <Col xs={{ span: 24 }} md={{ span: 5 }}></Col>
       </Row>
     )
   }
