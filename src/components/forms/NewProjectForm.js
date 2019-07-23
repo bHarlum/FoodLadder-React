@@ -18,7 +18,7 @@ class NewProjectForm extends Component {
       line2,
       state,
       city,
-      postCode,
+      postcode,
       country,
       reportDate
     } = values;
@@ -37,7 +37,7 @@ class NewProjectForm extends Component {
           line2,
           state,
           city,
-          postCode,
+          postcode,
           country
         },
         reportDate,
@@ -84,7 +84,7 @@ class NewProjectForm extends Component {
           />
           <Field
             component={Input}
-            name="postCode"
+            name="postcode"
             type="text"
             placeholder="Postcode"
           />

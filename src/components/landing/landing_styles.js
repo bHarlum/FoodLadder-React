@@ -7,3 +7,7 @@ export const Banner = styled.div`
   background-size: cover;
   background-position: center;
 `;
+
+export const Welcome = styled.h1`
+  color: #fff;
+`;

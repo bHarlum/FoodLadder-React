@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 
 import { Centered, FullPage } from "../layout/app_styles";
 import InvitationCodeForm from "../forms/InvitationCodeForm";
-
 import { setHeader, resetHeader } from "../../actions/index";
 import { Banner } from "./landing_styles";
 
@@ -22,8 +21,6 @@ export class Landing extends Component {
   }
 
   render() {  
-    // let initialValues = "";
-    // if(this.props.location.search) initialValues = { code: this.props.location.search.match('\\unique=(.*)')[1]};
     return (
       <FullPage>
         <Banner>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Dropdown as AntDropdown, Layout } from "antd";
+import { Link } from "react-router-dom";
 
 import antStyled from "../../antStyled";
 
@@ -8,9 +9,10 @@ const { Header } = Layout;
 export const HeaderContainer = antStyled(Header)`
   position: ${ props => props.position || "static" };
   width: 100%;
-  height: 71px;
+  height: 84px;
   display: block;
   justify-content: space-around;
+  align-items: center;
   background-color: ${props => props.position === "fixed" ? 'rgba(255, 255, 255, 0)' : '#fff'} ;
 
   @media(min-width: 850px) {
@@ -131,3 +133,7 @@ export const Nav = styled.nav`
     }
   }
 `
+
+export const LogoLink = antStyled(Link)`
+  height: 80%;
+`;

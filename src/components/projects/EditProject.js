@@ -2,13 +2,9 @@ import React, { Component } from "react";
 import { Button, Upload, Icon, message} from "antd";
 import {connect} from "react-redux";
 
-
-import { Centered } from "./../layout/app_styles";
-import EditProjectForm from "./../../components/forms/EditProjectForm";
-
 import LocalAPI from "./../../apis/local";
-
-
+import { Centered, Section} from "./../layout/app_styles";
+import EditProjectForm from "./../../components/forms/EditProjectForm";
 
 class EditProject extends Component {
 
@@ -46,30 +42,32 @@ class EditProject extends Component {
     console.log(this.props.history);
     return(
       <Centered>
-        { this.state.project && 
-        <>
-          <EditProjectForm 
-          project={this.state.project}
-          history={this.props.history} 
-          initialValues={{
-            line1: this.state.project.address.line1,
-            line2: this.state.project.address.line2,
-            city: this.state.project.address.city,
-            state: this.state.project.address.state,
-            postcode: this.state.project.address.postcode,
-            name: this.state.project.name,
-            bio: this.state.project.bio,
-            country: this.state.project.address.country
-          }}
-        />
-        <Upload name="file" {...this.uploadSettings}>
-          <Button>
-            <Icon type="upload" /> 
-              Add an Image
-          </Button>
-        </Upload>
-      </>
-      }
+        <Section>
+          { this.state.project && 
+          <>
+            <EditProjectForm 
+            project={this.state.project}
+            history={this.props.history} 
+            initialValues={{
+              line1: this.state.project.address.line1,
+              line2: this.state.project.address.line2,
+              city: this.state.project.address.city,
+              state: this.state.project.address.state,
+              postcode: this.state.project.address.postcode,
+              name: this.state.project.name,
+              bio: this.state.project.bio,
+              country: this.state.project.address.country
+            }}
+          />
+          <Upload name="file" {...this.uploadSettings}>
+            <Button>
+              <Icon type="upload" /> 
+                Add an Image
+            </Button>
+          </Upload>
+        </>
+        }
+      </Section>
     </Centered>
     );
   }

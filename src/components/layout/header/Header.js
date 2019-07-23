@@ -11,7 +11,7 @@ import {
   setCurrentUser, 
   clearCurrentUser 
 } from "./../../../actions/index";
-import { HeaderContainer, Float } from "./header_styles";
+import { HeaderContainer, Float, LogoLink } from "./header_styles";
 import NavBar from "./NavBar";
 
 class Header extends Component {
@@ -43,16 +43,18 @@ class Header extends Component {
       <HeaderContainer position={headerStyles.position}>
         {token && 
         <>
-          <Link to="/dashboard">
+          <LogoLink to="/dashboard">
             <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
-          </Link>
+          </LogoLink>
           <NavBar currentUser={currentUser}/>
           
         </>
         }
         {!token &&
         <>
-          <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
+          <LogoLink to="/">
+            <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
+          </LogoLink>
           <Float>
             <Link to="/login">
               <Button type="dashed">Login</Button>

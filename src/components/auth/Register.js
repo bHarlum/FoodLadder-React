@@ -65,7 +65,7 @@ export class Register extends Component {
     return (
       <FullPage>
         <div>
-          {project &&
+          {(project && !project.activated) &&
             <Centered>
               <Title>Project Registration</Title>
 
@@ -97,7 +97,7 @@ export class Register extends Component {
 
             </Centered>
           }
-          {!project &&
+          {(!project || project.activated) &&
             <Result
               status="404"
               title="404"
