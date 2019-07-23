@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import { setCurrentUser } from "./../../actions";
-import { FullPage } from "./../layout/Layout";
+import { FullPage } from "./../layout/app_styles";
 import AdminDashboard from "./AdminDashboard";
 import UserDashboard from "./UserDashboard";
 

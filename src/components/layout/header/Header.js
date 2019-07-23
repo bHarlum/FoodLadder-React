@@ -11,24 +11,26 @@ import {
   setCurrentUser, 
   clearCurrentUser 
 } from "./../../../actions/index";
-import { HeaderContainer, Float } from "./HeaderStyles";
+import { HeaderContainer, Float } from "./header_styles";
 import NavBar from "./NavBar";
 
 class Header extends Component {
 
   setUser = () => {
-    if(this.props.token && this.props.currentUser.id === undefined){
+    if(this.props.token && !this.props.currentUser.id){
       LocalAPI.get("/users/current")
-      .then(response => {
-        this.props.setCurrentUser(response.data);
-      }).catch(err => {
-        this.props.clearAuthToken();
-        console.log(err);
-      })
+        .then(response => {
+          console.log(response);
+          this.props.setCurrentUser(response.data);
+        }).catch(err => {
+          this.props.clearAuthToken();
+          console.log(err);
+        })
     }
   }
 
   componentDidMount() {
+    console.log("header mounted");
     this.setUser();
   }
 

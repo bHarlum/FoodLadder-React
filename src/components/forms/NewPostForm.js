@@ -4,7 +4,7 @@ import { Button } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
-import { Input } from "./FormLayout";
+import { Input } from "./form_styles";
 import { setThread } from "./../../actions";
 
 class NewPostForm extends Component {

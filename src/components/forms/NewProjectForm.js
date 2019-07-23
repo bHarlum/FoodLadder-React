@@ -4,7 +4,7 @@ import { Button, Typography, DatePicker, message } from "antd";
 import moment from "moment";
 
 import LocalAPI from "./../../apis/local";
-import { Input, FormContainer } from "./FormLayout";
+import { Input, FormContainer } from "./form_styles";
 
 const { Title } = Typography;
 

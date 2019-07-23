@@ -4,7 +4,7 @@ import { Button, Typography } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
-import { Input, FormContainer } from "./FormLayout";
+import { Input, FormContainer } from "./form_styles";
 
 const { Title } = Typography;
 

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Avatar, List } from "antd";
 import { Link } from "react-router-dom";
 
-import { IconText } from "./../../layout/Layout";
-import { Card } from "./ThreadStyles";
+import { IconText } from "../../layout/app_styles";
+import { Card } from "./thread_styles";
 
 class ThreadCard extends Component {
   render(){

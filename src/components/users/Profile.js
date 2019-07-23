@@ -3,7 +3,7 @@ import { Typography } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
-import { Section, FullPage } from './../layout/Layout';
+import { Section, FullPage } from './../layout/app_styles';
 import { setSpinner } from "./../../actions/index";
 
 const { Title } = Typography;

@@ -3,7 +3,7 @@ import { Button, Upload, Icon, message} from "antd";
 import {connect} from "react-redux";
 
 
-import { Centered } from "./../layout/Layout";
+import { Centered } from "./../layout/app_styles";
 import EditProjectForm from "./../../components/forms/EditProjectForm";
 
 import LocalAPI from "./../../apis/local";

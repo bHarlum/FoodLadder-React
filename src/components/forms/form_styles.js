@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import antStyled from "./../antStyled";
+import antStyled from "../antStyled";
 
 import { Icon as AntIcon, Form, Input as AntInput } from "antd";
 

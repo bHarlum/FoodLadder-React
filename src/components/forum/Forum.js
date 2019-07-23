@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
-import { Excerpt, Section, FullPage } from "./../layout/Layout";
+import { Excerpt, Section, FullPage } from "./../layout/app_styles";
 
 const { Title } = Typography;
 

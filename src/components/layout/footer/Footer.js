@@ -1,35 +1,9 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Icon, Layout } from "antd";
+import { Col, Icon } from "antd";
 import { connect } from "react-redux";
 
-import antStyled from "./../../../components/antStyled";
-
-const { Footer: AntFooter } = Layout;
-
-const FooterContainer = antStyled(AntFooter)`
-  background-color: #fff;
-  a {
-    color: #000;
-    opacity: .5;
-    transition: .5s;
-  }
-  a:hover {
-    opacity: 1;
-  }
-`;
-
-const SpacedRow = antStyled(Row)`
-  display: flex;
-  justify-content: space-between;
-`
-
-const SocialIcons = antStyled(Col)`
-  a {
-    font-size: 20px;
-    margin: 0 12px;
-  }
-`;
+import { FooterContainer, SpacedRow, SocialIcons } from "./footer_styles";
 
 class Footer extends Component {
   render() {

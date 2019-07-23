@@ -4,7 +4,7 @@ import { Button, message } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
-import { Input, Icon } from "./FormLayout";
+import { Input, Icon } from "./form_styles";
 import { setAuthToken } from "./../../actions";
 
 class RegisterForm extends Component {

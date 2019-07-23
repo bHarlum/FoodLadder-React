@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import moment from "moment";
 import { Card, Avatar } from "antd"; 
 
-import { Author, Date, PostCard, ImageContainer } from './PostStyles';
-import { Capitalized } from "./../../../layout/Layout";
+import { Author, Date, PostCard, ImageContainer } from './post_styles';
+import { Capitalized } from "../../../layout/app_styles";
 
 const { Meta } = Card;
 

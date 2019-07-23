@@ -3,7 +3,7 @@ import { reduxForm, Field } from "redux-form";
 import { Button, Typography, message } from "antd";
 
 import LocalAPI from "./../../apis/local";
-import { Input, FormContainer } from "./FormLayout";
+import { Input, FormContainer } from "./form_styles";
 
 const { Title } = Typography;
 

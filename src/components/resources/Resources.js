@@ -5,7 +5,7 @@ import antStyled from "./../antStyled";
 import Faq from "./Faq";
 import Manuals from "./Manuals";
 import Blueprints from "./Blueprints";
-import { Section, FullPage } from "./../layout/Layout";
+import { Section, FullPage } from "./../layout/app_styles";
 
 const { Sider, Content: AntContent } = Layout;
 

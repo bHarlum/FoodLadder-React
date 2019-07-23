@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Centered } from "./../../layout/Layout";
+import { Centered } from "../../layout/app_styles";
 import NewThreadForm from "./../../forms/NewThreadForm";
 
 class NewThread extends Component {

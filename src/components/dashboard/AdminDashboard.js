@@ -3,7 +3,7 @@ import { Card, Button, List, Col, Row, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
-import { Section, IconText } from "./../layout/Layout"
+import { Section, IconText } from "./../layout/app_styles";
 
 class AdminDashboard extends Component {
 

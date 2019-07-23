@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Dropdown as AntDropdown, Layout } from "antd";
 
-import antStyled from "./../../antStyled";
+import antStyled from "../../antStyled";
 
 const { Header } = Layout;
 

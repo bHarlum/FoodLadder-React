@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 
 import { clearAuthToken, clearCurrentUser } from "./../../../actions";
 import LocalAPI from './../../../apis/local';
-import { Dropdown, Nav, UserBadge, Name } from "./HeaderStyles";
-import { Capitalized } from "./../Layout";
+import { Dropdown, Nav, UserBadge, Name } from "./header_styles";
+import { Capitalized } from "../app_styles";
 
 class NavBar extends Component {
 
