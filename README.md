@@ -1,106 +1,135 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![N|Solid](https://foodladder.org/wp-content/uploads/2018/08/bannerlogo.png)](http://food-ladder-bucket.s3-website-ap-southeast-2.amazonaws.com/)
 
-## Available Scripts
+# CONTENTS
 
-In the project directory, you can run:
+- [Description](#Description)
+- [Purpose](#Purpose-of-Food-Ladder-Web-application)
+- [Food Ladder Application](#Food-Ladder-application)
+  - [Functionality/Features](#Functionality-and-Features)
+  - [Images](#Screenshots)
+  - [Tech Stacks](#tech-stacks)
+- [Design Documentation](#Design-documentation)
+  - [Design Process](#design-process)
+  - [User stories](#User-stories)
+  - [User workflow diagram](#User-Workflow-Diagram)
+  - [Wireframes](#Wireframes)
+  - [Database Diagram](#Database-Diagram)
+  - [Planning Process](#Details-of-planning-process)
+  - [Project Timeline](#Project-plan)
+  - [Screenshots of Trello board](#Screenshots-of-Trello-board)
+- [Short Answers](#Short-Answer-Questions)
 
-### `npm start`
+## Description
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Food Ladder is committed to leading the implementation of innovative and sustainable technologies to in-need communities and works exclusively with a host of world-class, tailored and proven products. As Food Ladder expands to other communities around the world, it would like to develop a web application to enhance its communications. So rather than having human resources in each country (which comes at an immense cost), Food Ladder can support communities virtually.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+How it would work is communities implement basic greenhouses structures using our blueprint and recommended supplier. We will then provide the know-how and support via manuals (operating guides, education, curriculums etc) and an online platform (website and app) so the system can thrive. This online platform will not only be a tool for communities to speak to our horticulture experts it will also be a self-moderating virtual community, where communities around the world can assist one another, providing growing tips, class ideas etc.
 
-### `npm test`
+View Food Ladder web application, [please click here](http://food-ladder-bucket.s3-website-ap-southeast-2.amazonaws.com/).
+View our Github repos here for [BACK-END](https://github.com/bHarlum/food-ladder-express) and for [FRONT-END](https://github.com/bHarlum/food-ladder-react)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Purpose of Food Ladder Web Application
 
-### `npm run build`
+To extend Food Ladder's reach by focusing on what they do best, creating social enterprises. Communities or schools will implement basic greenhouse structures, which they pay for, build and maintain. Food Ladder then provide the know-how and support via manuals and an online platform, so the system can thrive.
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This online platform will not only be a tool for communities to speak to Food Ladder's horticulture experts it will also be a self-moderating virtual community, where communities around the world can assist one another, providing growing tips, class ideas etc. Food Ladder believe this online solution will thrive in developing countries, with the World Bank finding the poorest households are more likely to have access to mobile phones than to toilets or clean water.
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## FOOD LADDER APPLICATION
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Functionality and features
 
-### `npm run eject`
+#### CORE GOALS
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+##### ‘Invitation code only’ registration:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Communities will be sent a unique invitation code before registration is available to them.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+##### Community Forum
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+- Questions and informative posts will be grouped by topic.
+- Tags will be automatically added based on keywords from
+  content.
+- Multilingual functionality
+- Admin/expert account posts and responses will
+  behighlighted.
+- Search functionality
 
-## Learn More
+##### Monthly Reporting from Members
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Metrics to be tracked over time.
+- Notifications when reports are due.
+- Online community only available to users if they submit
+  their monthly reports.
+- Functionality will be scaled down in this version of the
+  application.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+##### FAQ Section
 
-### Code Splitting
+##### Directory of Help Guides, Manuals & Blueprints for users
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+##### Document/Image/Video Upload
 
-### Analyzing the Bundle Size
+- Storage through Amazon Web Services.
+- File size limit
+- Automatic video compression and clearing of older files
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+##### Admin Capabilities
 
-### Making a Progressive Web App
+- Access to user data and metrics
+- Ability to download and save documents/images/videos
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+## Screenshots
 
-### Advanced Configuration
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/landing.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/login.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/projects_page.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/resources_page.png?raw=true)
+![N|Solid](https://github.com/natuey/natuey.github.io/blob/master/forum_page.png?raw=true)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+## Tech stacks
 
-### Deployment
+#### CORE STACKS: MongoDB, Express, React and NodeJS
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+##### EXPRESS
 
-### `npm run build` fails to minify
+FOREVER: CLI tool for ensuring that a given script runs continuously.
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+NODEMON: a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected.
 
----
+BCRYPTJS: hash passwords
 
-### Packages
+CELEBRATE: celebrate is an express middleware function that wraps the joi validation library. This allows you to use this middleware in any single route, or globally, and ensure that all of your inputs are correct before any handler function.
 
-- axios
+CORS: a node.js package for providing a Connect/Express middleware that can be used to enable CORS with various options.
 
-  - A lightweigth http client for interfacing with the express API.
+DOTENV: Dotenv is a zero-dependency module that loads environment variables from a .env file into process.env
 
-- react-router
+JSONWEBTOKEN: way for securely transmitting information between parties as a JSON object. ... Signed tokens can verify the integrity of the claims contained within it, while encrypted tokens hide those claims from other parties.
 
-  - Used for keeping your UI in sync with your url.
+MAILGEN: A Node.js package that generates clean, responsive HTML e-mails for sending transactional mail.
 
-- react-router-dom
+MONGOOSE: Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
 
-  - Binds the DOM to the router, further enabling react-router package.
+MORGAN: HTTP request logger middleware for node.js
 
-- redux
+PASSPORT: Passport is Express-compatible authentication middleware for Node.js. Passport's sole purpose is to authenticate requests, which it does through an extensible set of plugins known as strategies. Passport does not mount routes or assume any particular database schema, which maximizes flexibility and allows application-level decisions to be made by the developer. The API is simple: you provide Passport a request to authenticate, and Passport provides hooks for controlling what occurs when authentication succeeds or fails.
 
-  - State management for a single page application.
+PASSPORT-JWT: A Passport strategy for authenticating with a JSON Web Token. This module lets you authenticate endpoints using a JSON web token. It is intended to be used to secure RESTful endpoints without sessions.
 
-- react-redux
+PASSPORT-LOCAL: Passport strategy for authenticating with a username and password. This module lets you authenticate using a username and password in your Node.js applications. By plugging into Passport, local authentication can be easily and unobtrusively integrated into any application or framework that supports Connect-style middleware, including Express.
 
-  - Lets react and redux communicate giving thr react app access to state.
+PASSPORT-LOCAL-MONGOOSE: Passport-Local Mongoose is a Mongoose plugin that simplifies building username and password login with Passport.
 
-- redux-thunk
+VALIDATOR: A library of string validators and sanitizers.
 
-  - Allows for async redux by returning functions instead of actions.
+##### REACT
 
-- redux-form
+REACT-REDUX : binding React with Redux
 
-  -
+REDUX : Tool for State Management. Reasons: a single store is used to keep the state of the app
+REDUX-FORM: way to manage your form state in Redux.
 
-- antD
-  - Libray of pre-build react components.
+REDUX-THUNK: Redux Thunk middleware allows you to write action creators that return a function instead of an action. The thunk can be used to delay the dispatch of an action, or to dispatch only if a certain condition is met.
 
 This is my change
 [![N|Solid](https://foodladder.org/wp-content/uploads/2018/08/bannerlogo.png)](http://food-ladder-bucket.s3-website-ap-southeast-2.amazonaws.com/)
