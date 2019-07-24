@@ -11,6 +11,7 @@ const { Title } = Typography;
 class NewThreadForm extends Component {
 
   state = {
+    uploading: false,
     file: {
       key: "",
       size: ""
@@ -24,8 +25,19 @@ class NewThreadForm extends Component {
       authorization: `Bearer ${this.props.token}`
     },
     onChange: (info) => {
+      if (info.file.status === 'uploading') {
+        this.setState({
+          uploading: true
+        });
+      }
       if (info.file.status === 'done') {
-        this.setState({file: {key: info.file.response.key, size: info.file.response.size}});
+        this.setState({
+          uploading: false,
+          file: {
+            key: info.file.response.key, 
+            size: info.file.response.size
+          }
+        });
         message.success(`${info.file.name} file uploaded successfully`);
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
@@ -79,7 +91,7 @@ class NewThreadForm extends Component {
             placeholder="test..."
             errorMessage="This field is required."
           />
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" disabled={this.state.uploading}>
             Submit
           </Button>
         </form>

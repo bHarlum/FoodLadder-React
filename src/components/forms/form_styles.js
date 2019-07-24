@@ -14,12 +14,16 @@ export const FormContainer = styled.div`
   width: ${props => props.large ? '550px' : '300px'};
   .ant-form-item {
     margin-bottom: 0;
-    height: 50px;
+    min-height: 50px;
     transition: .3s;
+
+    textarea {
+      height: 80px;
+    }
   }
 
   .ant-form-item.ant-form-item-with-help {
-    height: 70px
+    min-height: 70px
     transition: .3s;
   }
 
