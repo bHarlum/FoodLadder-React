@@ -20,13 +20,9 @@ class EditProjectForm extends Component {
     };
     LocalAPI.patch(`/projects/${this.props.project._id}/update`, {updatedProject, projectId: _id})
       .then(response => {
-        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
-        console.log(response);
-        console.log("-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-");
         this.props.history.push(`/projects/${this.props.project._id}`);
         message.success("Project Updated.");
       }).catch(err => {
-        console.log(err);
         message.error("Error Updating Project");
       });
   };
@@ -83,7 +79,7 @@ class EditProjectForm extends Component {
             type="textarea"
           />
 
-          <Button type="primary" htmlType="submit">
+          <Button type="primary" htmlType="submit" disabled={this.props.uploading}>
             Submit
           </Button>
         </form>

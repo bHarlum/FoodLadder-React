@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import { Input, FormContainer } from "./form_styles";
+import { Section } from "./../layout/app_styles";
 
 const { Title } = Typography;
 
@@ -74,34 +75,36 @@ class NewThreadForm extends Component {
   render() {
     const { handleSubmit } = this.props;
     return(
-      <FormContainer>
-        <Title>Create a new Post</Title>
-        <form onSubmit={handleSubmit(this.onFormSubmit)}>
-          <Field 
-            component={Input}
-            name="title"
-            type="text"
-            placeholder="test..."
-            errorMessage="This field is required."
-          />
-          <Field 
-            component={Input}
-            name="body"
-            type="textarea"
-            placeholder="test..."
-            errorMessage="This field is required."
-          />
-          <Button type="primary" htmlType="submit" disabled={this.state.uploading}>
-            Submit
-          </Button>
-        </form>
-        <Upload name="file" {...this.uploadSettings}>
-          <Button>
-            <Icon type="upload" /> 
-              Add an File
-          </Button>
-        </Upload>
-      </FormContainer>
+      <Section>
+        <FormContainer>
+          <Title>Create a new Post</Title>
+          <form onSubmit={handleSubmit(this.onFormSubmit)}>
+            <Field 
+              component={Input}
+              name="title"
+              type="text"
+              placeholder="test..."
+              errorMessage="This field is required."
+            />
+            <Field 
+              component={Input}
+              name="body"
+              type="textarea"
+              placeholder="test..."
+              errorMessage="This field is required."
+            />
+            <Button type="primary" htmlType="submit" disabled={this.state.uploading}>
+              Submit
+            </Button>
+          </form>
+          <Upload name="file" {...this.uploadSettings}>
+            <Button>
+              <Icon type="upload" /> 
+                Add an File
+            </Button>
+          </Upload>
+        </FormContainer>
+      </Section>
     );
   }
 }

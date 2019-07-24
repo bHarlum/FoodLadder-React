@@ -41,8 +41,14 @@ class AdminDashboard extends Component {
               dataSource={projects}
               itemLayout="horizontal"
               locale={{emptyText: `There are no projects`}}
-              renderItem={item => {
-                const { name, reportDate, _id, activated } = item;
+              renderItem={project => {
+                const { name, reportDate, _id, activated } = project;
+                let imageLink = undefined;
+                if(project.files[0]) {
+                  imageLink = <Avatar src={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${project.files[0].link}`)} shape="square" size={100}/>
+                } else {
+                  imageLink = <Avatar shape="square" size={100}>PROJECT IMAGE</Avatar>
+                }
                 return(
                   <Link to={`/projects/${_id}`}>
                     <Card>
@@ -55,7 +61,7 @@ class AdminDashboard extends Component {
                         <List.Item.Meta 
                           title={name}
                           description={`Next reporting date: ${reportDate}`}
-                          avatar={<Avatar shape="square" size={100}>PROJECT IMAGE</Avatar>}
+                          avatar={imageLink}
                         />
                         <h4>Activated?</h4>
                         { activated && 
