@@ -3,8 +3,9 @@ import moment from "moment";
 import { Card, Avatar } from "antd"; 
 import { connect } from "react-redux";
 
-import { Author, Date, PostCard, ImageContainer } from './post_styles';
+import { Author, Date, PostCard } from './post_styles';
 import { Capitalized } from "../../../layout/app_styles";
+import { ImageContainer } from "./../../../projects/project_styles";
 
 const { Meta } = Card;
 
@@ -14,7 +15,6 @@ export class Post extends Component {
     const { actions, first, children, thread } = this.props;
     const { author, createdAt } = this.props.post;
     const { file } = thread;
-    console.log(file);
 
     return (
       <PostCard
@@ -30,15 +30,12 @@ export class Post extends Component {
             <Date>{moment(createdAt).format('hh:mm - Do MMMM, YYYY')}</Date>
           }
         />
-        {first &&
-          <ImageContainer>
+        <p>{children}</p>
+        {(first && file) &&
+          <ImageContainer image={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${file.link}`)}>
             
           </ImageContainer>     
         } 
-        <p>{children}</p>
-        { file && 
-          <img src={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${file.link}`)} />
-        }
       </PostCard>
     );
   }

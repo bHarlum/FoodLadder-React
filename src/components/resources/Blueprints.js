@@ -5,7 +5,10 @@ class Blueprints extends Component {
   render() {
 
     return(
-      <p>Blueprints</p>
+      <>
+        <h3>Blueprints</h3>
+        <p>List of links to downloadable pdfs</p>
+      </>
     );
   }
 }

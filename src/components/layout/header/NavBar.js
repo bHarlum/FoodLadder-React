@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Menu, Button, Avatar } from "antd";
+import { Menu, Button, Avatar, message } from "antd";
 import HamburgerMenu from "react-hamburger-menu";
 import { connect } from "react-redux";
 
@@ -18,10 +18,15 @@ class NavBar extends Component {
 
   //NEED TO REFACTOR
   handleBurgerClick = () => {
-    console.log("click");
     this.setState({
       burgerOpen: !this.state.burgerOpen,
       mobileNavClass: !this.state.mobileNavClass
+    });
+  }
+
+  closeMenu = () => {
+    this.setState({
+      mobileNavClass: false
     });
   }
 
@@ -31,7 +36,7 @@ class NavBar extends Component {
         this.props.clearAuthToken();
         this.props.clearCurrentUser();
       }).catch(err => {
-        console.log(err);
+        message.error(err.response.data);
       });
   }
 
@@ -43,14 +48,14 @@ class NavBar extends Component {
     return(
       <Nav location={location}>
         <div className="desktop-nav">
-          <ul>
-            <li className="dashboard">
-              <Link to="/dashboard">Home</Link>
+          <ul >
+            <li key="8" className="dashboard">
+              <Link to="/dashboard" onClick={this.closeMenu}>Home</Link>
             </li>
-            <li className="forum">
+            <li key="9" className="forum">
               <Link to="/forum">Forum</Link>
             </li>
-            <li className="resources">
+            <li key="10" className="resources">
               <Link to="/resources">Resources</Link>
             </li>
           </ul>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Typography, Icon } from "antd";
+import { Row, Col, Typography, Icon, Tooltip, message } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../../apis/local";
@@ -20,7 +20,7 @@ class ThreadPage extends Component {
         const thread = res.data;
         this.props.setThread(thread);
       }).catch( err => {
-        console.log(err);
+        message.error("Error getting threads");
       });
   }
 
@@ -60,7 +60,12 @@ class ThreadPage extends Component {
                   <Post 
                     key={post._id}
                     post={post}
-                    actions={[<><Icon type="like" />Was this helpful?</>]}
+                    actions={[
+                      <Tooltip 
+                        title="this functionality is not yet implemented">
+                          <Icon type="like" />Was this helpful?
+                      </Tooltip>
+                    ]}
                     thread={this.props.thread}
                   >
                     {post.body}

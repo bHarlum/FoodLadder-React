@@ -1,23 +1,16 @@
 import React, { Component } from 'react';
-import { Typography, Row, Col, Button, Icon } from "antd";
+import { Typography, Row, Col, Button, Icon, message } from "antd";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 
 import LocalAPI from "./../../apis/local";
-import { Section, FullPage } from './../layout/app_styles';
+import { Section, FullPage, ColumnedSection } from './../layout/app_styles';
 import { setSpinner } from "./../../actions/index";
+import { ImageContainer } from "./project_styles";
 
 const { Title, Paragraph } = Typography;
 
 const lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.";
-
-const ImageContainer = styled.div`
-  background-image: ${props => 'url('+props.image+')'};
-  height: 300px;
-  background-size: cover;
-  background-position: center;
-`;
 
 export class Project extends Component {
 
@@ -36,9 +29,8 @@ export class Project extends Component {
           project: data,
         })
         this.props.setSpinner(false);
-        console.log(this.state);
       }).catch(err => {
-        console.log(err);
+        message.error("Error getting the project");
       });
 
   }
@@ -48,8 +40,15 @@ export class Project extends Component {
     return (
       <FullPage>
         <Row>
-          <Col xs={{ span: 24 }} md={{ span: 5 }}></Col>
-          <Col xs={{ span: 24 }} md={{ span: 14 }}>
+          <ColumnedSection
+            thirdCol={<Section>
+                        { project &&
+                          <Link to={`/projects/edit/${project._id}`}>
+                            <Button type="primary">Edit Project</Button>
+                          </Link>
+                        }
+                      </Section>}
+          >
             <Section>
               {project &&
                 <Row>
@@ -69,16 +68,7 @@ export class Project extends Component {
                 </Row>
               }
             </Section>
-          </Col>
-          <Col xs={{ span: 24 }} md={{ span: 5 }}>
-            <Section>
-              { project &&
-                <Link to={`/projects/edit/${project._id}`}>
-                  <Button type="primary">Edit Project</Button>
-                </Link>
-              }
-            </Section>
-          </Col>
+          </ColumnedSection>
         </Row>
       </FullPage>
     );

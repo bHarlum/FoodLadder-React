@@ -44,8 +44,6 @@ class EditProject extends Component {
   }
 
   render(){
-    console.log(this.state);
-    console.log(this.props.history);
     return(
       <Centered>
         <Section>

@@ -14,9 +14,9 @@ export class Faq extends Component {
         <ColumnedSection>
           <Title>FAQ</Title>
           <Collapse accordion bordered={false} defaultActiveKey={["1"]}>
-            { text.map(el => {
+            { text.map((el, index) => {
               return(
-                <Panel header={el.header}>
+                <Panel key={index} header={el.header}>
                   <p>{el.body}</p>
                 </Panel>
               )

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Row, Col, Typography, Avatar } from "antd";
+import { List, Row, Col, Typography, Avatar, message } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
@@ -20,7 +20,14 @@ class AdminDashboard extends Component {
       .then( response => {
         this.setState({projects: response.data})
       }).catch( err => {
-        console.log(err);
+        message.error("Error getting projects");
+      });
+    LocalAPI.get("/users/current")
+      .then( response => {
+        console.log(response);
+        this.setState({
+          notifications: response.data.notifications
+        });
       })
   }
 
@@ -67,7 +74,7 @@ class AdminDashboard extends Component {
                 return(
                   <List.Item>
                     <List.Item.Meta 
-                      title={item.name}
+                      title={item.category}
                     />
                   </List.Item>
                 );
