@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import moment from "moment";
 import { Card, Avatar } from "antd"; 
+import { connect } from "react-redux";
 
 import { Author, Date, PostCard, ImageContainer } from './post_styles';
 import { Capitalized } from "../../../layout/app_styles";
@@ -10,12 +11,15 @@ const { Meta } = Card;
 export class Post extends Component {
 
   render() {
-    const { actions } = this.props;
+    const { actions, first, children, thread } = this.props;
     const { author, createdAt } = this.props.post;
+    const { file } = thread;
+    console.log(file);
+
     return (
       <PostCard
         actions={actions}
-        first={this.props.first}
+        first={first}
       >
         <Meta 
           title={<Author level={4}>
@@ -26,15 +30,24 @@ export class Post extends Component {
             <Date>{moment(createdAt).format('hh:mm - Do MMMM, YYYY')}</Date>
           }
         />
-        {this.props.first &&
+        {first &&
           <ImageContainer>
             
           </ImageContainer>     
         } 
-        <p>{this.props.children}</p>
+        <p>{children}</p>
+        { file && 
+          <img src={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${file.link}`)} />
+        }
       </PostCard>
     );
   }
 }
 
-export default Post;
+const mapStateToProps = state => {
+  return {
+    thread: state.forum.thread
+  }
+}
+
+export default connect(mapStateToProps)(Post);

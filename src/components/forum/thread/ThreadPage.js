@@ -61,6 +61,7 @@ class ThreadPage extends Component {
                     key={post._id}
                     post={post}
                     actions={[<><Icon type="like" />Was this helpful?</>]}
+                    thread={this.props.thread}
                   >
                     {post.body}
                   </Post>

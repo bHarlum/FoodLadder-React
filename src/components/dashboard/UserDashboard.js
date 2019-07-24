@@ -34,14 +34,21 @@ class AdminDashboard extends Component {
             <Title level={3}>{projects.length > 1 && "Your Projects"}{projects.length === 1 && "Your Project"}</Title>
             <List
               dataSource={projects}
-              renderItem={item => {
+              renderItem={project => {
+                const { _id, name, address } = project;
+                let imageLink = undefined;
+                if(project.files[0]) {
+                  imageLink = <Avatar src={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${project.files[0].link}`)} shape="square" size={100}/>
+                } else {
+                  imageLink = <Avatar shape="square" size={100}>PROJECT IMAGE</Avatar>
+                }
                 return(
-                  <Link to={`/projects/${item._id}`}>
+                  <Link to={`/projects/${_id}`}>
                     <List.Item>
                       <List.Item.Meta 
-                        avatar={<Avatar size={64} shape="square">Project Image</Avatar>}
-                        title={item.name}
-                        description={`${item.address.state}, ${item.address.country}`}
+                        avatar={imageLink}
+                        title={name}
+                        description={`${address.state}, ${address.country}`}
                       />
                     </List.Item>
                   </Link>
