@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Col, Button, Icon, List, Typography } from "antd";
+import { Button, Icon, List, Typography } from "antd";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 

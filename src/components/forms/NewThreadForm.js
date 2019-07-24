@@ -24,9 +24,6 @@ class NewThreadForm extends Component {
       authorization: `Bearer ${this.props.token}`
     },
     onChange: (info) => {
-      if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
-      }
       if (info.file.status === 'done') {
         this.setState({file: {key: info.file.response.key, size: info.file.response.size}});
         message.success(`${info.file.name} file uploaded successfully`);
@@ -36,22 +33,30 @@ class NewThreadForm extends Component {
     },
   };
 
-
   onFormSubmit = async (values) => {
     const { title, body } = values;
-    const data = { newThread: { title, posts: [], file: {link: this.state.file.key, size: this.state.file.size}}};
+    const data = { 
+      newThread: { 
+        title, 
+        posts: [], 
+        file: {
+          link: this.state.file.key, 
+          size: this.state.file.size
+        }
+      }
+    };
     data.newThread.posts.push({
       body,
       author: this.props.currentUser
     })
 
-    try {
-      console.log("TYRING TO CREATE IT AYE");
-      const response = await LocalAPI.post(`/threads`, data);
-      this.props.history.push("/forum");
-    } catch(error) {
-      console.log(error);
-    }
+    LocalAPI.post(`/threads`, data)
+      .then(response => {
+        this.props.history.push("/forum/threads/"+response.data._id);
+        message.success("")
+      }).catch(err => {
+        message.error(err.response.data);
+      })
   }
 
   render() {

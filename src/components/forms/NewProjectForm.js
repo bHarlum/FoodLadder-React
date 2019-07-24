@@ -32,7 +32,6 @@ class NewProjectForm extends Component {
             email
           }
         ],
-        uniqueCode: {},
         address: {
           line1,
           line2,
@@ -49,12 +48,10 @@ class NewProjectForm extends Component {
 
     LocalAPI.post('/projects', data)
       .then(response => {
-        console.log(response); 
         this.props.history.push('/dashboard');
         message.success('Project created and project administrator invited.');
       }).catch(err => {
-        console.log(err);
-        message.error(err.message);
+        message.error(err.response.data);
       });
   };
 
