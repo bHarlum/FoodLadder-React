@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
@@ -11,21 +11,20 @@ import {
   setCurrentUser, 
   clearCurrentUser 
 } from "./../../../actions/index";
-import { HeaderContainer, Float } from "./HeaderStyles";
+import { HeaderContainer, Float, LogoLink } from "./header_styles";
 import NavBar from "./NavBar";
 
 class Header extends Component {
 
   setUser = () => {
-    console.log("setting User");
-    if(this.props.token && this.props.currentUser.id === undefined){
+    if(this.props.token && !this.props.currentUser.id){
       LocalAPI.get("/users/current")
-      .then(response => {
-        this.props.setCurrentUser(response.data);
-      }).catch(err => {
-        this.props.clearAuthToken();
-        console.log(err);
-      })
+        .then(response => {
+          this.props.setCurrentUser(response.data);
+        }).catch(err => {
+          this.props.clearAuthToken();
+          message.info("You have been logged out for security reasons.");
+        })
     }
   }
 
@@ -44,16 +43,18 @@ class Header extends Component {
       <HeaderContainer position={headerStyles.position}>
         {token && 
         <>
-          <Link to="/dashboard">
+          <LogoLink to="/dashboard">
             <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
-          </Link>
+          </LogoLink>
           <NavBar currentUser={currentUser}/>
           
         </>
         }
         {!token &&
         <>
-          <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
+          <LogoLink to="/">
+            <Logo width={headerStyles.logoWidth} fill={headerStyles.logoFill} />
+          </LogoLink>
           <Float>
             <Link to="/login">
               <Button type="dashed">Login</Button>

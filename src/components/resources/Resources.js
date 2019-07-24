@@ -1,18 +1,30 @@
 import React, { Component } from "react";
 import { Layout, Menu } from "antd";
-import antStyled from "./../antStyled";
+import { connect } from "react-redux";
 
-const { Sider, Content } = Layout;
+import Manuals from "./Manuals";
+import Blueprints from "./Blueprints";
+import { Section, FullPage } from "./../layout/app_styles";
+import { SideBar, Content } from "./resources_styles";
+import { setLocation } from "./../../actions";
 
-const SideBar = antStyled(Sider)`
-  height: 70vh;
-  background-color: #fff;
-`;
+const sections = [
+  <Manuals/>,
+  <Blueprints />
+];
 
 class Resources extends Component {
 
   state = {
-    current: 1
+    current: 0
+  }
+
+  componentDidMount() {
+    this.props.setLocation("resources");
+  }
+
+  componentWillUnmount() {
+    this.props.setLocation(null);
   }
 
   onMenuClick = async (item) => {
@@ -23,26 +35,31 @@ class Resources extends Component {
   }
 
   render() {
+    const { current } = this.state;
 
     return(
-      <Layout>
-        <SideBar>
-          <Menu
-            mode="inline"
-            defaultSelectedKeys={["1"]}
-            onClick={this.onMenuClick}
-          >
-            <Menu.Item key="1">Manuals</Menu.Item>
-            <Menu.Item key="2">FAQs</Menu.Item>
+      <FullPage>
+        <Layout>
+          <SideBar>
+            <Menu
+              mode="inline"
+              defaultSelectedKeys={["0"]}
+              onClick={this.onMenuClick}
+            >
+              <Menu.Item style={{marginTop: 0}} key="0">Manuals</Menu.Item>
+              <Menu.Item key="1">Blueprints</Menu.Item>
 
-          </Menu>
-        </SideBar>
-        <Content>
-          {this.state.current}
-        </Content>
-      </Layout>
+            </Menu>
+          </SideBar>
+          <Content>
+            <Section>
+              {sections[current]}
+            </Section>
+          </Content>
+        </Layout>
+      </FullPage>
     );
   }
 }
 
-export default Resources;
+export default connect(null, { setLocation })(Resources);

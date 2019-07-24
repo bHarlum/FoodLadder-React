@@ -1,45 +1,52 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { Row, Col, Icon } from "antd";
+import { Col, Icon } from "antd";
+import { connect } from "react-redux";
+
+import { FooterContainer, SpacedRow, SocialIcons } from "./footer_styles";
 
 class Footer extends Component {
   render() {
+    const { token } = this.props;
     return (
-      <div>
-        <Row>
-          <Col span={1}>
+      <FooterContainer>
+        <SpacedRow>
+          <SocialIcons sm={{ span: 24 }} md={{ span: 9}} lg={{ span: 6 }}>
             <a href="https://www.facebook.com/foodladder">
-              <Icon type="facebook" />
+              <Icon type="facebook" theme="filled" />
             </a>
-          </Col>
-          <Col span={1}>
             <a href="https://twitter.com/FoodLadder">
               <Icon type="twitter" />
             </a>
-          </Col>
-          <Col span={1}>
             <a href="https://www.instagram.com/foodladder/">
               <Icon type="instagram" />
             </a>
-          </Col>
-          <Col span={1}>
             <a href="https://www.linkedin.com/company/food-ladder/?originalSubdomain=au">
-              <Icon type="linkedin" />
+              <Icon type="linkedin" theme="filled" />
             </a>
+          </SocialIcons>
+          
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
+            { token &&
+            <Link to="/faq">Frequently Asked Questions</Link>
+            }
           </Col>
-          <Col span={6}>
-            <Link to="/forum/faq">Frequently Asked Questions</Link>
-          </Col>
-          <Col span={3}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             <Link to="/forum/privacypolicy">Privacy Policy</Link>
           </Col>
-          <Col span={3}>
+          <Col sm={{ span: 24 }} md={{ span: 5}} lg={{ span: 3 }}>
             <a href="https://foodladder.org/get-in-touch-2/">Contact Us</a>
           </Col>
-        </Row>
-      </div>
+        </SpacedRow>
+      </FooterContainer>
     );
   }
 }
 
-export default Footer;
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token
+  }
+}
+
+export default connect(mapStateToProps)(Footer);

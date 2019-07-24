@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Icon } from "antd";
+import { Icon, Row, Col } from "antd";
 
 export const Centered = styled.div`
   display: flex;
@@ -16,7 +16,7 @@ export const Centered = styled.div`
 `;
 
 export const FullPage = styled.div`
-  min-height: 71vh;
+  min-height: 78vh;
 `;
 
 export const Capitalized = (props) => {
@@ -47,3 +47,23 @@ export const IconText = ({ type, text }) => (
     {text}
   </span>
 );
+
+export const Note = styled.p`
+  font-size: 18px;
+`;
+
+export const ColumnedSection = (props) => {
+  return(
+    <Row>
+      <Col s={{ span: 24 }} md={{ span: 5 }}>
+        {props.firstCol}
+      </Col>
+      <Col s={{ span: 24 }} md={{ span: 14 }}>
+        {props.children}
+      </Col>
+      <Col s={{ span: 24 }} md={{ span: 5 }}>
+        {props.thirdCol}
+      </Col>
+    </Row>
+  );
+}

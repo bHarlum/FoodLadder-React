@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Row, Col, Input, Button, Icon, List } from "antd";
+import { Button, Icon, List, Typography } from "antd";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
 import ThreadCard from "./thread/ThreadCard";
-import { Excerpt, Section } from "./../layout/Layout";
+import { Excerpt, Section, FullPage, Note, ColumnedSection } from "./../layout/app_styles";
+import { setLocation } from "./../../actions";
 
-const { Search } = Input;
+const { Title } = Typography;
 
 export class Forum extends Component {
 
@@ -18,16 +20,31 @@ export class Forum extends Component {
     const getThreads = await LocalAPI.get('/threads');
     const threads = getThreads.data;
     this.setState({ threads });
+    this.props.setLocation("forum");
+  }
+
+  componentWillUnmount() {
+    this.props.setLocation(null);
   }
 
   render() {
     const { threads } = this.state;
-    console.log(threads);
     return (
-      <Section>
-        <Row>
-          <Col s={{ span: 24 }} md={{ span: 5 }} />
-          <Col s={{ span: 24 }} md={{ span: 14 }}>
+      <FullPage>
+        <Section>
+          <ColumnedSection
+            thirdCol={
+              <Section>
+                <Link to="forum/threads/new">
+                  <Button type="primary">
+                    <Icon type="plus" />
+                    Create a New Post
+                  </Button>
+                </Link>
+              </Section>
+            }
+          >
+            <Title>Forum</Title>
             { threads && 
               <List 
                 dataSource={threads}
@@ -41,23 +58,14 @@ export class Forum extends Component {
                 }}
               />
             }
-          </Col>
-          <Col s={{ span: 24 }} md={{ span: 5 }}>
-            <Search 
-              placeholder="Search posts"
-              enterButton
-            />
-            <Link to="forum/threads/new">
-              <Button type="primary">
-                <Icon type="plus" />
-                Create a New Post
-              </Button>
-            </Link>
-          </Col>
-        </Row>
-      </Section>
+            { !threads &&
+              <Note>There are no posts yet</Note>
+            }
+          </ColumnedSection>
+        </Section>
+      </FullPage>
     );
   }
 }
 
-export default Forum;
+export default connect(null, { setLocation })(Forum);

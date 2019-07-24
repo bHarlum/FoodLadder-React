@@ -5,6 +5,7 @@ const types = {
   CURRENT_USER: "CURRENT_USER",
   SET_THREAD: "SET_THREAD",
   SET_SPINNER: "SET_SPINNER",
+  SET_LOCATION: "SET_LOCATION"
 }
 
 export default types;

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button, Card } from "antd";
-import { Input } from "./FormLayout";
+import { Button } from "antd";
+import { Input, InviteCard } from "./form_styles";
 
 class InvitationCodeForm extends Component {
 
@@ -12,8 +12,10 @@ class InvitationCodeForm extends Component {
   render(){
     const { handleSubmit } = this.props;
     return(
-      <Card>
+      <InviteCard>
+        <h1>Welcome to the Food Ladder Help Desk.</h1>
         <form onSubmit={handleSubmit(this.onFormSubmit)}>
+          <label htmlFor="code">Invitation Code</label>
           <Field 
             component={Input}
             name="code"
@@ -22,10 +24,11 @@ class InvitationCodeForm extends Component {
             errorMessage="Please enter your unique code."
           />
           <Button type="primary" htmlType="submit">
-            Submit
+            Continue
           </Button>
+          <p>Haven't received a code? <a href="https://foodladder.org/get-in-touch-2/">Contact Us</a></p>
         </form>
-      </Card>
+      </InviteCard>
     );
   }
 }

@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import { Card, Button, List, Typography, Col, Row, Icon, Avatar } from "antd";
+import { Card, Button, List, Col, Row, Icon, Avatar } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
-import { Section, IconText } from "./../layout/Layout"
-
-const { Title } = Typography;
+import { Section, IconText } from "./../layout/app_styles";
 
 class AdminDashboard extends Component {
 
@@ -26,8 +24,8 @@ class AdminDashboard extends Component {
     const { projects } = this.state;
     return(
       <Row>
-        <Col span={5}></Col>
-        <Col span={14}>
+        <Col xs={{ span: 24 }} md={{ span: 5 }}></Col>
+        <Col xs={{ span: 24 }} md={{ span: 14 }}>
           <Section>
             <Row>
               <Col span={12}>
@@ -50,8 +48,8 @@ class AdminDashboard extends Component {
                     <Card>
                       <List.Item
                         actions={[
-                          <IconText type="solution" text="12" />,
-                          <IconText type="message" text="2" />,
+                          <IconText type="solution" text="0" />,
+                          <IconText type="message" text="0" />,
                         ]}
                       >
                         <List.Item.Meta 
@@ -61,9 +59,9 @@ class AdminDashboard extends Component {
                         />
                         <h4>Activated?</h4>
                         { activated && 
-                          <Icon type="check"/>
+                          <Icon style={{color: "#00FF00"}} type="check"/>
                         }{ !activated && 
-                          <Icon type="close"/>
+                          <Icon style={{color: "#FF0000"}} type="close"/>
                         }
                       </List.Item>
                     </Card>
@@ -74,7 +72,7 @@ class AdminDashboard extends Component {
             
           </Section>
         </Col>
-        <Col span={5}></Col>
+        <Col xs={{ span: 24 }} md={{ span: 5 }}></Col>
       </Row>
     )
   }
