@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
-import { Button } from "antd";
+import { Button, message } from "antd";
 import { connect } from "react-redux";
 
 import LocalAPI from "./../../apis/local";
@@ -20,13 +20,12 @@ class NewPostForm extends Component {
       author: this.props.currentUser,
       body
     });
-    console.log(updatedThread);
     LocalAPI.patch(`/threads/${this.props.thread._id}`, { updatedThread, userId })
       .then( res => {
         this.props.setThread(res.data);
         reset();
       }).catch( err => {
-        console.log(err);
+        message.error("Error creating a new post")
       });
   }
 

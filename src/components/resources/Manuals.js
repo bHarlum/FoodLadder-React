@@ -5,7 +5,10 @@ class Manuals extends Component {
   render() {
 
     return(
-      <p>Manuals</p>
+      <>
+        <h3>Manuals</h3>
+        <p>List of links to downloadable pdfs</p>
+      </>
     );
   }
 }

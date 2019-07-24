@@ -122,7 +122,7 @@ class NewProjectForm extends Component {
               type="date"
               defaultValue={moment()}
             />
-            <label htmlFor="email">Project Name</label>
+            <label htmlFor="email">Email to Invite</label>
             <Field
               component={Input}
               name="email"
@@ -130,7 +130,7 @@ class NewProjectForm extends Component {
               placeholder="*Project admin email"
               errorMessage="Email is required, please provide a valid email."
             />
-            <label htmlFor="userName">Project Name</label>
+            <label htmlFor="userName">Project admin's name</label>
             <Field
               component={Input}
               name="userName"

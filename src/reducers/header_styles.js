@@ -9,8 +9,6 @@ const defaultState = {
 export default (state = defaultState, action) => {
   switch(action.type) {
     case types.HEADER_STYLES: 
-      console.log("Setting styles to:");
-      console.log(action.payload);
       return {...state, ...action.payload};
     default:
       return state;

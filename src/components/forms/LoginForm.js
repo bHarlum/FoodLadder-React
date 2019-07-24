@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import { Button, message } from 'antd';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from "react-redux";
 
@@ -20,11 +20,10 @@ class LoginForm extends Component {
         this.props.setAuthToken(response.data.token);
       })
       .then( response => {
-        console.log(response);
         this.props.history.push("/dashboard");
       }) 
       .catch(err => {
-        console.log(err);
+        message.error("Error logging in");
       })
   }
 

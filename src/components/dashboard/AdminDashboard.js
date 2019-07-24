@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Card, Button, List, Col, Row, Icon, Avatar } from "antd";
+import { Card, Button, List, Col, Row, Icon, Avatar, Tooltip, message } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
@@ -16,7 +16,7 @@ class AdminDashboard extends Component {
       .then( response => {
         this.setState({projects: response.data})
       }).catch( err => {
-        console.log(err);
+        message.error("Error getting projects");
       })
   }
 
@@ -41,31 +41,41 @@ class AdminDashboard extends Component {
               dataSource={projects}
               itemLayout="horizontal"
               locale={{emptyText: `There are no projects`}}
-              renderItem={item => {
-                const { name, reportDate, _id, activated } = item;
+              renderItem={project => {
+                const { name, reportDate, _id, activated } = project;
+                let imageLink = undefined;
+                if(project.files[0]) {
+                  imageLink = <Avatar src={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${project.files[0].link}`)} shape="square" size={100}/>
+                } else {
+                  imageLink = <Avatar shape="square" size={100}>PROJECT IMAGE</Avatar>
+                }
                 return(
-                  <Link to={`/projects/${_id}`}>
-                    <Card>
-                      <List.Item
-                        actions={[
-                          <IconText type="solution" text="0" />,
-                          <IconText type="message" text="0" />,
-                        ]}
-                      >
+                  <Card>
+                    <List.Item
+                      actions={[
+                        <Tooltip title="Reports">
+                          <IconText type="solution" text="0" />
+                        </Tooltip>,
+                        <Tooltip title="New Posts">
+                          <IconText type="message" text="0" />
+                        </Tooltip>,
+                      ]}
+                    >
+                      <Link to={`/projects/${_id}`}>
                         <List.Item.Meta 
                           title={name}
                           description={`Next reporting date: ${reportDate}`}
-                          avatar={<Avatar shape="square" size={100}>PROJECT IMAGE</Avatar>}
+                          avatar={imageLink}
                         />
-                        <h4>Activated?</h4>
-                        { activated && 
-                          <Icon style={{color: "#00FF00"}} type="check"/>
-                        }{ !activated && 
-                          <Icon style={{color: "#FF0000"}} type="close"/>
-                        }
-                      </List.Item>
-                    </Card>
-                  </Link>
+                      </Link>
+                      <h4>Activated?</h4>
+                      { activated && 
+                        <Icon style={{color: "#00FF00"}} type="check"/>
+                      }{ !activated && 
+                        <Icon style={{color: "#FF0000"}} type="close"/>
+                      }
+                    </List.Item>
+                  </Card>
                 );
               }}
             />

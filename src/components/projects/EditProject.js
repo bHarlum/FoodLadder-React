@@ -9,6 +9,7 @@ import EditProjectForm from "./../../components/forms/EditProjectForm";
 class EditProject extends Component {
 
   state = {
+    uploading: false,
     project: ""
   };
 
@@ -18,11 +19,16 @@ class EditProject extends Component {
     headers: {
       authorization: `Bearer ${this.props.token}`
     },
-    onChange(info) {
+    onChange: (info) => {
       if (info.file.status !== 'uploading') {
-        console.log(info.file, info.fileList);
+        this.setState({
+          uploading: true
+        });
       }
       if (info.file.status === 'done') {
+        this.setState({
+          uploading: false
+        });
         message.success(`${info.file.name} file uploaded successfully`);
       } else if (info.file.status === 'error') {
         message.error(`${info.file.name} file upload failed.`);
@@ -38,8 +44,6 @@ class EditProject extends Component {
   }
 
   render(){
-    console.log(this.state);
-    console.log(this.props.history);
     return(
       <Centered>
         <Section>
@@ -58,6 +62,7 @@ class EditProject extends Component {
               bio: this.state.project.bio,
               country: this.state.project.address.country
             }}
+            uploading={this.state.uploading}
           />
           <Upload name="file" {...this.uploadSettings}>
             <Button>
