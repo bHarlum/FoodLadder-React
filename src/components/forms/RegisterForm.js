@@ -15,17 +15,15 @@ class RegisterForm extends Component {
     const { project } = this.props;
     const projectId = project._id;
 
-    try {
-      LocalAPI.post(`/users/register`, { firstName, lastName, phone, email, password, projectId })
-        .then( response => {
-          this.props.setAuthToken(response.data.token);
-          this.props.history.push("/dashboard");
-          message.success('Account Created!')
-        })
-        .catch(error => console.log(error));
-    } catch(err) {
-      console.log(err);
-    }
+    LocalAPI.post(`/users/register`, { firstName, lastName, phone, email, password, projectId })
+      .then( response => {
+        this.props.setAuthToken(response.data.token);
+        this.props.history.push("/dashboard");
+        message.success('Account Created!')
+      })
+      .catch(err => {
+        message.error(err.response.data);
+      });
   }
   
   render() {
@@ -54,6 +52,7 @@ class RegisterForm extends Component {
           name="phone"
           type="text"
           placeholder="Phone Number"
+          errorMessage="That doesn't seem to be a valid phone number"
           prefix={<Icon type="phone" />}
         />
         <Field 
@@ -80,20 +79,21 @@ class RegisterForm extends Component {
 
 const validate = (formValues) => {
   const errors = {};
+  const { firstName, lastName, phone, password, passConfirm } = formValues;
 
-  if(!formValues.firstName) {
+  if(!firstName) {
     errors.firstName = "error";
   }
 
-  if(!formValues.lastName) {
+  if(!lastName) {
     errors.lastName = "error";
   }
 
-  if(!formValues.password) {
+  if(!password) {
     errors.password = "error";
   }
 
-  if(formValues.passConfirm !== formValues.password) {
+  if(passConfirm !== password) {
     errors.passConfirm = "error";
   }
 

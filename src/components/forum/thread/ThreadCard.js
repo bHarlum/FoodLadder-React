@@ -9,7 +9,7 @@ class ThreadCard extends Component {
   render(){
 
     const { title, _id: id, views, upvotes, posts, file } = this.props.item;
-    const imageLink = file ? encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${file.link}`) : "https://foodladder.org/wp-content/uploads/2018/07/IMG_4319-1-1.jpg";
+    const imageLink = file.link ? encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${file.link}`) : "https://foodladder.org/wp-content/uploads/2018/07/IMG_4319-1-1.jpg";
 
     return (
       <Card>

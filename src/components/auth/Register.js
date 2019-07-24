@@ -25,6 +25,7 @@ export class Register extends Component {
     // Getting project
     await LocalAPI.get(`/projects/${id}`)
       .then(res => {
+        console.log(res);
         this.setState({
           project: res.data, 
           user: res.data.users[0].email

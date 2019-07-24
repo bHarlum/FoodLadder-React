@@ -30,13 +30,6 @@ class Header extends Component {
 
   componentDidMount() {
     this.setUser();
-
-    LocalAPI.put('/users/update', { firstName: "test"})
-      .then(response => {
-        console.log(response);
-      }).catch( err => {
-        console.log(err);
-      });
   }
 
   componentDidUpdate() {
