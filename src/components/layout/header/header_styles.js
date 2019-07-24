@@ -113,6 +113,15 @@ export const Nav = styled.nav`
     height: 100vh;
     z-index: 4;
     transition: .5s;
+
+    ul {
+      background-color: #fff;
+      padding-top: 70px;
+
+      li {
+        opacity: 1;
+      }
+    }
   }
 
   .mobile-nav.false {

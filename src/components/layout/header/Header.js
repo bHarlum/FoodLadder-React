@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 import Logo from "./Logo";
 import LocalAPI from "./../../../apis/local";
@@ -23,20 +23,13 @@ class Header extends Component {
           this.props.setCurrentUser(response.data);
         }).catch(err => {
           this.props.clearAuthToken();
-          console.log(err);
+          message.info("You have been logged out for security reasons.");
         })
     }
   }
 
   componentDidMount() {
     this.setUser();
-
-    LocalAPI.put('/users/update', { firstName: "test"})
-      .then(response => {
-        console.log(response);
-      }).catch( err => {
-        console.log(err);
-      });
   }
 
   componentDidUpdate() {

@@ -7,7 +7,11 @@ const { Title, Paragraph } = Typography;
 
 export const PostCard = antStyled(Card)`
   margin: 10px 0;
-  border: ${props => props.first ? '1px solid rgb(200, 200, 200)' : 'none'}
+  border: ${props => props.first ? '1px solid rgb(200, 200, 200)' : 'none'};
+  img {
+    max-width: 100%;
+    max-height: 400px;
+  }
 `;
 
 export const Author = antStyled(Title)`

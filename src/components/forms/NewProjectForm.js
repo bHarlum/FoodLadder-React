@@ -32,7 +32,6 @@ class NewProjectForm extends Component {
             email
           }
         ],
-        uniqueCode: {},
         address: {
           line1,
           line2,
@@ -49,12 +48,10 @@ class NewProjectForm extends Component {
 
     LocalAPI.post('/projects', data)
       .then(response => {
-        console.log(response); 
         this.props.history.push('/dashboard');
         message.success('Project created and project administrator invited.');
       }).catch(err => {
-        console.log(err);
-        message.error(err.message);
+        message.error(err.response.data);
       });
   };
 
@@ -125,7 +122,7 @@ class NewProjectForm extends Component {
               type="date"
               defaultValue={moment()}
             />
-            <label htmlFor="email">Project Name</label>
+            <label htmlFor="email">Email to Invite</label>
             <Field
               component={Input}
               name="email"
@@ -133,7 +130,7 @@ class NewProjectForm extends Component {
               placeholder="*Project admin email"
               errorMessage="Email is required, please provide a valid email."
             />
-            <label htmlFor="userName">Project Name</label>
+            <label htmlFor="userName">Project admin's name</label>
             <Field
               component={Input}
               name="userName"

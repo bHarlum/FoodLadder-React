@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import LocalAPI from "./../../apis/local";
 import LoginForm from "./../forms/LoginForm";
 import RegisterForm from "./../forms/RegisterForm";
-import { FullPage, Centered } from "./../layout/app_styles";
-import { Typography, Result, Button } from "antd";
+import { FullPage, Centered, Section } from "./../layout/app_styles";
+import { Typography, Result, Button, message } from "antd";
 import { clearAuthToken, clearCurrentUser, setSpinner } from "./../../actions";
 
 const { Title, Paragraph } = Typography;
@@ -31,7 +31,7 @@ export class Register extends Component {
         });
       })
       .catch(err => {
-        console.log(err);
+        message.error(err.response.data);
       });
 
     //Checking if user exists 
@@ -42,9 +42,8 @@ export class Register extends Component {
         }
       })
       .catch(err => {
-        console.log(err);
+        message.error(err.response.data);
       });
-    console.log(this.props.currentUser);
 
     //Logging out user if logged in
     if(this.props.currentUser.id || this.props.token){
@@ -53,7 +52,7 @@ export class Register extends Component {
         this.props.clearAuthToken();
         this.props.clearCurrentUser();
       }).catch(err => {
-        console.log(err);
+        message.error(err.response.data);
       });
     }
     this.props.setSpinner(false);
@@ -64,7 +63,7 @@ export class Register extends Component {
 
     return (
       <FullPage>
-        <div>
+        <Section>
           {(project && !project.activated) &&
             <Centered>
               <Title>Project Registration</Title>
@@ -105,7 +104,7 @@ export class Register extends Component {
               extra={<a href="https://foodladder.org/get-in-touch-2/"><Button type="primary">Contact Us</Button></a>}
             />
           }    
-        </div>
+        </Section>
          
       </FullPage>
     );

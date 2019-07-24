@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { List, Row, Col, Typography, Avatar } from "antd";
+import { List, Row, Col, Typography, Avatar, message } from "antd";
 import { Link } from "react-router-dom";
 
 import LocalAPI from "./../../apis/local";
@@ -20,7 +20,14 @@ class AdminDashboard extends Component {
       .then( response => {
         this.setState({projects: response.data})
       }).catch( err => {
-        console.log(err);
+        message.error("Error getting projects");
+      });
+    LocalAPI.get("/users/current")
+      .then( response => {
+        console.log(response);
+        this.setState({
+          notifications: response.data.notifications
+        });
       })
   }
 
@@ -34,14 +41,21 @@ class AdminDashboard extends Component {
             <Title level={3}>{projects.length > 1 && "Your Projects"}{projects.length === 1 && "Your Project"}</Title>
             <List
               dataSource={projects}
-              renderItem={item => {
+              renderItem={project => {
+                const { _id, name, address } = project;
+                let imageLink = undefined;
+                if(project.files[0]) {
+                  imageLink = <Avatar src={encodeURI(`${process.env.REACT_APP_API_URL}/files/export/${project.files[0].link}`)} shape="square" size={100}/>
+                } else {
+                  imageLink = <Avatar shape="square" size={100}>PROJECT IMAGE</Avatar>
+                }
                 return(
-                  <Link to={`/projects/${item._id}`}>
+                  <Link to={`/projects/${_id}`}>
                     <List.Item>
                       <List.Item.Meta 
-                        avatar={<Avatar size={64} shape="square">Project Image</Avatar>}
-                        title={item.name}
-                        description={`${item.address.state}, ${item.address.country}`}
+                        avatar={imageLink}
+                        title={name}
+                        description={`${address.state}, ${address.country}`}
                       />
                     </List.Item>
                   </Link>
@@ -59,9 +73,11 @@ class AdminDashboard extends Component {
               renderItem={item => {
                 return(
                   <List.Item>
-                    <List.Item.Meta 
-                      title={item.name}
-                    />
+                    {item.category === "threadReply" &&
+                      <List.Item.Meta 
+                      title="You have a new reply to your post"
+                    /> 
+                  }
                   </List.Item>
                 );
               }}
