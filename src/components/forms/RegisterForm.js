@@ -79,7 +79,7 @@ class RegisterForm extends Component {
 
 const validate = (formValues) => {
   const errors = {};
-  const { firstName, lastName, phone, password, passConfirm } = formValues;
+  const { firstName, lastName, password, passConfirm } = formValues;
 
   if(!firstName) {
     errors.firstName = "error";
