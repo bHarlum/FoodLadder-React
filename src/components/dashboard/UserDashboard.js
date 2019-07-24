@@ -73,9 +73,11 @@ class AdminDashboard extends Component {
               renderItem={item => {
                 return(
                   <List.Item>
-                    <List.Item.Meta 
-                      title={item.category}
-                    />
+                    {item.category === "threadReply" &&
+                      <List.Item.Meta 
+                      title="You have a new reply to your post"
+                    /> 
+                  }
                   </List.Item>
                 );
               }}
